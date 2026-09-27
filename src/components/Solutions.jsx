@@ -28,16 +28,16 @@ export const Solutions = () => {
         'Real-time Financial Ledgers & HR Payroll',
       ],
       bgStyle: {
-        background: 'linear-gradient(135deg, #FF4500 0%, #FF5500 50%, #D83B00 100%)',
+        background: 'linear-gradient(135deg, #0A1329 0%, #16254A 50%, #1E305C 100%)',
       },
-      gridColor: 'rgba(0, 0, 0, 0.35)',
-      border: 'border-[#FF4500]/50',
-      badgeBg: 'bg-black text-white',
-      numColor: 'text-black/80 font-bold',
-      textColor: 'text-black',
-      descColor: 'text-black/90 font-medium',
-      checkColor: 'text-black',
-      borderColor: 'border-black/20',
+      gridColor: 'rgba(255, 255, 255, 0.08)',
+      border: 'border-blue-500/25',
+      badgeBg: 'bg-orange-500/20 text-orange-300 border border-orange-500/30 backdrop-blur-md',
+      numColor: 'text-orange-400 font-bold',
+      textColor: 'text-white',
+      descColor: 'text-slate-300 font-normal',
+      checkColor: 'text-orange-400',
+      borderColor: 'border-white/15',
       image: '/images/hospital_erp.jpg',
       ref: card0Ref,
       topOffset: 'top-[80px]',
@@ -55,16 +55,16 @@ export const Solutions = () => {
         'Operational Bottleneck Analytics',
       ],
       bgStyle: {
-        background: 'linear-gradient(135deg, #0284C7 0%, #0369A1 50%, #075985 100%)',
+        background: 'linear-gradient(135deg, #081B2B 0%, #0F324D 50%, #17486E 100%)',
       },
-      gridColor: 'rgba(255, 255, 255, 0.22)',
-      border: 'border-sky-500/40',
-      badgeBg: 'bg-white/20 text-white border border-white/30 backdrop-blur-md',
-      numColor: 'text-sky-200 font-bold',
+      gridColor: 'rgba(255, 255, 255, 0.08)',
+      border: 'border-sky-500/25',
+      badgeBg: 'bg-sky-500/20 text-sky-300 border border-sky-500/30 backdrop-blur-md',
+      numColor: 'text-sky-400 font-bold',
       textColor: 'text-white',
-      descColor: 'text-sky-100',
-      checkColor: 'text-white',
-      borderColor: 'border-white/20',
+      descColor: 'text-slate-300 font-normal',
+      checkColor: 'text-sky-400',
+      borderColor: 'border-white/15',
       image: '/images/business_automation.jpg',
       ref: card1Ref,
       topOffset: 'top-[110px]',
@@ -82,16 +82,16 @@ export const Solutions = () => {
         'Enterprise Security & Compliance Standards',
       ],
       bgStyle: {
-        background: 'linear-gradient(135deg, #EAB308 0%, #CA8A04 50%, #A16207 100%)',
+        background: 'linear-gradient(135deg, #0D1629 0%, #162542 50%, #20355D 100%)',
       },
-      gridColor: 'rgba(0, 0, 0, 0.35)',
-      border: 'border-yellow-600/40',
-      badgeBg: 'bg-black text-white',
-      numColor: 'text-black/80 font-bold',
-      textColor: 'text-black',
-      descColor: 'text-black/90 font-medium',
-      checkColor: 'text-black',
-      borderColor: 'border-black/20',
+      gridColor: 'rgba(255, 255, 255, 0.08)',
+      border: 'border-indigo-500/25',
+      badgeBg: 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 backdrop-blur-md',
+      numColor: 'text-indigo-400 font-bold',
+      textColor: 'text-white',
+      descColor: 'text-slate-300 font-normal',
+      checkColor: 'text-indigo-400',
+      borderColor: 'border-white/15',
       image: '/images/custom_software.jpg',
       ref: card2Ref,
       topOffset: 'top-[140px]',
@@ -109,16 +109,16 @@ export const Solutions = () => {
         'Kubernetes Container Orchestration',
       ],
       bgStyle: {
-        background: 'linear-gradient(135deg, #10B981 0%, #059669 50%, #047857 100%)',
+        background: 'linear-gradient(135deg, #071924 0%, #0E2B3D 50%, #153E57 100%)',
       },
-      gridColor: 'rgba(255, 255, 255, 0.22)',
-      border: 'border-emerald-500/40',
-      badgeBg: 'bg-black text-white',
-      numColor: 'text-emerald-200 font-bold',
+      gridColor: 'rgba(255, 255, 255, 0.08)',
+      border: 'border-teal-500/25',
+      badgeBg: 'bg-teal-500/20 text-teal-300 border border-teal-500/30 backdrop-blur-md',
+      numColor: 'text-teal-400 font-bold',
       textColor: 'text-white',
-      descColor: 'text-emerald-100',
-      checkColor: 'text-white',
-      borderColor: 'border-white/20',
+      descColor: 'text-slate-300 font-normal',
+      checkColor: 'text-teal-400',
+      borderColor: 'border-white/15',
       image: '/images/cloud_solutions.jpg',
       ref: card3Ref,
       topOffset: 'top-[170px]',
@@ -172,7 +172,7 @@ export const Solutions = () => {
               ref={item.ref}
               onClick={() => setActiveModal(item)}
               style={item.bgStyle}
-              className={`sticky ${item.topOffset} border ${item.border} rounded-[40px] p-10 sm:p-14 lg:p-18 xl:p-20 shadow-2xl cursor-pointer transition-all duration-300 hover:shadow-3xl transform-gpu origin-top min-h-[520px] lg:min-h-[560px] flex flex-col justify-center overflow-hidden relative`}
+              className={`sticky ${item.topOffset} border ${item.border} rounded-[40px] p-10 sm:p-14 lg:p-18 xl:p-20 shadow-2xl cursor-pointer transform-gpu origin-top min-h-[520px] lg:min-h-[560px] flex flex-col justify-center overflow-hidden relative`}
             >
               {/* CTA-style Grid Overlay */}
               <div 
@@ -228,7 +228,7 @@ export const Solutions = () => {
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover"
                   />
                 </div>
 

@@ -72,13 +72,13 @@ export const Hero = ({ onOpenContact }) => {
               variableSpeedMax={120}
               cursorBlinkDuration={0.5}
               as="h1"
-              className="font-heading font-bold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-[#101828] mb-6 w-full min-h-[120px] sm:min-h-[160px]"
+              className="font-heading font-bold text-2xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-[#101828] mb-6 w-full min-h-[140px] sm:min-h-[160px]"
             />
 
             {/* Supporting Paragraph with GPU Accelerated 3D Transform */}
             <p
               ref={paragraphRef}
-              className="text-[#667085] text-lg sm:text-xl font-normal leading-relaxed mb-10 max-w-xl transform-gpu origin-top-left perspective-1000"
+              className="text-[#667085] text-base sm:text-lg lg:text-xl font-normal leading-relaxed mb-8 sm:mb-10 max-w-xl transform-gpu origin-top-left perspective-1000"
             >
               Custom software platforms, AI-powered automation, cloud solutions, and digital products designed to help businesses scale faster.
             </p>

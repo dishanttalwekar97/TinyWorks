@@ -112,20 +112,16 @@ export const Industries = () => {
           </p>
         </div>
 
-        {/* 8-CARD COLOR BLOCK GRID CONTAINER (MATCHING REFERENCE IMAGE STYLE) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 rounded-[36px] overflow-hidden">
-          {industries.map((item, idx) => {
+        {/* 8-CARD COLOR BLOCK GRID CONTAINER */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 rounded-[28px] sm:rounded-[36px] overflow-hidden">
+          {industries.map((item) => {
             const IconComp = item.icon;
-            // Span 1.5 cols on last row for 8 cards if on lg screen
-            const isWide = idx >= 6;
 
             return (
               <div
                 key={item.id}
                 onClick={() => setActiveModal(item)}
-                className={`relative min-h-[340px] sm:min-h-[380px] p-8 sm:p-10 ${item.bg} ${
-                  isWide ? 'lg:col-span-1.5' : 'lg:col-span-1'
-                } rounded-[32px] flex flex-col justify-between cursor-pointer group overflow-hidden shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1.5`}
+                className={`relative min-h-[210px] sm:min-h-[340px] p-4 sm:p-8 ${item.bg} rounded-[20px] sm:rounded-[32px] flex flex-col justify-between cursor-pointer group overflow-hidden shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1.5`}
               >
                 {/* Background Image with Blend & Zoom Hover */}
                 <div className="absolute inset-0 z-0 overflow-hidden">
@@ -139,20 +135,20 @@ export const Industries = () => {
 
                 {/* Top Action Row */}
                 <div className="relative z-10 flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <IconComp className="w-6 h-6" />
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-lg">
+                    <IconComp className="w-4 h-4 sm:w-6 sm:h-6" />
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-80 group-hover:opacity-100 group-hover:bg-white group-hover:text-black transition-all duration-300">
-                    <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-80 group-hover:opacity-100 group-hover:bg-white group-hover:text-black transition-all duration-300">
+                    <ArrowUpRight className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
                   </div>
                 </div>
 
                 {/* Bottom Title & Learn More */}
-                <div className="relative z-10 pt-16">
-                  <h3 className={`font-heading text-3xl sm:text-4xl font-bold tracking-tight mb-3 leading-tight ${item.textColor}`}>
+                <div className="relative z-10 pt-6 sm:pt-16">
+                  <h3 className={`font-heading text-base sm:text-3xl font-bold tracking-tight mb-1 sm:mb-3 leading-tight ${item.textColor}`}>
                     {item.title}
                   </h3>
-                  <p className="text-white/80 text-sm font-medium line-clamp-2 max-w-md group-hover:text-white transition-colors">
+                  <p className="text-white/80 text-xs sm:text-sm font-medium line-clamp-2 max-w-md group-hover:text-white transition-colors">
                     {item.desc}
                   </p>
                 </div>

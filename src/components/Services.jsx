@@ -212,17 +212,17 @@ export const Services = ({ onOpenContact }) => {
             </div>
           </div>
         ) : (
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="max-w-7xl mx-auto px-3 sm:px-6 grid grid-cols-2 gap-3 sm:gap-6">
             {services.map((service, idx) => {
               const IconComp = service.icon;
 
               return (
                 <div
                   key={idx}
-                  className="p-7 rounded-[28px] bg-white border border-slate-100 shadow-xl flex flex-col justify-between relative overflow-hidden"
+                  className="p-4 sm:p-7 rounded-[20px] sm:rounded-[28px] bg-white border border-slate-100 shadow-xl flex flex-col justify-between relative overflow-hidden"
                 >
                   {/* Subtle Background Image Texture */}
-                  <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-[0.12]">
+                  <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-[0.10]">
                     <img
                       src={service.image}
                       alt={service.title}
@@ -231,33 +231,33 @@ export const Services = ({ onOpenContact }) => {
                   </div>
 
                   <div className="relative z-10">
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="font-mono font-bold text-2xl text-[#101828]">
+                    <div className="flex items-center justify-between mb-3 sm:mb-6">
+                      <span className="font-mono font-bold text-lg sm:text-2xl text-[#101828]">
                         {service.num}
                       </span>
-                      <div className="p-3 rounded-xl border border-orange-200 bg-orange-50 text-[#FF5A1F]">
-                        <IconComp className="w-5 h-5" />
+                      <div className="p-2 sm:p-3 rounded-lg sm:rounded-xl border border-orange-200 bg-orange-50 text-[#FF5A1F]">
+                        <IconComp className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
                     </div>
 
-                    <div className="inline-flex items-center text-[11px] font-sans uppercase tracking-wider mb-3 font-semibold px-2.5 py-1 rounded-full border border-slate-200 bg-slate-100 text-slate-700">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F] mr-1.5" />
-                      <span>{service.category}</span>
+                    <div className="inline-flex items-center text-[9px] sm:text-[11px] font-sans uppercase tracking-wider mb-2 sm:mb-3 font-semibold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-slate-200 bg-slate-100 text-slate-700">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F] mr-1" />
+                      <span className="truncate">{service.category}</span>
                     </div>
 
-                    <h3 className="font-heading text-xl font-bold mb-3 text-[#101828]">
+                    <h3 className="font-heading text-sm sm:text-xl font-bold mb-2 sm:mb-3 text-[#101828] leading-tight">
                       {service.title}
                     </h3>
 
-                    <p className="text-slate-600 text-sm leading-relaxed mb-6 font-normal">
+                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 font-normal line-clamp-3 sm:line-clamp-none">
                       {service.desc}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {service.tags.map((tag, tIdx) => (
+                    <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6">
+                      {service.tags.slice(0, 3).map((tag, tIdx) => (
                         <span
                           key={tIdx}
-                          className="px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700"
+                          className="px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-md bg-slate-50 border border-slate-200 text-[9px] sm:text-xs font-medium text-slate-700 truncate max-w-full"
                         >
                           {tag}
                         </span>
@@ -267,11 +267,11 @@ export const Services = ({ onOpenContact }) => {
 
                   <button
                     onClick={onOpenContact}
-                    className="text-xs font-semibold flex items-center justify-between pt-4 border-t border-slate-100 text-[#101828] relative z-10"
+                    className="text-[10px] sm:text-xs font-semibold flex items-center justify-between pt-3 sm:pt-4 border-t border-slate-100 text-[#101828] relative z-10"
                   >
-                    <span className="flex items-center gap-2">
-                      <span>Discuss Requirement</span>
-                      <ArrowRight className="w-4 h-4 text-[#FF5A1F]" />
+                    <span className="flex items-center gap-1 sm:gap-2">
+                      <span className="truncate">Discuss</span>
+                      <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 text-[#FF5A1F] shrink-0" />
                     </span>
                   </button>
                 </div>

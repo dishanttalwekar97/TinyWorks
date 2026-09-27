@@ -73,27 +73,27 @@ export const Stats = () => {
         </div>
 
         {/* Cards Grid */}
-        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div ref={cardsRef} className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {stats.map((stat, idx) => {
             const isDark = stat.theme === 'dark';
 
             return (
               <div
                 key={idx}
-                className={`p-8 flex flex-col justify-between h-52 ${
+                className={`p-4 sm:p-8 flex flex-col justify-between h-40 sm:h-52 ${
                   isDark ? 'card-dark-pro' : 'card-pro'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-[12px] text-[#86868B] font-normal">{stat.title}</span>
+                  <span className="text-[10px] sm:text-[12px] text-[#86868B] font-normal truncate">{stat.title}</span>
                   {stat.titleRight && (
-                    <span className="text-[12px] text-[#86868B] font-normal">{stat.titleRight}</span>
+                    <span className="text-[10px] sm:text-[12px] text-[#86868B] font-normal">{stat.titleRight}</span>
                   )}
                 </div>
 
                 <div className="my-auto">
                   <span
-                    className={`font-sans text-5xl sm:text-6xl font-light tracking-tight ${
+                    className={`font-sans text-3xl sm:text-6xl font-light tracking-tight ${
                       isDark ? 'text-[#F5F5F7]' : 'text-[#1D1D1F]'
                     }`}
                   >
@@ -102,7 +102,7 @@ export const Stats = () => {
                 </div>
 
                 <div>
-                  <p className="text-[11px] text-[#86868B] font-normal">
+                  <p className="text-[9px] sm:text-[11px] text-[#86868B] font-normal truncate">
                     {stat.desc}
                   </p>
                 </div>

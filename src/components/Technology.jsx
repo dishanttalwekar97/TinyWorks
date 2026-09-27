@@ -118,8 +118,8 @@ export const Technology = () => {
       {/* CONTINUOUS RIGHT-TO-LEFT SCROLLING MARQUEE TRACKS */}
       <div className="space-y-6 overflow-hidden w-full py-4 relative">
         {/* Left & Right Fade Edge Gradients */}
-        <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-[#F2F2F4] to-transparent z-10 pointer-events-none" />
-        <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-[#F2F2F4] to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 left-0 w-6 sm:w-24 bg-gradient-to-r from-[#F2F2F4] to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 right-0 w-6 sm:w-24 bg-gradient-to-l from-[#F2F2F4] to-transparent z-10 pointer-events-none" />
 
         {/* Row 1: Right to Left Continuous GSAP Marquee Track */}
         <div className="overflow-hidden w-full">
