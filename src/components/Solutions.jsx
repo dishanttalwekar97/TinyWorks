@@ -165,14 +165,14 @@ export const Solutions = () => {
         </div>
 
         {/* STICKY STACKING CARDS CONTAINER WITH COLOR THEME & CTA GRID OVERLAY */}
-        <div ref={cardsContainerRef} className="space-y-16 pb-32">
+        <div ref={cardsContainerRef} className="space-y-8 sm:space-y-16 pb-20 sm:pb-32">
           {solutions.map((item) => (
             <div
               key={item.id}
               ref={item.ref}
               onClick={() => setActiveModal(item)}
               style={item.bgStyle}
-              className={`sticky ${item.topOffset} border ${item.border} rounded-[40px] p-10 sm:p-14 lg:p-18 xl:p-20 shadow-2xl cursor-pointer transform-gpu origin-top min-h-[520px] lg:min-h-[560px] flex flex-col justify-center overflow-hidden relative`}
+              className={`sticky ${item.topOffset} border ${item.border} rounded-[28px] sm:rounded-[40px] p-6 sm:p-12 lg:p-16 shadow-2xl cursor-pointer transform-gpu origin-top min-h-0 sm:min-h-[520px] flex flex-col justify-center overflow-hidden relative`}
             >
               {/* CTA-style Grid Overlay */}
               <div 
@@ -183,48 +183,48 @@ export const Solutions = () => {
                 }}
               />
 
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center relative z-10">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 lg:gap-14 items-center relative z-10">
 
                 {/* Left Column: Text Section */}
                 <div className="lg:col-span-7 flex flex-col justify-between">
                   <div>
-                    <div className="flex items-center justify-between mb-8">
-                      <span className={`font-mono text-base font-semibold ${item.numColor}`}>
+                    <div className="flex items-center justify-between mb-4 sm:mb-8">
+                      <span className={`font-mono text-sm sm:text-base font-semibold ${item.numColor}`}>
                         {item.num}
                       </span>
-                      <span className={`text-xs sm:text-sm px-4 py-1.5 rounded-full font-semibold ${item.badgeBg}`}>
+                      <span className={`text-[11px] sm:text-xs px-3.5 py-1 sm:py-1.5 rounded-full font-semibold ${item.badgeBg}`}>
                         Solution
                       </span>
                     </div>
 
-                    <h3 className={`font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight mb-6 ${item.textColor}`}>
+                    <h3 className={`font-heading text-2xl sm:text-4xl lg:text-6xl font-semibold tracking-tight mb-3 sm:mb-6 ${item.textColor}`}>
                       {item.title}
                     </h3>
 
-                    <p className={`text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl ${item.descColor}`}>
+                    <p className={`text-xs sm:text-base leading-relaxed mb-4 sm:mb-8 max-w-2xl ${item.descColor}`}>
                       {item.description}
                     </p>
 
-                    <ul className="space-y-3.5 mb-10">
+                    <ul className="space-y-2 sm:space-y-3.5 mb-5 sm:mb-10">
                       {item.features.slice(0, 2).map((feat, fIdx) => (
-                        <li key={fIdx} className={`flex items-center gap-3.5 text-base sm:text-lg font-medium ${item.textColor}`}>
-                          <CheckCircle2 className={`w-5 h-5 sm:w-6 sm:h-6 shrink-0 ${item.checkColor}`} />
+                        <li key={fIdx} className={`flex items-center gap-2.5 sm:gap-3.5 text-xs sm:text-base font-medium ${item.textColor}`}>
+                          <CheckCircle2 className={`w-4 h-4 sm:w-5 sm:h-5 shrink-0 ${item.checkColor}`} />
                           <span>{feat}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className={`pt-6 border-t ${item.borderColor} flex items-center justify-between text-base font-medium ${item.textColor}`}>
-                    <span className={`text-hover-slide flex items-center gap-2.5 text-base sm:text-lg font-semibold ${item.textColor}`}>
+                  <div className={`pt-4 sm:pt-6 border-t ${item.borderColor} flex items-center justify-between text-xs sm:text-base font-medium ${item.textColor}`}>
+                    <span className={`text-hover-slide flex items-center gap-2 sm:gap-2.5 text-xs sm:text-base font-semibold ${item.textColor}`}>
                       Explore Details
-                      <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                     </span>
                   </div>
                 </div>
 
-                {/* Right Column: Enlarged Realistic Photo Container */}
-                <div className={`lg:col-span-5 h-80 sm:h-96 lg:h-[460px] xl:h-[500px] rounded-[32px] overflow-hidden shadow-2xl border ${item.borderColor}`}>
+                {/* Right Column: Photo Container */}
+                <div className={`lg:col-span-5 h-44 sm:h-72 lg:h-[420px] rounded-[20px] sm:rounded-[32px] overflow-hidden shadow-xl border ${item.borderColor}`}>
                   <img
                     src={item.image}
                     alt={item.title}
