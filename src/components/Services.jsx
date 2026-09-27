@@ -18,14 +18,7 @@ export const Services = ({ onOpenContact }) => {
       desc: 'End-to-end digital product design, prototyping, microservices architecture, and scalable software development.',
       tags: ['SaaS Platforms', 'Microservices', 'API Design', 'System Architecture'],
       icon: Code,
-      accentGradient: 'from-sky-500 via-blue-600 to-indigo-600',
-      numColor: 'text-sky-600',
-      badgeBg: 'bg-sky-50 text-sky-700 border-sky-200/80',
-      dotBg: 'bg-sky-500',
-      iconBoxBg: 'bg-sky-50 border-sky-200/60 text-sky-600 group-hover:bg-sky-600 group-hover:text-white',
-      hoverBorder: 'hover:border-sky-300',
-      hoverShadow: 'hover:shadow-sky-500/10',
-      btnColor: 'text-sky-600 hover:text-sky-700',
+      image: '/images/why_scalable_architecture.jpg',
     },
     {
       num: '02',
@@ -34,14 +27,7 @@ export const Services = ({ onOpenContact }) => {
       desc: 'High-performance web applications built with React, modern CSS, dynamic animations, and optimal SEO standards.',
       tags: ['React.js & Next.js', 'Vite', 'Tailwind CSS', 'GSAP Animations'],
       icon: Globe,
-      accentGradient: 'from-blue-600 via-indigo-600 to-purple-600',
-      numColor: 'text-blue-600',
-      badgeBg: 'bg-blue-50 text-blue-700 border-blue-200/80',
-      dotBg: 'bg-blue-500',
-      iconBoxBg: 'bg-blue-50 border-blue-200/60 text-blue-600 group-hover:bg-blue-600 group-hover:text-white',
-      hoverBorder: 'hover:border-blue-300',
-      hoverShadow: 'hover:shadow-blue-500/10',
-      btnColor: 'text-blue-600 hover:text-blue-700',
+      image: '/images/why_modern_tech.jpg',
     },
     {
       num: '03',
@@ -50,14 +36,7 @@ export const Services = ({ onOpenContact }) => {
       desc: 'Native-feel iOS and Android applications designed for speed, fluid user interfaces, and offline resilience.',
       tags: ['React Native & Flutter', 'iOS & Android', 'Push Sync', 'Offline First'],
       icon: Smartphone,
-      accentGradient: 'from-indigo-500 via-purple-600 to-pink-600',
-      numColor: 'text-indigo-600',
-      badgeBg: 'bg-indigo-50 text-indigo-700 border-indigo-200/80',
-      dotBg: 'bg-indigo-500',
-      iconBoxBg: 'bg-indigo-50 border-indigo-200/60 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white',
-      hoverBorder: 'hover:border-indigo-300',
-      hoverShadow: 'hover:shadow-indigo-500/10',
-      btnColor: 'text-indigo-600 hover:text-indigo-700',
+      image: '/images/custom_software.jpg',
     },
     {
       num: '04',
@@ -66,14 +45,7 @@ export const Services = ({ onOpenContact }) => {
       desc: 'Automated CI/CD deployment pipelines, AWS cloud architecture, containerization, and 24/7 uptime monitoring.',
       tags: ['AWS Cloud', 'Docker & K8s', 'CI/CD Pipelines', 'Infrastructure as Code'],
       icon: Cloud,
-      accentGradient: 'from-purple-500 via-pink-600 to-rose-600',
-      numColor: 'text-purple-600',
-      badgeBg: 'bg-purple-50 text-purple-700 border-purple-200/80',
-      dotBg: 'bg-purple-500',
-      iconBoxBg: 'bg-purple-50 border-purple-200/60 text-purple-600 group-hover:bg-purple-600 group-hover:text-white',
-      hoverBorder: 'hover:border-purple-300',
-      hoverShadow: 'hover:shadow-purple-500/10',
-      btnColor: 'text-purple-600 hover:text-purple-700',
+      image: '/images/cloud_solutions.jpg',
     },
     {
       num: '05',
@@ -82,14 +54,7 @@ export const Services = ({ onOpenContact }) => {
       desc: 'Business process automation, custom AI agent integrations, document parsing, and automated workflow orchestrations.',
       tags: ['n8n & Zapier', 'LLM Integrations', 'RAG Pipelines', 'Document OCR'],
       icon: Cpu,
-      accentGradient: 'from-teal-500 via-emerald-600 to-cyan-600',
-      numColor: 'text-teal-600',
-      badgeBg: 'bg-teal-50 text-teal-700 border-teal-200/80',
-      dotBg: 'bg-teal-500',
-      iconBoxBg: 'bg-teal-50 border-teal-200/60 text-teal-600 group-hover:bg-teal-600 group-hover:text-white',
-      hoverBorder: 'hover:border-teal-300',
-      hoverShadow: 'hover:shadow-teal-500/10',
-      btnColor: 'text-teal-600 hover:text-teal-700',
+      image: '/images/business_automation.jpg',
     },
     {
       num: '06',
@@ -98,14 +63,7 @@ export const Services = ({ onOpenContact }) => {
       desc: 'Custom Hospital ERP, Inventory, CRM, and bespoke enterprise software built around complex business rules.',
       tags: ['Hospital ERP', 'Enterprise CRM', 'Inventory Control', 'Financial Auditing'],
       icon: Building,
-      accentGradient: 'from-amber-500 via-orange-600 to-red-600',
-      numColor: 'text-amber-600',
-      badgeBg: 'bg-amber-50 text-amber-800 border-amber-200/80',
-      dotBg: 'bg-amber-500',
-      iconBoxBg: 'bg-amber-50 border-amber-200/60 text-amber-600 group-hover:bg-amber-600 group-hover:text-white',
-      hoverBorder: 'hover:border-amber-300',
-      hoverShadow: 'hover:shadow-amber-500/10',
-      btnColor: 'text-amber-600 hover:text-amber-700',
+      image: '/images/hospital_erp.jpg',
     },
   ];
 
@@ -137,37 +95,37 @@ export const Services = ({ onOpenContact }) => {
     <section
       id="services"
       ref={sectionRef}
-      className="py-24 lg:py-0 lg:min-h-screen flex flex-col justify-center relative z-20 bg-[#F8F9FA] text-slate-900 overflow-hidden border-t border-slate-200/80"
+      className="py-24 lg:py-0 lg:min-h-screen flex flex-col justify-center relative z-20 bg-[#050C1B] text-slate-100 overflow-hidden border-t border-slate-800/60"
     >
-      {/* Background Subtle Grid Pattern */}
+      {/* Background Subtle Cyber Mesh */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-30"
+        className="absolute inset-0 pointer-events-none opacity-15"
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px)`,
-          backgroundSize: '2.5rem 2.5rem',
+          backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)`,
+          backgroundSize: '28px 28px',
         }}
       />
 
-      {/* Light Soft Radial Background Glows */}
-      <div className="absolute top-1/4 right-10 w-[500px] h-[500px] bg-sky-200/40 rounded-full blur-[160px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-indigo-100/50 rounded-full blur-[160px] pointer-events-none" />
+      {/* Atmospheric Soft Lighting */}
+      <div className="absolute top-1/4 -right-10 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-10 -left-10 w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[160px] pointer-events-none" />
 
       {/* Section Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-12 lg:mb-10 pt-8 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-100/80 border border-sky-200/80 text-sky-700 font-sans text-xs font-semibold uppercase tracking-wider mb-4">
-              <Sparkles className="w-3.5 h-3.5 text-sky-600" />
-              <span>Engineering Excellence</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-[#FF5A1F] font-mono text-xs font-semibold uppercase tracking-wider mb-4 shadow-[0_0_15px_rgba(255,90,31,0.15)]">
+              <Sparkles className="w-3.5 h-3.5 text-[#FF5A1F] animate-pulse" />
+              <span>Our Services</span>
             </div>
             <TextReveal
               text="From Idea to Production"
               as="h2"
-              className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#101828]"
+              className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-2"
             />
           </div>
-          <p className="text-slate-600 text-base sm:text-lg max-w-md font-normal leading-relaxed">
-            Full-lifecycle software engineering tailored for enterprises, startups, and modern digital platforms.
+          <p className="text-slate-300 text-base sm:text-lg max-w-md font-normal leading-relaxed">
+            Delivering domain expertise and technology-driven offerings to help you turn digital challenges into opportunities.
           </p>
         </div>
       </div>
@@ -183,34 +141,37 @@ export const Services = ({ onOpenContact }) => {
                 return (
                   <div
                     key={idx}
-                    className={`w-[420px] p-8 rounded-[30px] bg-white border border-slate-200/80 shadow-lg shadow-slate-200/50 flex flex-col justify-between shrink-0 relative group transition-all duration-300 hover:-translate-y-2 ${service.hoverBorder} ${service.hoverShadow} hover:shadow-2xl overflow-hidden`}
+                    className="w-[420px] p-8 rounded-[28px] bg-white border border-slate-100 shadow-xl shadow-black/30 flex flex-col justify-between shrink-0 relative overflow-hidden"
                   >
-                    {/* Top Accent Bar Gradient */}
-                    <div
-                      className={`absolute top-0 left-0 right-0 h-[4px] bg-gradient-to-r ${service.accentGradient} opacity-90 group-hover:opacity-100 transition-opacity duration-300`}
-                    />
+                    {/* Subtle Background Image Texture with Soft Blend */}
+                    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-[0.12]">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover mix-blend-multiply"
+                      />
+                    </div>
 
-                    <div>
+                    {/* Card Content */}
+                    <div className="relative z-10">
                       {/* Top Bar with Number & Matching Icon */}
                       <div className="flex items-center justify-between mb-6">
-                        <span className={`font-mono font-bold text-3xl tracking-tight ${service.numColor}`}>
+                        <span className="font-mono font-bold text-3xl tracking-tight text-[#101828]">
                           {service.num}
                         </span>
-                        <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center shadow-sm transition-all duration-300 ${service.iconBoxBg}`}>
-                          <IconComp className="w-5 h-5 transition-transform group-hover:scale-110" />
+                        <div className="w-12 h-12 rounded-2xl border border-orange-200/80 bg-orange-50/80 flex items-center justify-center text-[#FF5A1F] shadow-sm">
+                          <IconComp className="w-5 h-5" />
                         </div>
                       </div>
 
-                      {/* Category Badge with Color Dot */}
-                      <div
-                        className={`inline-flex items-center text-[11px] font-sans uppercase tracking-wider mb-4 font-semibold px-3 py-1 rounded-full border ${service.badgeBg}`}
-                      >
-                        <span className={`w-1.5 h-1.5 rounded-full ${service.dotBg} mr-2`} />
+                      {/* Category Badge */}
+                      <div className="inline-flex items-center text-[11px] font-sans uppercase tracking-wider font-semibold px-3 py-1 rounded-full border border-slate-200 bg-slate-100/80 text-slate-700 mb-4">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F] mr-2" />
                         <span>{service.category}</span>
                       </div>
 
                       {/* Card Title */}
-                      <h3 className="font-heading text-2xl font-bold mb-3 text-[#101828] group-hover:text-slate-900 transition-colors">
+                      <h3 className="font-heading text-2xl font-bold mb-3 text-[#101828]">
                         {service.title}
                       </h3>
 
@@ -224,7 +185,7 @@ export const Services = ({ onOpenContact }) => {
                         {service.tags.map((tag, tIdx) => (
                           <span
                             key={tIdx}
-                            className="px-3 py-1 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-700 text-xs font-medium hover:bg-white hover:border-slate-300 transition-colors"
+                            className="px-3 py-1 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-700 text-xs font-medium"
                           >
                             {tag}
                           </span>
@@ -233,15 +194,15 @@ export const Services = ({ onOpenContact }) => {
                     </div>
 
                     {/* Bottom Action Footer */}
-                    <div className="pt-5 border-t border-slate-100 flex items-center justify-between">
+                    <div className="pt-5 border-t border-slate-100 flex items-center justify-between relative z-10">
                       <button
                         onClick={onOpenContact}
-                        className={`text-xs sm:text-sm font-semibold flex items-center gap-2 ${service.btnColor} transition-colors group/btn cursor-pointer`}
+                        className="text-xs sm:text-sm font-semibold flex items-center gap-2 text-[#101828] cursor-pointer"
                       >
                         <span>Discuss Requirement</span>
-                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform" />
+                        <ArrowRight className="w-4 h-4 text-[#FF5A1F]" />
                       </button>
-                      <div className="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-slate-200 group-hover:text-slate-600 transition-colors">
+                      <div className="w-7 h-7 rounded-full bg-slate-100 border border-slate-200/60 flex items-center justify-center text-[#FF5A1F]">
                         <CheckCircle2 className="w-4 h-4" />
                       </div>
                     </div>
@@ -258,26 +219,29 @@ export const Services = ({ onOpenContact }) => {
               return (
                 <div
                   key={idx}
-                  className={`p-7 rounded-[28px] bg-white border border-slate-200/80 shadow-lg shadow-slate-200/40 flex flex-col justify-between relative group ${service.hoverBorder} transition-all`}
+                  className="p-7 rounded-[28px] bg-white border border-slate-100 shadow-xl flex flex-col justify-between relative overflow-hidden"
                 >
-                  <div
-                    className={`absolute top-0 left-0 right-0 h-[4px] bg-gradient-to-r ${service.accentGradient} rounded-t-[28px]`}
-                  />
+                  {/* Subtle Background Image Texture */}
+                  <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-[0.12]">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover mix-blend-multiply"
+                    />
+                  </div>
 
-                  <div>
+                  <div className="relative z-10">
                     <div className="flex items-center justify-between mb-6">
-                      <span className={`font-mono font-bold text-2xl ${service.numColor}`}>
+                      <span className="font-mono font-bold text-2xl text-[#101828]">
                         {service.num}
                       </span>
-                      <div className={`p-3 rounded-xl border ${service.iconBoxBg}`}>
+                      <div className="p-3 rounded-xl border border-orange-200 bg-orange-50 text-[#FF5A1F]">
                         <IconComp className="w-5 h-5" />
                       </div>
                     </div>
 
-                    <div
-                      className={`inline-flex items-center text-[11px] font-sans uppercase tracking-wider mb-3 font-semibold px-2.5 py-1 rounded-full border ${service.badgeBg}`}
-                    >
-                      <span className={`w-1.5 h-1.5 rounded-full ${service.dotBg} mr-1.5`} />
+                    <div className="inline-flex items-center text-[11px] font-sans uppercase tracking-wider mb-3 font-semibold px-2.5 py-1 rounded-full border border-slate-200 bg-slate-100 text-slate-700">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F] mr-1.5" />
                       <span>{service.category}</span>
                     </div>
 
@@ -303,11 +267,11 @@ export const Services = ({ onOpenContact }) => {
 
                   <button
                     onClick={onOpenContact}
-                    className={`text-xs font-semibold flex items-center justify-between pt-4 border-t border-slate-100 ${service.btnColor}`}
+                    className="text-xs font-semibold flex items-center justify-between pt-4 border-t border-slate-100 text-[#101828] relative z-10"
                   >
                     <span className="flex items-center gap-2">
                       <span>Discuss Requirement</span>
-                      <ArrowRight className="w-4 h-4" />
+                      <ArrowRight className="w-4 h-4 text-[#FF5A1F]" />
                     </span>
                   </button>
                 </div>
@@ -321,3 +285,8 @@ export const Services = ({ onOpenContact }) => {
 };
 
 export default Services;
+
+
+
+
+

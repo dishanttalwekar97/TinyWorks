@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useGsap } from '../hooks/useGsap';
 import { gsap } from '../utils/animations';
 import { ArrowRight } from 'lucide-react';
-import MaskedHeading from './animations/MaskedHeading';
+import TextType from './animations/TextType';
 
 export const Hero = ({ onOpenContact }) => {
   const containerRef = useRef(null);
@@ -54,21 +54,25 @@ export const Hero = ({ onOpenContact }) => {
           {/* LEFT SIDE: ~54% Width (Text Content) */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             
-            {/* Masked Heading Component with Interactive GSAP & SVG Masking */}
-            <MaskedHeading
-              text="Building Intelligent Software for the Modern Enterprise"
-              tag="h1"
-              align="left"
-              reveal="rise"
-              trigger="view"
-              src="/images/why_modern_tech.jpg"
-              fillScale={1.3}
-              parallax={24}
-              drift={16}
-              duration={1.1}
-              stagger={0.08}
-              textScale={0.085}
-              className="font-heading font-bold tracking-tight text-[#101828] mb-6 w-full"
+            {/* Interactive Typing Animation Heading */}
+            <TextType 
+              text={["Building Intelligent Software for the Modern Enterprise"]}
+              typingSpeed={75}
+              pauseDuration={1500}
+              showCursor
+              cursorCharacter="_"
+              texts={[
+                "Building Intelligent Software for the Modern Enterprise",
+                "Scalable Architecture & Custom AI Engineering",
+                "High-Performance Cloud & Mobile Solutions"
+              ]}
+              deletingSpeed={50}
+              variableSpeedEnabled={false}
+              variableSpeedMin={60}
+              variableSpeedMax={120}
+              cursorBlinkDuration={0.5}
+              as="h1"
+              className="font-heading font-bold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-[#101828] mb-6 w-full min-h-[120px] sm:min-h-[160px]"
             />
 
             {/* Supporting Paragraph with GPU Accelerated 3D Transform */}
