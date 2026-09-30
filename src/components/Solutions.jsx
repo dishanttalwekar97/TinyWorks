@@ -41,7 +41,7 @@ export const Solutions = () => {
       borderColor: 'border-white/10',
       image: '/images/hospital_erp.jpg',
       ref: card0Ref,
-      topOffset: 'top-[100px]',
+      topOffset: 'top-[70px] sm:top-[90px] lg:top-[100px]',
     },
     {
       id: 'business-automation',
@@ -69,7 +69,7 @@ export const Solutions = () => {
       borderColor: 'border-white/20',
       image: '/images/business_automation.jpg',
       ref: card1Ref,
-      topOffset: 'top-[130px]',
+      topOffset: 'top-[90px] sm:top-[115px] lg:top-[130px]',
     },
     {
       id: 'custom-software',
@@ -97,7 +97,7 @@ export const Solutions = () => {
       borderColor: 'border-white/10',
       image: '/images/custom_software.jpg',
       ref: card2Ref,
-      topOffset: 'top-[160px]',
+      topOffset: 'top-[110px] sm:top-[140px] lg:top-[160px]',
     },
     {
       id: 'cloud-solutions',
@@ -125,43 +125,44 @@ export const Solutions = () => {
       borderColor: 'border-white/20',
       image: '/images/cloud_solutions.jpg',
       ref: card3Ref,
-      topOffset: 'top-[190px]',
+      topOffset: 'top-[130px] sm:top-[165px] lg:top-[190px]',
     },
   ];
 
   useGsap(() => {
     if (!cardsContainerRef.current) return;
 
-    // GSAP ScrollTrigger Sticky Card Scale-down Stacking Effect
+    // Sticky Card Scale-down Stacking Effect for Desktop & Mobile
     const cardElements = [card0Ref.current, card1Ref.current, card2Ref.current, card3Ref.current];
 
     cardElements.forEach((card, index) => {
       if (!card || index === cardElements.length - 1) return;
 
       gsap.to(card, {
-        scale: 1 - (cardElements.length - index) * 0.025,
-        opacity: 0.95,
+        scale: 1 - (cardElements.length - index) * 0.03,
+        opacity: 0.9,
         ease: 'none',
         scrollTrigger: {
           trigger: cardElements[index + 1],
-          start: 'top 80%',
-          end: 'top 200px',
+          start: 'top 85%',
+          end: 'top 140px',
           scrub: true,
+          invalidateOnRefresh: true,
         },
       });
     });
   }, []);
 
   return (
-    <section id="solutions" ref={containerRef} className="py-24 relative z-10 bg-black border-t border-slate-800/80">
+    <section id="solutions" ref={containerRef} className="py-16 sm:py-24 relative z-10 bg-black border-t border-slate-800/80 overflow-hidden">
 
       {/* Background Ambient Glow */}
-      <div className="absolute bottom-1/4 right-10 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-10 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-md">
             <Sparkles className="w-3.5 h-3.5" />
             Tailored Engineering
@@ -169,7 +170,7 @@ export const Solutions = () => {
           <TextReveal
             text="Technology designed around your business."
             as="h2"
-            className="font-heading text-4xl sm:text-5xl lg:text-6xl font-semibold text-white tracking-tight mb-4"
+            className="font-heading text-3xl sm:text-5xl lg:text-6xl font-semibold text-white tracking-tight mb-4"
           />
           <p className="text-slate-400 text-base sm:text-lg font-normal max-w-xl mx-auto">
             Targeted software engineering and intelligent platform solutions built for high performance and enterprise scale.

@@ -30,18 +30,18 @@ export const TextReveal = ({
         ease: 'power3.out',
         scrollTrigger: {
           trigger: textRef.current,
-          start: 'top 88%',
-          toggleActions: 'play none none none',
+          start: 'top 92%',
+          toggleActions: 'play none none reverse',
         },
       }
     );
   }, [text, delay, stagger]);
 
   return (
-    <Component ref={textRef} className={`${className} perspective-1000`}>
+    <Component ref={textRef} className={`${className} perspective-1000 max-w-full break-words`}>
       {words.map((word, idx) => (
-        <span key={idx} className="inline-block overflow-hidden mr-[0.25em] align-top">
-          <span className="word-item inline-block transform-gpu origin-bottom">
+        <span key={idx} className="inline-block overflow-hidden mr-[0.25em] align-top max-w-full">
+          <span className="word-item inline-block transform-gpu origin-bottom max-w-full">
             {word}
           </span>
         </span>
