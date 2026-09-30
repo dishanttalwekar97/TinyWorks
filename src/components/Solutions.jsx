@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useGsap } from '../hooks/useGsap';
 import { gsap } from '../utils/animations';
-import { ArrowRight, CheckCircle2, X } from 'lucide-react';
+import { ArrowRight, CheckCircle2, X, Sparkles } from 'lucide-react';
 import TextReveal from './animations/TextReveal';
 
 export const Solutions = () => {
@@ -24,23 +24,24 @@ export const Solutions = () => {
       features: [
         'Integrated OPD & IPD Patient Registration',
         'Pharmacy Stock & Billing Automation',
-        'Diagnostic Laboratory & Radiology Workflow',
+        'Diagnostic Laboratory Workflow',
         'Real-time Financial Ledgers & HR Payroll',
       ],
       bgStyle: {
-        background: 'linear-gradient(135deg, #0A1329 0%, #16254A 50%, #1E305C 100%)',
+        background: '#1B1C1E',
       },
-      gridColor: 'rgba(255, 255, 255, 0.08)',
-      border: 'border-blue-500/25',
-      badgeBg: 'bg-orange-500/20 text-orange-300 border border-orange-500/30 backdrop-blur-md',
-      numColor: 'text-orange-400 font-bold',
+      gridColor: 'rgba(255, 255, 255, 0.04)',
+      border: 'border-white/10 hover:border-white/25',
+      badgeBg: 'bg-white/10 text-cyan-300 border border-white/15 backdrop-blur-md',
+      numColor: 'text-cyan-400 font-bold font-mono',
       textColor: 'text-white',
       descColor: 'text-slate-300 font-normal',
-      checkColor: 'text-orange-400',
-      borderColor: 'border-white/15',
+      checkColor: 'text-cyan-300',
+      linkColor: 'text-cyan-300',
+      borderColor: 'border-white/10',
       image: '/images/hospital_erp.jpg',
       ref: card0Ref,
-      topOffset: 'top-[80px]',
+      topOffset: 'top-[100px]',
     },
     {
       id: 'business-automation',
@@ -51,23 +52,24 @@ export const Solutions = () => {
       features: [
         'Automated Document Processing & Invoicing',
         'Cross-system API Data Synchronization',
-        'Custom Approval & Notification Workflows',
+        'Custom Approval Workflows',
         'Operational Bottleneck Analytics',
       ],
       bgStyle: {
-        background: 'linear-gradient(135deg, #081B2B 0%, #0F324D 50%, #17486E 100%)',
+        background: '#0033B3',
       },
       gridColor: 'rgba(255, 255, 255, 0.08)',
-      border: 'border-sky-500/25',
-      badgeBg: 'bg-sky-500/20 text-sky-300 border border-sky-500/30 backdrop-blur-md',
-      numColor: 'text-sky-400 font-bold',
+      border: 'border-blue-400/30 hover:border-blue-300/60',
+      badgeBg: 'bg-white/15 text-white border border-white/20 backdrop-blur-md',
+      numColor: 'text-cyan-300 font-bold font-mono',
       textColor: 'text-white',
-      descColor: 'text-slate-300 font-normal',
-      checkColor: 'text-sky-400',
-      borderColor: 'border-white/15',
+      descColor: 'text-blue-100 font-normal',
+      checkColor: 'text-cyan-300',
+      linkColor: 'text-cyan-300',
+      borderColor: 'border-white/20',
       image: '/images/business_automation.jpg',
       ref: card1Ref,
-      topOffset: 'top-[110px]',
+      topOffset: 'top-[130px]',
     },
     {
       id: 'custom-software',
@@ -79,22 +81,23 @@ export const Solutions = () => {
         'Tailored SaaS Product Engineering',
         'Scalable Microservices Architecture',
         'High-performance Web & Mobile Platforms',
-        'Enterprise Security & Compliance Standards',
+        'Enterprise Security Standards',
       ],
       bgStyle: {
-        background: 'linear-gradient(135deg, #0D1629 0%, #162542 50%, #20355D 100%)',
+        background: '#1B1C1E',
       },
-      gridColor: 'rgba(255, 255, 255, 0.08)',
-      border: 'border-indigo-500/25',
-      badgeBg: 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 backdrop-blur-md',
-      numColor: 'text-indigo-400 font-bold',
+      gridColor: 'rgba(255, 255, 255, 0.04)',
+      border: 'border-white/10 hover:border-white/25',
+      badgeBg: 'bg-white/10 text-cyan-300 border border-white/15 backdrop-blur-md',
+      numColor: 'text-cyan-400 font-bold font-mono',
       textColor: 'text-white',
       descColor: 'text-slate-300 font-normal',
-      checkColor: 'text-indigo-400',
-      borderColor: 'border-white/15',
+      checkColor: 'text-cyan-300',
+      linkColor: 'text-cyan-300',
+      borderColor: 'border-white/10',
       image: '/images/custom_software.jpg',
       ref: card2Ref,
-      topOffset: 'top-[140px]',
+      topOffset: 'top-[160px]',
     },
     {
       id: 'cloud-solutions',
@@ -109,19 +112,20 @@ export const Solutions = () => {
         'Kubernetes Container Orchestration',
       ],
       bgStyle: {
-        background: 'linear-gradient(135deg, #071924 0%, #0E2B3D 50%, #153E57 100%)',
+        background: '#0033B3',
       },
       gridColor: 'rgba(255, 255, 255, 0.08)',
-      border: 'border-teal-500/25',
-      badgeBg: 'bg-teal-500/20 text-teal-300 border border-teal-500/30 backdrop-blur-md',
-      numColor: 'text-teal-400 font-bold',
+      border: 'border-blue-400/30 hover:border-blue-300/60',
+      badgeBg: 'bg-white/15 text-white border border-white/20 backdrop-blur-md',
+      numColor: 'text-cyan-300 font-bold font-mono',
       textColor: 'text-white',
-      descColor: 'text-slate-300 font-normal',
-      checkColor: 'text-teal-400',
-      borderColor: 'border-white/15',
+      descColor: 'text-blue-100 font-normal',
+      checkColor: 'text-cyan-300',
+      linkColor: 'text-cyan-300',
+      borderColor: 'border-white/20',
       image: '/images/cloud_solutions.jpg',
       ref: card3Ref,
-      topOffset: 'top-[170px]',
+      topOffset: 'top-[190px]',
     },
   ];
 
@@ -135,13 +139,13 @@ export const Solutions = () => {
       if (!card || index === cardElements.length - 1) return;
 
       gsap.to(card, {
-        scale: 1 - (cardElements.length - index) * 0.03,
-        opacity: 0.92,
+        scale: 1 - (cardElements.length - index) * 0.025,
+        opacity: 0.95,
         ease: 'none',
         scrollTrigger: {
           trigger: cardElements[index + 1],
           start: 'top 80%',
-          end: 'top 220px',
+          end: 'top 200px',
           scrub: true,
         },
       });
@@ -149,119 +153,161 @@ export const Solutions = () => {
   }, []);
 
   return (
-    <section id="solutions" ref={containerRef} className="py-28 relative z-10 bg-[#F2F2F4]">
+    <section id="solutions" ref={containerRef} className="py-24 relative z-10 bg-black border-t border-slate-800/80">
+
+      {/* Background Ambient Glow */}
+      <div className="absolute bottom-1/4 right-10 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none" />
+
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-md">
+            <Sparkles className="w-3.5 h-3.5" />
+            Tailored Engineering
+          </div>
           <TextReveal
             text="Technology designed around your business."
             as="h2"
-            className="font-heading text-4xl sm:text-6xl lg:text-7xl font-medium text-[#1D1D1F] tracking-tight mb-4"
+            className="font-heading text-4xl sm:text-5xl lg:text-6xl font-semibold text-white tracking-tight mb-4"
           />
-          <p className="text-[#86868B] text-lg font-normal max-w-xl mx-auto">
-            Targeted software engineering and intelligent platform solutions built for performance and scale.
+          <p className="text-slate-400 text-base sm:text-lg font-normal max-w-xl mx-auto">
+            Targeted software engineering and intelligent platform solutions built for high performance and enterprise scale.
           </p>
         </div>
 
-        {/* STICKY STACKING CARDS CONTAINER WITH COLOR THEME & CTA GRID OVERLAY */}
-        <div ref={cardsContainerRef} className="space-y-8 sm:space-y-16 pb-20 sm:pb-32">
-          {solutions.map((item) => (
-            <div
-              key={item.id}
-              ref={item.ref}
-              onClick={() => setActiveModal(item)}
-              style={item.bgStyle}
-              className={`sticky ${item.topOffset} border ${item.border} rounded-[28px] sm:rounded-[40px] p-6 sm:p-12 lg:p-16 shadow-2xl cursor-pointer transform-gpu origin-top min-h-0 sm:min-h-[520px] flex flex-col justify-center overflow-hidden relative`}
-            >
-              {/* CTA-style Grid Overlay */}
-              <div 
-                className="absolute inset-0 pointer-events-none opacity-30"
-                style={{
-                  backgroundImage: `linear-gradient(to right, ${item.gridColor} 1px, transparent 1px), linear-gradient(to bottom, ${item.gridColor} 1px, transparent 1px)`,
-                  backgroundSize: '2.5rem 2.5rem'
-                }}
-              />
+        {/* 2-COLUMN MAIN LAYOUT: LEFT STICKY VIDEO + RIGHT STACKING REFERENCE COLOR CARDS */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 lg:gap-14 items-center relative z-10">
+          {/* LEFT SIDE: SEAMLESS PURE BLACK FLOATING SPHERE (100% MATCHED) */}
+          <div className="lg:col-span-5 relative lg:sticky lg:top-28 z-20 flex items-center justify-center bg-black">
+            <div className="relative aspect-[4/5] sm:aspect-square lg:aspect-[4/5] w-full max-w-[480px] overflow-hidden flex items-center justify-center pointer-events-none bg-black">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-contain bg-black pointer-events-none"
+              >
+                <source src="/videos/2nd-fold-Sphere-Sparkles.webm" type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
 
-                {/* Left Column: Text Section */}
-                <div className="lg:col-span-7 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center justify-between mb-4 sm:mb-8">
-                      <span className={`font-mono text-sm sm:text-base font-semibold ${item.numColor}`}>
-                        {item.num}
-                      </span>
-                      <span className={`text-[11px] sm:text-xs px-3.5 py-1 sm:py-1.5 rounded-full font-semibold ${item.badgeBg}`}>
-                        Solution
-                      </span>
+          {/* RIGHT SIDE: EXACT REFERENCE COLOR STACKING CARDS */}
+          <div className="lg:col-span-7">
+            <div ref={cardsContainerRef} className="space-y-6 sm:space-y-8 pb-12">
+              {solutions.map((item) => (
+                <div
+                  key={item.id}
+                  ref={item.ref}
+                  onClick={() => setActiveModal(item)}
+                  style={item.bgStyle}
+                  className={`sticky ${item.topOffset} border ${item.border} rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 shadow-2xl cursor-pointer transform-gpu origin-top flex flex-col justify-between overflow-hidden relative transition-all duration-300 hover:scale-[1.01]`}
+                >
+                  {/* Grid Overlay */}
+                  <div
+                    className="absolute inset-0 pointer-events-none opacity-15"
+                    style={{
+                      backgroundImage: `linear-gradient(to right, ${item.gridColor} 1px, transparent 1px), linear-gradient(to bottom, ${item.gridColor} 1px, transparent 1px)`,
+                      backgroundSize: '2rem 2rem'
+                    }}
+                  />
+
+                  {/* Top Center DNA Illustration SVG Overlay (Slightly Smaller & Elegant) */}
+                  <div className="absolute top-3.5 right-24 sm:top-4 sm:right-32 pointer-events-none opacity-60 group-hover:opacity-90 transition-opacity duration-300 w-32 sm:w-44 lg:w-56 h-auto overflow-hidden">
+                    <img
+                      src="/images/dna_illustration.svg"
+                      alt="DNA Equalizer Illustration"
+                      className="w-full h-auto object-contain filter drop-shadow-md brightness-125"
+                    />
+                  </div>
+
+                  <div className="relative z-10 flex flex-col justify-between h-full">
+
+                    {/* Header Row */}
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <span className={`font-mono text-xs sm:text-sm font-semibold ${item.numColor}`}>
+                          {item.num}
+                        </span>
+                        <span className={`text-[10px] sm:text-xs px-3 py-1 rounded-full font-semibold ${item.badgeBg}`}>
+                          Solution
+                        </span>
+                      </div>
+
+                      <h3 className={`font-heading text-xl sm:text-3xl font-bold tracking-tight mb-2 ${item.textColor}`}>
+                        {item.title}
+                      </h3>
+
+                      <p className={`text-xs sm:text-sm leading-relaxed mb-4 line-clamp-2 ${item.descColor}`}>
+                        {item.description}
+                      </p>
+
+                      <ul className="space-y-2 mb-6">
+                        {item.features.slice(0, 2).map((feat, fIdx) => (
+                          <li key={fIdx} className={`flex items-center gap-2 text-xs sm:text-sm font-medium ${item.textColor}`}>
+                            <CheckCircle2 className={`w-4 h-4 shrink-0 ${item.checkColor}`} />
+                            <span>{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
 
-                    <h3 className={`font-heading text-2xl sm:text-4xl lg:text-6xl font-semibold tracking-tight mb-3 sm:mb-6 ${item.textColor}`}>
-                      {item.title}
-                    </h3>
+                    {/* Bottom Action Line */}
+                    <div className={`pt-4 border-t ${item.borderColor} flex items-center justify-between text-xs sm:text-sm font-medium ${item.textColor}`}>
+                      <span className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-cyan-300 group-hover:text-white transition-colors">
+                        Explore Details
+                      </span>
 
-                    <p className={`text-xs sm:text-base leading-relaxed mb-4 sm:mb-8 max-w-2xl ${item.descColor}`}>
-                      {item.description}
-                    </p>
+                      {/* Rotatable Cyan 4-Point Star SVG Icon */}
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="24" 
+                        height="24" 
+                        viewBox="0 0 32 32" 
+                        fill="none"
+                        className="transform transition-transform duration-700 ease-out group-hover:rotate-180 hover:rotate-180 hover:scale-125 cursor-pointer shrink-0"
+                      >
+                        <path d="M16 0C16 10.9714 5.33333 15.746 0 16.7619C11.52 19.2 15.4667 27.9365 16 32V0Z" fill="#00E6E4" />
+                        <path d="M16 0C16 10.9714 26.6667 15.746 32 16.7619C20.48 19.2 16.5333 27.9365 16 32V0Z" fill="#00E6E4" />
+                      </svg>
+                    </div>
 
-                    <ul className="space-y-2 sm:space-y-3.5 mb-5 sm:mb-10">
-                      {item.features.slice(0, 2).map((feat, fIdx) => (
-                        <li key={fIdx} className={`flex items-center gap-2.5 sm:gap-3.5 text-xs sm:text-base font-medium ${item.textColor}`}>
-                          <CheckCircle2 className={`w-4 h-4 sm:w-5 sm:h-5 shrink-0 ${item.checkColor}`} />
-                          <span>{feat}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className={`pt-4 sm:pt-6 border-t ${item.borderColor} flex items-center justify-between text-xs sm:text-base font-medium ${item.textColor}`}>
-                    <span className={`text-hover-slide flex items-center gap-2 sm:gap-2.5 text-xs sm:text-base font-semibold ${item.textColor}`}>
-                      Explore Details
-                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </span>
                   </div>
                 </div>
-
-                {/* Right Column: Photo Container */}
-                <div className={`lg:col-span-5 h-44 sm:h-72 lg:h-[420px] rounded-[20px] sm:rounded-[32px] overflow-hidden shadow-xl border ${item.borderColor}`}>
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+
         </div>
 
       </div>
 
       {/* Detail Modal Drawer */}
       {activeModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
-          <div className="relative w-full max-w-xl bg-white rounded-[28px] p-8 md:p-10 shadow-2xl border border-slate-100">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
+          <div className="relative w-full max-w-xl bg-slate-900 rounded-[28px] p-8 md:p-10 shadow-2xl border border-slate-800 text-white">
             <button
               onClick={() => setActiveModal(null)}
-              className="absolute top-6 right-6 p-2 rounded-full text-[#86868B] hover:text-[#1D1D1F] hover:bg-slate-100 transition-colors"
+              className="absolute top-6 right-6 p-2 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
             >
               <X className="w-6 h-6" />
             </button>
 
-            <h3 className="font-heading text-3xl font-medium text-[#1D1D1F] mb-1">{activeModal.title}</h3>
-            <span className="text-sm text-[#86868B] block mb-4 font-mono">{activeModal.tagline}</span>
+            <h3 className="font-heading text-3xl font-bold text-white mb-1">{activeModal.title}</h3>
+            <span className="text-xs text-cyan-400 block mb-4 font-mono">{activeModal.tagline}</span>
 
-            <p className="text-[#484848] text-base leading-relaxed mb-6">
+            <p className="text-slate-300 text-sm leading-relaxed mb-6 font-normal">
               {activeModal.description}
             </p>
 
-            <div className="space-y-3 mb-8">
-              <h4 className="text-xs font-semibold text-[#1D1D1F] uppercase tracking-wider">Key Capabilities</h4>
+            <div className="space-y-2.5 mb-8">
+              <h4 className="text-xs font-mono font-semibold text-cyan-400 uppercase tracking-wider">Key Capabilities</h4>
               {activeModal.features.map((feat, idx) => (
-                <div key={idx} className="p-3.5 rounded-xl bg-[#F2F2F4] text-sm text-[#1D1D1F] font-medium flex items-center gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-slate-800 shrink-0" />
+                <div key={idx} className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-slate-200 font-medium flex items-center gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
                   <span>{feat}</span>
                 </div>
               ))}
@@ -269,9 +315,9 @@ export const Solutions = () => {
 
             <button
               onClick={() => setActiveModal(null)}
-              className="w-full py-4 rounded-full bg-[#1D1D1F] hover:bg-black text-[#F5F5F7] text-sm font-medium transition-colors"
+              className="w-full py-3.5 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-sm font-semibold transition-colors shadow-lg shadow-cyan-500/20"
             >
-              Close
+              Close Details
             </button>
           </div>
         </div>

@@ -90,12 +90,12 @@ export const Industries = () => {
 
   return (
     <section id="industries" className="py-28 relative bg-[#060A12] text-white overflow-hidden border-t border-slate-800/60">
-      
+
       {/* Ambient Radial Lighting */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-cyan-600/10 rounded-full blur-[170px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-md">

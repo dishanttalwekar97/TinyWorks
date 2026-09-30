@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Preloader from '../components/Preloader';
-import CustomCursor from '../components/CustomCursor';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Stats from '../components/Stats';
@@ -22,9 +21,6 @@ export const Home = () => {
       
       {/* Page Loading Animation */}
       {loading && <Preloader onComplete={() => setLoading(false)} />}
-
-      {/* Custom Ring Cursor (Desktop only) */}
-      <CustomCursor />
 
       {/* Main Sticky Glass Navigation */}
       <Navbar onOpenContact={() => setContactModalOpen(true)} />
