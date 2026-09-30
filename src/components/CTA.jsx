@@ -102,21 +102,21 @@ export const CTA = ({ onOpenContact }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* VIBRANT ORANGE CARD WITH CRISP BLACK GRID LINING & GSAP SCROLL ANIMATION */}
+        {/* VIBRANT TW LOGO GRADIENT CARD WITH GRID LINING & GSAP SCROLL ANIMATION */}
         <div
           ref={cardRef}
-          className="p-10 sm:p-16 lg:p-20 rounded-[32px] sm:rounded-[40px] relative overflow-hidden text-center shadow-2xl transition-shadow duration-500"
+          className="p-10 sm:p-16 lg:p-20 rounded-[32px] sm:rounded-[40px] relative overflow-hidden text-center shadow-2xl transition-shadow duration-500 border border-white/20"
           style={{
-            background: 'linear-gradient(135deg, #FF4500 0%, #FF5500 50%, #E63900 100%)',
+            background: 'linear-gradient(135deg, #4F16A9 0%, #C82190 50%, #FF6B2B 100%)',
           }}
         >
-          {/* CRISP BLACK GRID LINING OVERLAY */}
+          {/* CRISP GLASS GRID LINING OVERLAY */}
           <div
-            className="absolute inset-0 pointer-events-none opacity-25"
+            className="absolute inset-0 pointer-events-none opacity-20"
             style={{
               backgroundImage: `
-                linear-gradient(to right, rgba(0, 0, 0, 0.35) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 1px, transparent 1px)
+                linear-gradient(to right, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 1px, transparent 1px)
               `,
               backgroundSize: '2.5rem 2.5rem',
             }}
@@ -127,16 +127,16 @@ export const CTA = ({ onOpenContact }) => {
             {/* Badge */}
             <div
               ref={badgeRef}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black text-white text-xs font-medium tracking-wide uppercase shadow-md mb-8"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md text-white text-xs font-semibold tracking-wide uppercase shadow-md mb-8 border border-white/25"
             >
-              <MessageSquare className="w-3.5 h-3.5 text-orange-400" />
+              <MessageSquare className="w-3.5 h-3.5 text-pink-200" />
               <span>Start a Partnership</span>
             </div>
 
             {/* Main Headline with 3D Kinetic Transformation Animation */}
             <h2
               ref={titleRef}
-              className="font-heading font-medium text-4xl sm:text-6xl lg:text-7xl text-black tracking-tight leading-[1.08] mb-6 perspective-1000"
+              className="font-heading font-semibold text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.08] mb-6 perspective-1000"
             >
               <span className="block mb-2">
                 {["Let's", "Build", "Something"].map((word, idx) => (
@@ -147,7 +147,7 @@ export const CTA = ({ onOpenContact }) => {
                   </span>
                 ))}
               </span>
-              <span className="block font-semibold text-black">
+              <span className="block font-bold text-white">
                 {["That", "Matters."].map((word, idx) => (
                   <span key={idx} className="inline-block overflow-hidden mr-[0.25em] align-top">
                     <span className="cta-3d-word inline-block transform-gpu origin-bottom-left text-hover-lift cursor-default transition-transform duration-300 hover:scale-105">
@@ -161,7 +161,7 @@ export const CTA = ({ onOpenContact }) => {
             {/* Subtitle */}
             <p
               ref={textRef}
-              className="text-black/80 text-base sm:text-lg lg:text-xl font-normal leading-relaxed mb-10 max-w-xl"
+              className="text-white/90 text-base sm:text-lg lg:text-xl font-normal leading-relaxed mb-10 max-w-xl"
             >
               Have an idea, business challenge, or digital transformation project? Let's discuss how technology can help.
             </p>
@@ -170,15 +170,15 @@ export const CTA = ({ onOpenContact }) => {
             <div ref={btnRef}>
               <button
                 onClick={onOpenContact}
-                className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-black hover:bg-slate-900 text-white font-medium text-sm sm:text-base shadow-xl hover:scale-[1.03] active:scale-[0.98] transition-all"
+                className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white hover:bg-slate-100 text-slate-950 font-bold text-sm sm:text-base shadow-2xl hover:scale-[1.03] active:scale-[0.98] transition-all cursor-pointer"
                 data-cursor="Let's Talk"
               >
                 <span>Start a Conversation</span>
-                <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1.5 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-slate-950 group-hover:translate-x-1.5 transition-transform" />
               </button>
             </div>
 
-            <p className="text-xs text-black/60 font-mono mt-8">
+            <p className="text-xs text-white/70 font-mono mt-8">
               Response guaranteed within 24 business hours • NDAs available upon request
             </p>
 

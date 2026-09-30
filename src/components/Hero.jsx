@@ -34,16 +34,15 @@ export const Hero = ({ onOpenContact }) => {
       ref={containerRef}
       className="relative min-h-screen pt-24 pb-16 md:pt-32 md:pb-20 bg-white text-[#101828] overflow-hidden flex flex-col justify-center"
     >
-      {/* FULL-WIDTH BACKGROUND HERO BANNER IMAGE (From Requested URL) */}
+      {/* FULL-WIDTH BACKGROUND HERO BANNER IMAGE */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <img
           src="/images/hero_banner.jpg"
           alt="TinyWorks Enterprise Hero Background"
-          className="w-full h-full object-cover object-right opacity-95"
+          className="w-full h-full object-cover object-right opacity-100 contrast-[1.05] saturate-[1.1]"
         />
-        {/* Soft Gradient Overlays for Optimal Text Readability on Left Side */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/30" />
+        {/* Soft Left Gradient Fade ONLY for Left Text Readability */}
+        <div className="absolute inset-y-0 left-0 w-full lg:w-[55%] bg-gradient-to-r from-white via-white/90 to-transparent" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10">
@@ -87,7 +86,7 @@ export const Hero = ({ onOpenContact }) => {
             <div ref={ctaButtonsRef} className="flex flex-wrap items-center gap-4">
               <button
                 onClick={onOpenContact}
-                className="group px-8 py-4 rounded-full bg-[#FF5A1F] hover:bg-[#E04B00] text-white text-base font-semibold transition-all shadow-lg shadow-orange-500/25 hover:scale-[1.02] flex items-center gap-2.5 cursor-pointer"
+                className="group px-8 py-4 rounded-full bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white text-base font-bold transition-all shadow-xl shadow-purple-900/20 hover:scale-[1.02] flex items-center gap-2.5 cursor-pointer"
                 data-cursor="Contact"
               >
                 <span>Get Started</span>

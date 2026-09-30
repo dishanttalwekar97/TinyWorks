@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Preloader from '../components/Preloader';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Stats from '../components/Stats';
@@ -13,14 +12,10 @@ import Footer from '../components/Footer';
 import ContactModal from '../components/ContactModal';
 
 export const Home = () => {
-  const [loading, setLoading] = useState(true);
   const [contactModalOpen, setContactModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#030712] text-slate-100 relative selection:bg-cyan-500/30 selection:text-cyan-200">
-      
-      {/* Page Loading Animation */}
-      {loading && <Preloader onComplete={() => setLoading(false)} />}
 
       {/* Main Sticky Glass Navigation */}
       <Navbar onOpenContact={() => setContactModalOpen(true)} />

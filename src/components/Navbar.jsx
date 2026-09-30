@@ -1,10 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
 
 export const Navbar = ({ onOpenContact }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [careCloudOpen, setCareCloudOpen] = useState(false);
+  const [mobileModulesOpen, setMobileModulesOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const dropdownRef = useRef(null);
+
+  // Close dropdown on click outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setCareCloudOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,63 +48,185 @@ export const Navbar = ({ onOpenContact }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const isCareCloud = window.location.pathname.toLowerCase().includes('carecloudx');
+
+    if (href === '#carecloudx' || href === '/carecloudx') {
+      window.history.pushState({}, '', '/carecloudx');
+      window.dispatchEvent(new Event('popstate'));
+      setCareCloudOpen(false);
+      setMobileMenuOpen(false);
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    const targetId = href.startsWith('#') ? href.substring(1) : '';
+
+    if (isCareCloud) {
+      window.history.pushState({}, '', '/' + href);
+      window.dispatchEvent(new Event('popstate'));
+      setMobileMenuOpen(false);
+      setTimeout(() => {
+        if (targetId) {
+          const el = document.getElementById(targetId);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 150);
+    } else {
+      window.history.pushState({}, '', '/' + href);
+      window.dispatchEvent(new Event('popstate'));
+      setMobileMenuOpen(false);
+      if (targetId) {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  };
+
+  const moduleItems = [
+    'OPD Management',
+    'IPD Management',
+    'Laboratory (LIS)',
+    'Radiology (RIS)',
+    'Pharmacy',
+    'Billing & Insurance',
+    'Patient Registration',
+    'Operation Theatre',
+    'Inventory & Stores',
+    'HR & Payroll',
+    'Finance & Accounts',
+    'Analytics & Reports',
+  ];
+
   const navLinks = [
     { name: 'Home', href: '#home', id: 'home' },
+    { name: 'CareCloudX', href: '#services', id: 'carecloudx', hasDropdown: true },
     { name: 'Solutions', href: '#solutions', id: 'solutions' },
     { name: 'Services', href: '#services', id: 'services' },
     { name: 'Industries', href: '#industries', id: 'industries' },
     { name: 'About', href: '#why-us', id: 'why-us' },
   ];
 
+  const isCareCloudPage = window.location.pathname.toLowerCase().includes('carecloudx');
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'py-4 bg-slate-950/40 backdrop-blur-lg border-b border-white/10 shadow-lg shadow-black/20'
-          : 'py-6 bg-transparent border-b border-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? 'py-3.5 bg-slate-950/50 backdrop-blur-xl border-b border-white/10 shadow-xl shadow-black/40 text-white'
+        : 'py-4.5 bg-transparent border-b border-transparent text-slate-900'
+        }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          
-          {/* Brand Logo / Wordmark */}
+
+          {/* Brand Logo & Company Name */}
           <a
-            href="#home"
-            className="flex items-center gap-2.5 group focus:outline-none"
+            href="/"
+            onClick={(e) => handleNavClick(e, '#home')}
+            className="flex items-center gap-2.5 group focus:outline-none cursor-pointer"
             data-cursor="TinyWorks"
           >
-            {/* Minimalist Tech Mark */}
-            <div className="w-7 h-7 rounded-xl bg-slate-900 border border-white/20 flex items-center justify-center relative overflow-hidden shrink-0 shadow-sm">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#FF5A1F]" />
-            </div>
-
-            <span className="font-heading font-bold text-2xl tracking-tight text-white group-hover:text-slate-200 transition-colors">
+            <img
+              src="/images/tinyworks-logo.webp"
+              alt="TinyWorks Logo"
+              className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "http://tinyworksindia.com/logo/tinyworks-logo@2x.webp";
+              }}
+            />
+            <span className={`font-heading font-extrabold text-xl sm:text-2xl tracking-tight transition-colors leading-none ${scrolled ? 'text-white group-hover:text-[#C82190]' : 'text-slate-900 group-hover:text-[#C82190]'
+              }`}>
               TinyWorks
             </span>
           </a>
 
-          {/* Center Navigation Links (Transparent Glass Spacing) */}
-          <nav className="hidden md:flex items-center gap-8 lg:gap-11">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className={`text-sm font-medium tracking-wide transition-colors ${
-                  activeSection === link.id
-                    ? 'text-[#FF5A1F] font-semibold'
-                    : 'text-slate-200 hover:text-[#FF5A1F]'
-                }`}
-              >
-                {link.name}
-              </a>
-            ))}
+          {/* Center Navigation Links */}
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+            {navLinks.map((link) => {
+              if (link.hasDropdown) {
+                return (
+                  <div key={link.name} className="relative group/dropdown" ref={dropdownRef}>
+                    <button
+                      onClick={(e) => handleNavClick(e, '/carecloudx')}
+                      onMouseEnter={() => setCareCloudOpen(true)}
+                      className={`inline-flex items-center gap-1 text-sm font-semibold tracking-wide transition-colors py-1 cursor-pointer ${isCareCloudPage
+                        ? 'text-[#C82190]'
+                        : scrolled
+                          ? 'text-slate-200 hover:text-[#C82190]'
+                          : 'text-slate-800 hover:text-[#C82190]'
+                        }`}
+                    >
+                      <span>CareCloudX</span>
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform duration-200 ${careCloudOpen
+                          ? 'rotate-180 text-[#C82190]'
+                          : scrolled
+                            ? 'text-slate-400'
+                            : 'text-slate-500'
+                          }`}
+                      />
+                    </button>
+
+                    {/* Clean Dark Glass Vertical Dropdown List */}
+                    {careCloudOpen && (
+                      <div
+                        onMouseLeave={() => setCareCloudOpen(false)}
+                        className="absolute top-full left-0 mt-2 w-64 bg-slate-900/95 border border-slate-800 rounded-2xl py-2.5 shadow-2xl shadow-black/60 z-50 animate-in fade-in duration-150 text-slate-100 backdrop-blur-xl"
+                      >
+                        {moduleItems.map((item, idx) => (
+                          <button
+                            key={idx}
+                            onClick={(e) => handleNavClick(e, '/carecloudx')}
+                            className="w-full text-left px-5 py-2 text-xs sm:text-sm font-semibold text-slate-300 hover:text-[#C82190] hover:bg-slate-800/60 transition-colors cursor-pointer block"
+                          >
+                            {item}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              const isActive = activeSection === link.id && !isCareCloudPage;
+
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`text-sm font-semibold tracking-wide transition-colors ${isActive
+                    ? 'text-[#C82190]'
+                    : scrolled
+                      ? 'text-slate-200 hover:text-[#C82190]'
+                      : 'text-slate-800 hover:text-[#C82190]'
+                    }`}
+                >
+                  {link.name}
+                </a>
+              );
+            })}
           </nav>
 
           {/* Right Action Button */}
           <div className="hidden sm:flex items-center gap-4">
             <button
               onClick={onOpenContact}
-              className="group relative inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#FF5A1F] hover:bg-[#E04B00] text-white text-xs sm:text-sm font-semibold transition-all shadow-lg shadow-orange-500/25 hover:scale-[1.02]"
+              className="group relative inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white text-xs sm:text-sm font-bold transition-all shadow-lg shadow-purple-900/20 hover:scale-[1.02] cursor-pointer"
               data-cursor="Contact"
             >
               <span>Get in Touch</span>
@@ -102,13 +238,14 @@ export const Navbar = ({ onOpenContact }) => {
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={onOpenContact}
-              className="sm:hidden px-4 py-2 rounded-full bg-[#FF5A1F] text-white text-xs font-semibold"
+              className="sm:hidden px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] text-white text-xs font-bold cursor-pointer"
             >
-              Contact
+              Get in Touch
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-white hover:bg-white/10"
+              className={`p-2 rounded-lg cursor-pointer ${scrolled ? 'text-white hover:bg-slate-800' : 'text-slate-800 hover:bg-slate-100'
+                }`}
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -120,26 +257,62 @@ export const Navbar = ({ onOpenContact }) => {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-slate-950/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 transition-all animate-fade-in shadow-2xl">
-          <div className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-2.5 text-base font-medium text-slate-200 hover:text-[#FF5A1F] border-b border-white/10 flex items-center justify-between"
-              >
-                <span>{link.name}</span>
-                <span className="text-slate-400 text-xs">→</span>
-              </a>
-            ))}
-            <div className="pt-2">
+        <div className="md:hidden bg-white/95 backdrop-blur-2xl border-b border-slate-200/90 px-6 py-6 transition-all animate-fade-in shadow-2xl max-h-[85vh] overflow-y-auto text-slate-900">
+          <div className="flex flex-col gap-3">
+            {navLinks.map((link) => {
+              if (link.hasDropdown) {
+                return (
+                  <div key={link.name} className="border-b border-slate-100 pb-2">
+                    <div className="w-full py-2.5 text-base font-bold text-[#C82190] flex items-center justify-between cursor-pointer">
+                      <button
+                        onClick={(e) => handleNavClick(e, '/carecloudx')}
+                        className="text-left font-bold text-[#C82190]"
+                      >
+                        CareCloudX
+                      </button>
+                      <ChevronDown
+                        onClick={() => setMobileModulesOpen(!mobileModulesOpen)}
+                        className={`w-4 h-4 transition-transform ${mobileModulesOpen ? 'rotate-180' : ''}`}
+                      />
+                    </div>
+
+                    {mobileModulesOpen && (
+                      <div className="flex flex-col gap-1 pl-3 py-2 bg-slate-50 rounded-xl my-1 border border-slate-100 text-slate-800">
+                        {moduleItems.map((item, idx) => (
+                          <div
+                            key={idx}
+                            onClick={(e) => handleNavClick(e, '/carecloudx')}
+                            className="py-1.5 px-2 text-xs font-semibold text-slate-700 hover:text-[#C82190] cursor-pointer"
+                          >
+                            {item}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="py-2.5 text-base font-semibold text-slate-800 hover:text-[#C82190] border-b border-slate-100 flex items-center justify-between"
+                >
+                  <span>{link.name}</span>
+                  <span className="text-slate-400 text-xs">→</span>
+                </a>
+              );
+            })}
+
+            <div className="pt-3">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenContact();
                 }}
-                className="w-full py-3 rounded-full bg-[#FF5A1F] text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20"
+                className="w-full py-3 rounded-full bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-purple-900/20 cursor-pointer"
               >
                 <span>Get in Touch</span>
                 <ArrowRight className="w-4 h-4" />

@@ -262,11 +262,11 @@ export const Solutions = () => {
                       </span>
 
                       {/* Rotatable Cyan 4-Point Star SVG Icon */}
-                      <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        width="24" 
-                        height="24" 
-                        viewBox="0 0 32 32" 
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 32 32"
                         fill="none"
                         className="transform transition-transform duration-700 ease-out group-hover:rotate-180 hover:rotate-180 hover:scale-125 cursor-pointer shrink-0"
                       >
