@@ -129,7 +129,10 @@ export const Solutions = () => {
   useGsap(() => {
     if (!cardsContainerRef.current) return;
 
-    // Sticky Card Scale-down Stacking Effect (100% Crisp & Clear)
+    // Configure ScrollTrigger for production stability
+    ScrollTrigger.config({ ignoreMobileResize: true });
+
+    // Sticky Card Scale-down Stacking Effect
     const cardElements = [card0Ref.current, card1Ref.current, card2Ref.current, card3Ref.current].filter(Boolean);
 
     cardElements.forEach((card, index) => {
@@ -151,21 +154,29 @@ export const Solutions = () => {
       });
     });
 
-    // Ensure ScrollTrigger refreshes after initial layout render & image load in production build
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 300);
+    // Multi-stage refresh to handle asset loading & Vercel SSR/production hydration
+    const timer1 = setTimeout(() => ScrollTrigger.refresh(), 100);
+    const timer2 = setTimeout(() => ScrollTrigger.refresh(), 500);
+    const timer3 = setTimeout(() => ScrollTrigger.refresh(), 1200);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+    };
   }, []);
 
-  // Window load fallback to trigger ScrollTrigger.refresh() in production deployment
+  // Window load & orientation change fallback to trigger ScrollTrigger.refresh() on Vercel deployment
   useEffect(() => {
-    const handleLoad = () => {
+    const handleRefresh = () => {
       ScrollTrigger.refresh();
     };
-    window.addEventListener('load', handleLoad);
-    return () => window.removeEventListener('load', handleLoad);
+    window.addEventListener('load', handleRefresh);
+    window.addEventListener('resize', handleRefresh);
+    return () => {
+      window.removeEventListener('load', handleRefresh);
+      window.removeEventListener('resize', handleRefresh);
+    };
   }, []);
 
   return (
