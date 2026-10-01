@@ -17,8 +17,7 @@
 
   html,
   body {
-    max-width: 100vw;
-    overflow-x: clip;
+    max-width: 100%;
     margin: 0;
     padding: 0;
   }
@@ -31,9 +30,13 @@
   #root {
     position: relative;
     width: 100%;
-    max-width: 100vw;
-    overflow-x: clip;
   }
+}
+
+.sticky-card {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  will-change: transform, top;
 }
 
 img,
