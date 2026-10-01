@@ -40,7 +40,7 @@ export const HospitalERP = ({ onOpenContact }) => {
   }, []);
 
   const modules = [
-    { id: 'opd', name: 'OPD Management', icon: Users, badge: 'Outpatient', stat: '340+ Daily Tokens', desc: 'Digital queue management, doctor appointment scheduling, EMR case history, and prescription generation.' },
+    { id: 'opd', name: 'OPD Management', icon: Users, badge: 'Outpatient', stat: '40% Waiting Time Reduction', desc: 'Smarter outpatient care & faster consultations with doctor slot booking, real-time token tracking, paperless e-prescriptions, and integrated OPD billing.' },
     { id: 'ipd', name: 'IPD & Bed Tracking', icon: BedDouble, badge: 'Inpatient', stat: '94% Bed Occupancy', desc: 'Real-time bed matrix, admission workflow, nursing notes, discharge summaries, and round tracking.' },
     { id: 'pharmacy', name: 'Pharmacy & Stock', icon: Pill, badge: 'Medication', stat: 'Auto-Batch Alert', desc: 'Barcode medicine sales, expiry date alerts, supplier PO automation, and drug interaction safety checks.' },
     { id: 'laboratory', name: 'Laboratory LIMS', icon: TestTube, badge: 'Diagnostics', stat: '1,200 Sample Tests', desc: 'Sample barcode tracking, automated machine interface, pathologist digital sign-off, and SMS report dispatch.' },

@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import CareCloudXPage from './pages/CareCloudXPage';
+import OpdManagementPage from './pages/OpdManagementPage';
 
 function App() {
   const [currentPath, setCurrentPath] = useState(
-    window.location.pathname.toLowerCase()
+    decodeURIComponent(window.location.pathname).toLowerCase()
   );
   const [currentHash, setCurrentHash] = useState(window.location.hash);
 
   useEffect(() => {
     const handleLocationChange = () => {
-      setCurrentPath(window.location.pathname.toLowerCase());
+      setCurrentPath(decodeURIComponent(window.location.pathname).toLowerCase());
       setCurrentHash(window.location.hash);
     };
 
@@ -28,15 +29,29 @@ function App() {
       setCurrentHash(path);
     } else {
       window.history.pushState({}, '', path);
-      setCurrentPath(path.toLowerCase());
+      setCurrentPath(decodeURIComponent(path).toLowerCase());
     }
     window.scrollTo(0, 0);
   };
 
+  const normalizedPath = decodeURIComponent(currentPath).toLowerCase();
+  const normalizedHash = decodeURIComponent(currentHash).toLowerCase();
+
+  const isOpdRoute =
+    normalizedPath.includes('opd') ||
+    normalizedHash.includes('opd') ||
+    normalizedPath === '/carecloudx/opd' ||
+    normalizedPath === '/carecloudx/opd-management' ||
+    normalizedPath === '/carecloudx/opd management';
+
+  if (isOpdRoute) {
+    return <OpdManagementPage onNavigate={navigate} />;
+  }
+
   const isCareCloudRoute =
-    currentPath === '/carecloudx' ||
-    currentPath.includes('/carecloudx') ||
-    currentHash === '#carecloudx-page';
+    normalizedPath === '/carecloudx' ||
+    normalizedPath.includes('/carecloudx') ||
+    normalizedHash.includes('carecloudx');
 
   if (isCareCloudRoute) {
     return <CareCloudXPage onNavigate={navigate} />;

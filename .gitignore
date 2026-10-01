@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Large Media & Video Files (Exceeding GitHub 100MB limit)
+public/videos/Converted Video/*.mp4
+!public/videos/Converted Video/*-40s.mp4
+!public/videos/Converted Video/OPD-Appointment-*.mp4

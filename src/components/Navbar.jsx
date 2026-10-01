@@ -96,6 +96,20 @@ export const Navbar = ({ onOpenContact }) => {
     }
   };
 
+  const handleModuleClick = (e, item) => {
+    e.preventDefault();
+    setCareCloudOpen(false);
+    setMobileMenuOpen(false);
+
+    if (item.toLowerCase().includes('opd')) {
+      window.history.pushState({}, '', '/carecloudx/opd management');
+    } else {
+      window.history.pushState({}, '', '/carecloudx');
+    }
+    window.dispatchEvent(new Event('popstate'));
+    window.scrollTo(0, 0);
+  };
+
   const moduleItems = [
     'OPD Management',
     'IPD Management',
@@ -190,7 +204,7 @@ export const Navbar = ({ onOpenContact }) => {
                         {moduleItems.map((item, idx) => (
                           <button
                             key={idx}
-                            onClick={(e) => handleNavClick(e, '/carecloudx')}
+                            onClick={(e) => handleModuleClick(e, item)}
                             className="w-full text-left px-5 py-2 text-xs sm:text-sm font-semibold text-slate-300 hover:text-[#C82190] hover:bg-slate-800/60 transition-colors cursor-pointer block"
                           >
                             {item}
@@ -281,7 +295,7 @@ export const Navbar = ({ onOpenContact }) => {
                         {moduleItems.map((item, idx) => (
                           <div
                             key={idx}
-                            onClick={(e) => handleNavClick(e, '/carecloudx')}
+                            onClick={(e) => handleModuleClick(e, item)}
                             className="py-1.5 px-2 text-xs font-semibold text-slate-700 hover:text-[#C82190] cursor-pointer"
                           >
                             {item}
