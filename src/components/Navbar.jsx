@@ -150,20 +150,21 @@ export const Navbar = ({ onOpenContact }) => {
           <a
             href="/"
             onClick={(e) => handleNavClick(e, '#home')}
-            className="flex items-center gap-2.5 group focus:outline-none cursor-pointer"
+            className="flex items-center gap-1.5 sm:gap-2.5 group focus:outline-none cursor-pointer shrink-0"
             data-cursor="TinyWorks"
           >
             <img
               src="/images/tinyworks-logo.webp"
               alt="TinyWorks Logo"
-              className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105"
+              className="h-7 sm:h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105"
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src = "http://tinyworksindia.com/logo/tinyworks-logo@2x.webp";
               }}
             />
-            <span className={`font-heading font-extrabold text-xl sm:text-2xl tracking-tight transition-colors leading-none ${scrolled ? 'text-white group-hover:text-[#C82190]' : 'text-slate-900 group-hover:text-[#C82190]'
-              }`}>
+            <span className={`font-heading font-extrabold text-base sm:text-2xl tracking-tight transition-colors leading-none ${
+              scrolled || mobileMenuOpen ? 'text-white group-hover:text-[#C82190]' : 'text-slate-900 group-hover:text-[#C82190]'
+            }`}>
               TinyWorks
             </span>
           </a>
@@ -177,21 +178,23 @@ export const Navbar = ({ onOpenContact }) => {
                     <button
                       onClick={(e) => handleNavClick(e, '/carecloudx')}
                       onMouseEnter={() => setCareCloudOpen(true)}
-                      className={`inline-flex items-center gap-1 text-sm font-semibold tracking-wide transition-colors py-1 cursor-pointer ${isCareCloudPage
-                        ? 'text-[#C82190]'
-                        : scrolled
-                          ? 'text-slate-200 hover:text-[#C82190]'
-                          : 'text-slate-800 hover:text-[#C82190]'
-                        }`}
+                      className={`inline-flex items-center gap-1 text-sm font-semibold tracking-wide transition-colors py-1 cursor-pointer ${
+                        isCareCloudPage
+                          ? 'text-[#C82190]'
+                          : scrolled
+                            ? 'text-slate-200 hover:text-[#C82190]'
+                            : 'text-slate-800 hover:text-[#C82190]'
+                      }`}
                     >
                       <span>CareCloudX</span>
                       <ChevronDown
-                        className={`w-4 h-4 transition-transform duration-200 ${careCloudOpen
-                          ? 'rotate-180 text-[#C82190]'
-                          : scrolled
-                            ? 'text-slate-400'
-                            : 'text-slate-500'
-                          }`}
+                        className={`w-4 h-4 transition-transform duration-200 ${
+                          careCloudOpen
+                            ? 'rotate-180 text-[#C82190]'
+                            : scrolled
+                              ? 'text-slate-400'
+                              : 'text-slate-500'
+                        }`}
                       />
                     </button>
 
@@ -223,12 +226,13 @@ export const Navbar = ({ onOpenContact }) => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`text-sm font-semibold tracking-wide transition-colors ${isActive
-                    ? 'text-[#C82190]'
-                    : scrolled
-                      ? 'text-slate-200 hover:text-[#C82190]'
-                      : 'text-slate-800 hover:text-[#C82190]'
-                    }`}
+                  className={`text-sm font-semibold tracking-wide transition-colors ${
+                    isActive
+                      ? 'text-[#C82190]'
+                      : scrolled
+                        ? 'text-slate-200 hover:text-[#C82190]'
+                        : 'text-slate-800 hover:text-[#C82190]'
+                  }`}
                 >
                   {link.name}
                 </a>
@@ -248,21 +252,24 @@ export const Navbar = ({ onOpenContact }) => {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center gap-2">
+          {/* Mobile Menu Button + Get in Touch Side-by-Side */}
+          <div className="flex md:hidden items-center gap-1.5 shrink-0">
             <button
               onClick={onOpenContact}
-              className="sm:hidden px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] text-white text-xs font-bold cursor-pointer"
+              className="px-2.5 py-1.5 rounded-full bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] text-white text-[11px] font-bold cursor-pointer shadow-md shrink-0 whitespace-nowrap"
             >
               Get in Touch
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-2 rounded-lg cursor-pointer ${scrolled ? 'text-white hover:bg-slate-800' : 'text-slate-800 hover:bg-slate-100'
-                }`}
+              className={`p-2 rounded-xl border cursor-pointer transition-colors shrink-0 ${
+                scrolled || mobileMenuOpen
+                  ? 'bg-slate-900 border-slate-700 text-white hover:bg-slate-800'
+                  : 'bg-white border-slate-200 text-slate-900 hover:bg-slate-100 shadow-sm'
+              }`}
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-[#C82190]" /> : <Menu className="w-5 h-5 text-slate-900" />}
             </button>
           </div>
 
