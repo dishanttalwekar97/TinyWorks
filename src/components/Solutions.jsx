@@ -138,14 +138,14 @@ export const Solutions = () => {
       if (!nextCard) return;
 
       gsap.to(card, {
-        scale: 0.95 + index * 0.015,
+        scale: 0.94 + index * 0.015,
         transformOrigin: 'top center',
         ease: 'none',
         scrollTrigger: {
           trigger: nextCard,
-          start: 'top 80%',
-          end: 'top 130px',
-          scrub: true,
+          start: 'top 85%',
+          end: 'top 140px',
+          scrub: 0.5,
           invalidateOnRefresh: true,
         },
       });
@@ -227,7 +227,7 @@ export const Solutions = () => {
                       top: `${topValue}px`,
                       zIndex: index + 10,
                     }}
-                    className={`sticky border ${item.border} rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 shadow-2xl cursor-pointer transform-gpu origin-top flex flex-col justify-between overflow-hidden relative transition-all duration-300 hover:scale-[1.01] min-h-[340px] sm:min-h-[380px]`}
+                    className={`sticky border ${item.border} rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 shadow-2xl cursor-pointer transform-gpu origin-top flex flex-col justify-between overflow-hidden relative transition-[border-color,box-shadow,background-color] duration-300 hover:shadow-cyan-500/10 min-h-[340px] sm:min-h-[380px]`}
                   >
                     {/* Grid Overlay */}
                     <div
