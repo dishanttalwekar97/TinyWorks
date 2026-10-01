@@ -25,6 +25,7 @@ import {
   Layers,
   ChevronRight,
   ArrowLeft,
+  Sparkles,
 } from 'lucide-react';
 
 export const CareCloudXPage = ({ onNavigate }) => {
@@ -65,37 +66,19 @@ export const CareCloudXPage = ({ onNavigate }) => {
       tagline: 'Smarter Outpatient Care. Faster Consultations.',
       desc: 'CareCloudX OPD Management streamlines your outpatient department operations with intelligent workflows, reduced waiting time, paperless e-prescriptions, and improved patient experience.',
       features: [
-        'Appointment Scheduling — Easy booking & rescheduling with doctor calendars',
-        'Doctor Management — Manage doctor calendars & availability slots',
-        'Token Management — Smart queue & real-time token tracking',
-        'Digital Prescriptions — Paperless e-prescription with templates',
-        'OPD Billing Integration — Seamless billing and payment processing',
-        'Visit History — Complete patient visit & consultation history',
-        'Queue Management — Reduce waiting time & crowd control',
-        'EMR Ready Consultations — Structured clinical data & notes',
+        'Appointment Scheduling & Doctor Slots',
+        'Smart Queue & Real-time Token Tracking',
+        'Paperless Digital e-Prescriptions',
+        'Instant OPD Billing Integration',
+        'Complete Patient Visit & EMR History',
       ],
       benefits: [
         'Reduce patient waiting time by up to 40%',
         'Improve doctor productivity & consultation speed',
         'Centralized patient information & visit history',
-        'Integrated billing & payment processing',
-        'Enhanced patient satisfaction & experience',
-        'Data-driven operational decision making',
       ],
-      workflow: [
-        '1. Appointment Booking',
-        '2. Token Generation',
-        '3. Consultation',
-        '4. e-Prescription & Advice',
-        '5. Billing & Payment',
-        '6. Visit Summary & Follow-up',
-      ],
-      testimonial: {
-        quote: 'CareCloudX OPD has reduced our waiting time by 40% and improved patient satisfaction significantly.',
-        author: 'Dr. Rahul Mehta',
-        role: 'Medical Director',
-      },
       icon: Stethoscope,
+      isOPD: true,
     },
     {
       num: '02',
@@ -243,7 +226,8 @@ export const CareCloudXPage = ({ onNavigate }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white">
+    <div className="min-h-screen bg-slate-50 text-slate-900 relative selection:bg-[#C82190]/20 selection:text-[#C82190] font-sans">
+      
       {/* Sticky Top Navbar */}
       <Navbar onOpenContact={() => setContactModalOpen(true)} />
 
@@ -260,84 +244,85 @@ export const CareCloudXPage = ({ onNavigate }) => {
                 window.dispatchEvent(new Event('popstate'));
               }
             }}
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-black hover:text-gray-600 transition-colors cursor-pointer border-b-2 border-black pb-1"
+            className="inline-flex items-center gap-2 font-semibold text-xs text-slate-600 hover:text-[#C82190] transition-colors cursor-pointer bg-white px-3.5 py-2 rounded-full border border-slate-200/90 shadow-sm hover:shadow"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to TinyWorks Home</span>
           </button>
         </div>
 
-        {/* HERO SECTION - EXECUTIVE BLACK & WHITE WITH CARECLOUDX LOGO */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-4 border-b border-black relative">
+        {/* HERO SECTION - PROFESSIONAL ENTERPRISE HEALTHCARE BRANDING */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-2">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             
-            {/* Left Column: Headline & Official CareCloudX Logo Header */}
-            <div className="lg:col-span-7">
+            {/* Left Column: Headline & CareCloudX Branding */}
+            <div className="lg:col-span-7 space-y-6">
               
-              {/* Category & Status Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black text-white text-xs font-mono font-bold uppercase tracking-widest mb-6 shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>CARECLOUDX</span>
-                <span>•</span>
-                <span>ENTERPRISE HOSPITAL ERP</span>
+              {/* Status Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-200 text-[#C82190] text-xs font-semibold uppercase tracking-widest shadow-sm">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#C82190] animate-pulse" />
+                <span>CARECLOUDX • ENTERPRISE HOSPITAL ERP</span>
               </div>
 
-              {/* Official CareCloudX Branding Header with Logo */}
-              <div className="flex items-center gap-4 mb-6">
+              {/* Logo & Headline */}
+              <div className="flex items-center gap-4">
                 <img
                   src="/images/carecloudx-logo.webp"
                   alt="CareCloudX Logo"
-                  className="h-14 sm:h-20 md:h-24 w-auto object-contain shrink-0"
+                  className="h-14 sm:h-20 md:h-24 w-auto object-contain shrink-0 drop-shadow-sm"
                   onError={(e) => {
                     e.target.onerror = null;
                     e.target.src = "http://tinyworksindia.com/logo/carecloudx/carecloudx-logo@2x.webp";
                   }}
                 />
-                <div className="border-l-2 border-black pl-4">
-                  <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-black leading-tight">
-                    CareCloudX
+                <div className="border-l-2 border-slate-200 pl-4">
+                  <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                    CareCloud<span className="text-[#C82190]">X</span>
                   </h1>
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-gray-600 block">
+                  <span className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-500 block">
                     Hospital Information System
                   </span>
                 </div>
               </div>
 
               {/* Subtitle */}
-              <p className="text-lg sm:text-2xl font-bold text-black mb-4 tracking-tight leading-snug">
+              <p className="text-xl sm:text-2xl font-bold text-[#C82190] tracking-tight leading-snug">
                 Intelligent Healthcare ERP — Streamlining Clinical, Operational, Financial & Administrative Workflows.
               </p>
 
-              <p className="text-sm sm:text-base text-gray-700 font-normal leading-relaxed mb-8 max-w-2xl">
-                Transforming Healthcare. Empowering Lives. CareCloudX is a next-generation hospital information system engineered for high stability, complete compliance, and seamless multi-departmental coordination across OPD, IPD, Lab, Pharmacy, and Finance.
+              <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-2xl">
+                CareCloudX is a next-generation hospital information system engineered for high stability, complete NABH compliance, and seamless multi-departmental coordination across OPD, IPD, Lab, Pharmacy, and Finance.
               </p>
 
-              {/* Key Highlights Pill Tags */}
-              <div className="flex flex-wrap gap-2.5 mb-8">
-                <span className="px-3 py-1 rounded-full bg-gray-100 border border-black text-black text-xs font-mono font-bold">
-                  ✓ 12 Integrated ERP Modules
+              {/* Key Highlights Tags */}
+              <div className="flex flex-wrap gap-2.5 pt-2">
+                <span className="px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 text-slate-800 text-xs font-semibold shadow-sm flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#C82190]" />
+                  12 Integrated ERP Modules
                 </span>
-                <span className="px-3 py-1 rounded-full bg-gray-100 border border-black text-black text-xs font-mono font-bold">
-                  ✓ NABH & HIPAA Compliant
+                <span className="px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 text-slate-800 text-xs font-semibold shadow-sm flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#C82190]" />
+                  NABH & HIPAA Compliant
                 </span>
-                <span className="px-3 py-1 rounded-full bg-gray-100 border border-black text-black text-xs font-mono font-bold">
-                  ✓ 24/7 Cloud Architecture
+                <span className="px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 text-slate-800 text-xs font-semibold shadow-sm flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#C82190]" />
+                  24/7 Cloud Architecture
                 </span>
               </div>
 
-              {/* Hero Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4">
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-4 pt-4">
                 <button
                   onClick={() => setContactModalOpen(true)}
-                  className="px-8 py-4 bg-black hover:bg-gray-800 text-white font-bold text-sm sm:text-base rounded-full shadow-xl hover:scale-[1.02] transition-all flex items-center gap-3 cursor-pointer"
+                  className="px-8 py-4 bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white font-bold text-sm sm:text-base rounded-full shadow-lg shadow-purple-900/20 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-3 cursor-pointer"
                 >
-                  <span>Schedule Live Demo</span>
-                  <Calendar className="w-5 h-5" />
+                  <span>Schedule Live ERP Demo</span>
+                  <Calendar className="w-5 h-5 text-white" />
                 </button>
 
                 <a
                   href="#modules-list"
-                  className="px-8 py-4 bg-white border-2 border-black hover:bg-black hover:text-white text-black font-bold text-sm sm:text-base rounded-full transition-all flex items-center gap-2"
+                  className="px-8 py-4 bg-white border-2 border-[#C82190] hover:bg-pink-50 text-[#C82190] font-bold text-sm sm:text-base rounded-full shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2"
                 >
                   <span>Explore 12 Modules</span>
                   <ArrowRight className="w-5 h-5" />
@@ -346,25 +331,25 @@ export const CareCloudXPage = ({ onNavigate }) => {
 
             </div>
 
-            {/* Right Column: Professional Executive CareCloudX Showcase Card */}
+            {/* Right Column: Executive Showcase Card */}
             <div className="lg:col-span-5">
-              <div className="p-8 sm:p-10 bg-white border-2 border-black rounded-[32px] shadow-2xl relative overflow-hidden flex flex-col justify-between">
+              <div className="p-8 sm:p-10 bg-white border border-slate-200/90 rounded-[32px] shadow-[0_12px_40px_rgba(0,0,0,0.05)] space-y-6 relative overflow-hidden flex flex-col justify-between">
                 
                 {/* Top Badge */}
-                <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray-200">
+                <div className="flex items-center justify-between pb-4 border-b border-slate-100">
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-black" />
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-black">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#C82190] animate-pulse" />
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
                       OFFICIAL PRODUCT SUITE
                     </span>
                   </div>
-                  <span className="text-xs font-mono font-bold bg-black text-white px-2.5 py-0.5 rounded-full">
-                    v2.4
+                  <span className="text-xs font-mono font-bold bg-pink-50 text-[#C82190] px-3 py-1 rounded-full border border-pink-200">
+                    v2.4 Enterprise
                   </span>
                 </div>
 
-                {/* Main Logo Display Card */}
-                <div className="my-4 py-8 px-6 bg-gray-50 border border-black rounded-2xl flex flex-col items-center justify-center text-center shadow-inner">
+                {/* Main Logo Display */}
+                <div className="my-2 py-8 px-6 bg-slate-50 border border-slate-200/80 rounded-2xl flex flex-col items-center justify-center text-center shadow-inner">
                   <img
                     src="/images/carecloudx-logo.webp"
                     alt="CareCloudX Official Logo"
@@ -374,37 +359,37 @@ export const CareCloudXPage = ({ onNavigate }) => {
                       e.target.src = "http://tinyworksindia.com/logo/carecloudx/carecloudx-logo@2x.webp";
                     }}
                   />
-                  <h3 className="font-heading font-extrabold text-xl text-black">
+                  <h3 className="font-heading font-extrabold text-xl text-slate-900">
                     CareCloudX ERP
                   </h3>
-                  <p className="text-xs text-gray-600 font-medium">
+                  <p className="text-xs text-slate-500 font-semibold mt-1">
                     TinyWorks Healthcare Operating System
                   </p>
                 </div>
 
-                {/* Metrics Breakdown Grid */}
-                <div className="grid grid-cols-3 gap-3 pt-4 text-center border-t border-gray-200 mt-4">
-                  <div className="p-2.5 bg-gray-50 border border-black/20 rounded-xl">
-                    <span className="block font-mono text-xl font-extrabold text-black">12</span>
-                    <span className="block text-[10px] font-mono uppercase font-bold text-gray-600">Modules</span>
+                {/* Metrics Grid */}
+                <div className="grid grid-cols-3 gap-3 pt-2 text-center">
+                  <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-2xl">
+                    <span className="block font-mono text-xl font-extrabold text-[#C82190]">12</span>
+                    <span className="block text-[10px] font-mono uppercase font-bold text-slate-500">Modules</span>
                   </div>
-                  <div className="p-2.5 bg-gray-50 border border-black/20 rounded-xl">
-                    <span className="block font-mono text-xl font-extrabold text-black">99.9%</span>
-                    <span className="block text-[10px] font-mono uppercase font-bold text-gray-600">Uptime</span>
+                  <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-2xl">
+                    <span className="block font-mono text-xl font-extrabold text-[#4F16A9]">99.9%</span>
+                    <span className="block text-[10px] font-mono uppercase font-bold text-slate-500">Uptime</span>
                   </div>
-                  <div className="p-2.5 bg-gray-50 border border-black/20 rounded-xl">
-                    <span className="block font-mono text-xl font-extrabold text-black">NABH</span>
-                    <span className="block text-[10px] font-mono uppercase font-bold text-gray-600">Verified</span>
+                  <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-2xl">
+                    <span className="block font-mono text-xl font-extrabold text-[#C82190]">NABH</span>
+                    <span className="block text-[10px] font-mono uppercase font-bold text-slate-500">Verified</span>
                   </div>
                 </div>
 
-                {/* Bottom CTA Button */}
+                {/* Bottom Spec Sheet CTA */}
                 <button
                   onClick={() => setContactModalOpen(true)}
-                  className="w-full mt-6 py-3.5 bg-black hover:bg-gray-800 text-white rounded-2xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-colors"
+                  className="w-full mt-4 py-3.5 bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white rounded-2xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all shadow-md"
                 >
                   <span>Request Full Architecture Spec</span>
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-4 h-4 text-white" />
                 </button>
 
               </div>
@@ -413,15 +398,19 @@ export const CareCloudXPage = ({ onNavigate }) => {
           </div>
         </section>
 
-        {/* 4 PILLARS SECTION - MINIMAL BLACK & WHITE */}
-        <section className="py-16 bg-gray-50 border-b border-black">
+        {/* 4 PILLARS SECTION */}
+        <section className="py-16 bg-slate-50 border-y border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-black tracking-tight mb-2">
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#C82190] block mb-2">
+                ARCHITECTURAL FOUNDATION
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
                 Why Choose CareCloudX?
               </h2>
-              <p className="text-sm sm:text-base text-gray-600 font-medium">
-                Built on four core architectural pillars designed for modern medical institutions.
+              <p className="text-sm sm:text-base text-slate-600 font-normal">
+                Engineered on four core architectural pillars designed for modern medical institutions.
               </p>
             </div>
 
@@ -431,14 +420,14 @@ export const CareCloudXPage = ({ onNavigate }) => {
                 return (
                   <div
                     key={idx}
-                    className="p-6 bg-white border-2 border-black rounded-2xl shadow-sm flex flex-col justify-between"
+                    className="p-6 bg-white border border-slate-200/90 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
                   >
                     <div>
-                      <div className="w-12 h-12 rounded-xl bg-black text-white flex items-center justify-center mb-4">
-                        <IconC className="w-6 h-6" />
+                      <div className="w-12 h-12 rounded-2xl bg-pink-50 text-[#C82190] border border-pink-100 flex items-center justify-center mb-5 shadow-sm group-hover:bg-gradient-to-r group-hover:from-[#4F16A9] group-hover:to-[#C82190] group-hover:text-white transition-all duration-300">
+                        <IconC className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
                       </div>
-                      <h3 className="text-lg font-bold text-black mb-2">{pillar.title}</h3>
-                      <p className="text-xs text-gray-700 leading-relaxed font-normal">{pillar.desc}</p>
+                      <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-[#C82190] transition-colors">{pillar.title}</h3>
+                      <p className="text-xs text-slate-600 leading-relaxed font-normal">{pillar.desc}</p>
                     </div>
                   </div>
                 );
@@ -447,118 +436,82 @@ export const CareCloudXPage = ({ onNavigate }) => {
           </div>
         </section>
 
-        {/* 12 INTEGRATED MODULES SECTION - BLACK & WHITE */}
-        <section id="modules-list" className="py-20">
+        {/* 12 INTEGRATED MODULES GRID SECTION */}
+        <section id="modules-list" className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {/* Section Header */}
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 pb-6 border-b-2 border-black gap-4">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 pb-6 border-b border-slate-200 gap-4">
               <div>
-                <span className="text-xs font-mono font-bold uppercase tracking-widest text-gray-500 block mb-1">
-                  ENTERPRISE MODULES
+                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#C82190] block mb-1">
+                  COMPLETE HEALTHCARE SUITE
                 </span>
-                <h2 className="text-3xl sm:text-5xl font-extrabold text-black tracking-tight">
+                <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
                   12 Integrated ERP Modules
                 </h2>
               </div>
-              <p className="text-sm text-gray-600 max-w-md font-medium">
+              <p className="text-sm text-slate-600 max-w-md font-normal leading-relaxed">
                 A complete suite covering outpatient, inpatient, laboratory, pharmacy, billing, surgical, and financial workflows.
               </p>
             </div>
 
             {/* Grid of 12 Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {modules.map((m) => {
                 const IconC = m.icon;
                 return (
                   <div
                     key={m.num}
-                    className="p-8 bg-white border-2 border-black rounded-3xl flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 group"
+                    className="p-8 bg-slate-50/70 border border-slate-200/90 rounded-[32px] flex flex-col justify-between shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 group relative overflow-hidden"
                   >
                     <div>
                       {/* Top Bar */}
                       <div className="flex items-center justify-between mb-6">
-                        <span className="font-mono text-2xl font-extrabold text-black">
+                        <span className="font-mono text-3xl font-black bg-gradient-to-r from-[#4F16A9] to-[#C82190] bg-clip-text text-transparent">
                           {m.num}
                         </span>
-                        <div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center">
-                          <IconC className="w-5 h-5" />
+                        <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200 text-[#C82190] flex items-center justify-center shadow-sm group-hover:bg-gradient-to-r group-hover:from-[#4F16A9] group-hover:to-[#C82190] group-hover:text-white transition-all duration-300">
+                          <IconC className="w-6 h-6" />
                         </div>
                       </div>
 
                       {/* Title & Category */}
-                      <h3 className="text-xl font-bold text-black mb-1 group-hover:underline">
+                      <h3 className="text-2xl font-extrabold text-slate-900 mb-1 group-hover:text-[#C82190] transition-colors">
                         {m.title}
                       </h3>
-                      <span className="text-xs font-mono font-bold uppercase tracking-wider text-gray-500 block mb-1">
+                      
+                      <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#C82190] bg-pink-50 px-3 py-1 rounded-full border border-pink-200 inline-block mb-3">
                         {m.category}
                       </span>
+
                       {m.tagline && (
-                        <span className="text-xs font-semibold text-emerald-600 block mb-4">
-                          {m.tagline}
+                        <span className="text-xs font-semibold text-slate-700 block mb-3 italic">
+                          "{m.tagline}"
                         </span>
                       )}
 
                       {/* Description */}
-                      <p className="text-xs text-gray-700 leading-relaxed font-normal mb-6">
+                      <p className="text-xs text-slate-600 leading-relaxed font-normal mb-6">
                         {m.desc}
                       </p>
 
                       {/* Capabilities checklist */}
-                      <div className="space-y-2 pt-4 border-t border-gray-200 mb-4">
-                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-gray-500 block mb-2">CORE CAPABILITIES</span>
+                      <div className="space-y-2.5 pt-4 border-t border-slate-200 mb-6">
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 block mb-2">CORE CAPABILITIES</span>
                         {m.features.map((feat, fIdx) => (
-                          <div key={fIdx} className="flex items-start gap-2 text-xs font-medium text-black">
-                            <CheckCircle2 className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                          <div key={fIdx} className="flex items-start gap-2.5 text-xs font-medium text-slate-800">
+                            <CheckCircle2 className="w-4 h-4 text-[#C82190] shrink-0 mt-0.5" />
                             <span>{feat}</span>
                           </div>
                         ))}
                       </div>
 
-                      {/* Key Benefits */}
-                      {m.benefits && (
-                        <div className="pt-4 border-t border-gray-200 mb-4">
-                          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-gray-500 block mb-2">KEY BENEFITS</span>
-                          <div className="space-y-1.5">
-                            {m.benefits.map((b, bIdx) => (
-                              <div key={bIdx} className="flex items-center gap-2 text-xs text-gray-800 font-medium">
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0" />
-                                <span>{b}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Workflow Sequence */}
-                      {m.workflow && (
-                        <div className="pt-4 border-t border-gray-200 mb-4">
-                          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-gray-500 block mb-2">WORKFLOW SEQUENCE</span>
-                          <div className="flex flex-wrap gap-1.5">
-                            {m.workflow.map((step, sIdx) => (
-                              <span key={sIdx} className="text-[10px] font-semibold bg-gray-100 border border-gray-300 text-gray-900 px-2 py-0.5 rounded">
-                                {step}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Client Testimonial */}
-                      {m.testimonial && (
-                        <div className="pt-4 border-t border-gray-200 mb-6">
-                          <div className="p-3 bg-gray-50 border border-gray-300 rounded-xl text-xs">
-                            <p className="italic text-gray-700 mb-1">"{m.testimonial.quote}"</p>
-                            <span className="block font-bold text-black text-[11px]">— {m.testimonial.author}, {m.testimonial.role}</span>
-                          </div>
-                        </div>
-                      )}
                     </div>
 
                     {/* Footer Button */}
                     <button
                       onClick={() => {
-                        if (m.title.toLowerCase().includes('opd')) {
+                        if (m.isOPD || m.title.toLowerCase().includes('opd')) {
                           if (onNavigate) {
                             onNavigate('/carecloudx/opd management');
                           } else {
@@ -569,9 +522,13 @@ export const CareCloudXPage = ({ onNavigate }) => {
                           setContactModalOpen(true);
                         }
                       }}
-                      className="w-full py-3 bg-black text-white hover:bg-gray-800 rounded-xl font-bold text-xs flex items-center justify-center gap-2 cursor-pointer transition-colors mt-4"
+                      className={`w-full py-3.5 rounded-2xl font-bold text-xs flex items-center justify-center gap-2 cursor-pointer transition-all shadow-md ${
+                        m.isOPD
+                          ? 'bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white'
+                          : 'bg-slate-900 hover:bg-slate-800 text-white'
+                      }`}
                     >
-                      <span>{m.title.toLowerCase().includes('opd') ? 'Explore Dedicated OPD Page' : 'Request Module Demo'}</span>
+                      <span>{m.isOPD ? 'Explore Dedicated OPD Page' : 'Request Module Demo'}</span>
                       <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
@@ -582,27 +539,29 @@ export const CareCloudXPage = ({ onNavigate }) => {
           </div>
         </section>
 
-        {/* BOTTOM CTA BANNER - BLACK & WHITE */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-          <div className="p-10 sm:p-16 bg-black text-white rounded-[32px] flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
-            <div className="text-center md:text-left max-w-2xl">
-              <span className="text-xs font-mono uppercase tracking-widest text-gray-400 block mb-2">
+        {/* BOTTOM CTA BANNER */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+          <div className="p-10 sm:p-16 bg-gradient-to-br from-[#4F16A9] via-[#8B1C9B] to-[#C82190] text-white rounded-[32px] flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden border border-pink-400/30">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="text-center md:text-left max-w-2xl space-y-3 relative z-10">
+              <span className="text-xs font-mono uppercase tracking-widest text-pink-200 block">
                 HOSPITAL ERP DEMO
               </span>
-              <h3 className="text-2xl sm:text-4xl font-extrabold tracking-tight mb-3">
+              <h3 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
                 Ready to transform your healthcare facility?
               </h3>
-              <p className="text-sm text-gray-300 font-normal">
+              <p className="text-sm text-pink-50 font-normal leading-relaxed">
                 Schedule a personalized walkthrough of CareCloudX with our hospital software specialists.
               </p>
             </div>
 
             <button
               onClick={() => setContactModalOpen(true)}
-              className="px-8 py-4 bg-white hover:bg-gray-100 text-black font-extrabold text-sm sm:text-base rounded-full shadow-lg hover:scale-105 transition-all shrink-0 flex items-center gap-2 cursor-pointer"
+              className="px-8 py-4 bg-white hover:bg-pink-50 text-[#C82190] font-extrabold text-sm sm:text-base rounded-full shadow-lg hover:scale-105 transition-all shrink-0 flex items-center gap-2 cursor-pointer relative z-10"
             >
               <span>Schedule ERP Demo</span>
-              <ArrowRight className="w-5 h-5 text-black" />
+              <ArrowRight className="w-5 h-5 text-[#C82190]" />
             </button>
           </div>
         </section>
