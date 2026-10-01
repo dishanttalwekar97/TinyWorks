@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useGsap } from '../hooks/useGsap';
-import { gsap } from '../utils/animations';
+import { gsap, ScrollTrigger } from '../utils/animations';
 import { ArrowRight, CheckCircle2, X, Sparkles } from 'lucide-react';
 import TextReveal from './animations/TextReveal';
 
@@ -129,7 +129,7 @@ export const Solutions = () => {
   useGsap(() => {
     if (!cardsContainerRef.current) return;
 
-    // Sticky Card Scale-down Stacking Effect (100% Crisp & Clear - No Color/Opacity Dimming)
+    // Sticky Card Scale-down Stacking Effect (100% Crisp & Clear)
     const cardElements = [card0Ref.current, card1Ref.current, card2Ref.current, card3Ref.current].filter(Boolean);
 
     cardElements.forEach((card, index) => {
@@ -150,10 +150,26 @@ export const Solutions = () => {
         },
       });
     });
+
+    // Ensure ScrollTrigger refreshes after initial layout render & image load in production build
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Window load fallback to trigger ScrollTrigger.refresh() in production deployment
+  useEffect(() => {
+    const handleLoad = () => {
+      ScrollTrigger.refresh();
+    };
+    window.addEventListener('load', handleLoad);
+    return () => window.removeEventListener('load', handleLoad);
   }, []);
 
   return (
-    <section id="solutions" ref={containerRef} className="py-16 sm:py-24 relative z-10 bg-black border-t border-slate-800/80 overflow-clip">
+    <section id="solutions" ref={containerRef} className="py-16 sm:py-24 relative z-10 bg-black border-t border-slate-800/80 overflow-visible">
 
       {/* Background Ambient Glow */}
       <div className="absolute bottom-1/4 right-10 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
