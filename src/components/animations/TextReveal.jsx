@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useGsap } from '../../hooks/useGsap';
-import { gsap } from '../../utils/animations';
+import { gsap, ScrollTrigger } from '../../utils/animations';
 
 export const TextReveal = ({
   text,
@@ -19,7 +19,7 @@ export const TextReveal = ({
 
     gsap.fromTo(
       wordElements,
-      { opacity: 0, y: 30, rotateX: -20 },
+      { opacity: 0, y: 25, rotateX: -15 },
       {
         opacity: 1,
         y: 0,
@@ -30,11 +30,18 @@ export const TextReveal = ({
         ease: 'power3.out',
         scrollTrigger: {
           trigger: textRef.current,
-          start: 'top 92%',
-          toggleActions: 'play none none reverse',
+          start: 'top 95%',
+          toggleActions: 'play none none none',
+          invalidateOnRefresh: true,
         },
       }
     );
+
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 200);
+
+    return () => clearTimeout(timer);
   }, [text, delay, stagger]);
 
   return (

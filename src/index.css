@@ -11,10 +11,14 @@
     letter-spacing: -0.025em;
   }
 
-  html, body, #root {
+  html, body {
     max-width: 100vw;
     overflow-x: clip;
+  }
+  
+  #root {
     position: relative;
+    width: 100%;
   }
 
   body {
