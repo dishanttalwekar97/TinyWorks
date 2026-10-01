@@ -62,13 +62,39 @@ export const CareCloudXPage = ({ onNavigate }) => {
       num: '01',
       title: 'OPD Management',
       category: 'Outpatient Department',
-      desc: 'Streamline patient registrations, appointment scheduling, doctor consultations, queue management, and digital e-prescriptions.',
+      tagline: 'Smarter Outpatient Care. Faster Consultations.',
+      desc: 'CareCloudX OPD Management streamlines your outpatient department operations with intelligent workflows, reduced waiting time, paperless e-prescriptions, and improved patient experience.',
       features: [
-        'Doctor schedule & slot management',
-        'Digital prescriptions & diagnosis notes',
-        'Queue token display system',
-        'Instant OPD billing integration',
+        'Appointment Scheduling — Easy booking & rescheduling with doctor calendars',
+        'Doctor Management — Manage doctor calendars & availability slots',
+        'Token Management — Smart queue & real-time token tracking',
+        'Digital Prescriptions — Paperless e-prescription with templates',
+        'OPD Billing Integration — Seamless billing and payment processing',
+        'Visit History — Complete patient visit & consultation history',
+        'Queue Management — Reduce waiting time & crowd control',
+        'EMR Ready Consultations — Structured clinical data & notes',
       ],
+      benefits: [
+        'Reduce patient waiting time by up to 40%',
+        'Improve doctor productivity & consultation speed',
+        'Centralized patient information & visit history',
+        'Integrated billing & payment processing',
+        'Enhanced patient satisfaction & experience',
+        'Data-driven operational decision making',
+      ],
+      workflow: [
+        '1. Appointment Booking',
+        '2. Token Generation',
+        '3. Consultation',
+        '4. e-Prescription & Advice',
+        '5. Billing & Payment',
+        '6. Visit Summary & Follow-up',
+      ],
+      testimonial: {
+        quote: 'CareCloudX OPD has reduced our waiting time by 40% and improved patient satisfaction significantly.',
+        author: 'Dr. Rahul Mehta',
+        role: 'Medical Director',
+      },
       icon: Stethoscope,
     },
     {
@@ -464,9 +490,14 @@ export const CareCloudXPage = ({ onNavigate }) => {
                       <h3 className="text-xl font-bold text-black mb-1 group-hover:underline">
                         {m.title}
                       </h3>
-                      <span className="text-xs font-mono font-bold uppercase tracking-wider text-gray-500 block mb-4">
+                      <span className="text-xs font-mono font-bold uppercase tracking-wider text-gray-500 block mb-1">
                         {m.category}
                       </span>
+                      {m.tagline && (
+                        <span className="text-xs font-semibold text-emerald-600 block mb-4">
+                          {m.tagline}
+                        </span>
+                      )}
 
                       {/* Description */}
                       <p className="text-xs text-gray-700 leading-relaxed font-normal mb-6">
@@ -474,7 +505,8 @@ export const CareCloudXPage = ({ onNavigate }) => {
                       </p>
 
                       {/* Capabilities checklist */}
-                      <div className="space-y-2 pt-4 border-t border-gray-200 mb-6">
+                      <div className="space-y-2 pt-4 border-t border-gray-200 mb-4">
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-gray-500 block mb-2">CORE CAPABILITIES</span>
                         {m.features.map((feat, fIdx) => (
                           <div key={fIdx} className="flex items-start gap-2 text-xs font-medium text-black">
                             <CheckCircle2 className="w-4 h-4 text-black shrink-0 mt-0.5" />
@@ -482,14 +514,64 @@ export const CareCloudXPage = ({ onNavigate }) => {
                           </div>
                         ))}
                       </div>
+
+                      {/* Key Benefits */}
+                      {m.benefits && (
+                        <div className="pt-4 border-t border-gray-200 mb-4">
+                          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-gray-500 block mb-2">KEY BENEFITS</span>
+                          <div className="space-y-1.5">
+                            {m.benefits.map((b, bIdx) => (
+                              <div key={bIdx} className="flex items-center gap-2 text-xs text-gray-800 font-medium">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0" />
+                                <span>{b}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Workflow Sequence */}
+                      {m.workflow && (
+                        <div className="pt-4 border-t border-gray-200 mb-4">
+                          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-gray-500 block mb-2">WORKFLOW SEQUENCE</span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {m.workflow.map((step, sIdx) => (
+                              <span key={sIdx} className="text-[10px] font-semibold bg-gray-100 border border-gray-300 text-gray-900 px-2 py-0.5 rounded">
+                                {step}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Client Testimonial */}
+                      {m.testimonial && (
+                        <div className="pt-4 border-t border-gray-200 mb-6">
+                          <div className="p-3 bg-gray-50 border border-gray-300 rounded-xl text-xs">
+                            <p className="italic text-gray-700 mb-1">"{m.testimonial.quote}"</p>
+                            <span className="block font-bold text-black text-[11px]">— {m.testimonial.author}, {m.testimonial.role}</span>
+                          </div>
+                        </div>
+                      )}
                     </div>
 
                     {/* Footer Button */}
                     <button
-                      onClick={() => setContactModalOpen(true)}
-                      className="w-full py-3 bg-black text-white hover:bg-gray-800 rounded-xl font-bold text-xs flex items-center justify-center gap-2 cursor-pointer transition-colors"
+                      onClick={() => {
+                        if (m.title.toLowerCase().includes('opd')) {
+                          if (onNavigate) {
+                            onNavigate('/carecloudx/opd management');
+                          } else {
+                            window.history.pushState({}, '', '/carecloudx/opd management');
+                            window.dispatchEvent(new Event('popstate'));
+                          }
+                        } else {
+                          setContactModalOpen(true);
+                        }
+                      }}
+                      className="w-full py-3 bg-black text-white hover:bg-gray-800 rounded-xl font-bold text-xs flex items-center justify-center gap-2 cursor-pointer transition-colors mt-4"
                     >
-                      <span>Request Module Demo</span>
+                      <span>{m.title.toLowerCase().includes('opd') ? 'Explore Dedicated OPD Page' : 'Request Module Demo'}</span>
                       <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
