@@ -103,6 +103,8 @@ export const Navbar = ({ onOpenContact }) => {
 
     if (item.toLowerCase().includes('opd')) {
       window.history.pushState({}, '', '/carecloudx/opd management');
+    } else if (item.toLowerCase().includes('ipd')) {
+      window.history.pushState({}, '', '/carecloudx/ipd management');
     } else {
       window.history.pushState({}, '', '/carecloudx');
     }
@@ -159,7 +161,7 @@ export const Navbar = ({ onOpenContact }) => {
               className="h-7 sm:h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105"
               onError={(e) => {
                 e.target.onerror = null;
-                e.target.src = "http://tinyworksindia.com/logo/tinyworks-logo@2x.webp";
+                e.target.src = "/images/tinyworks-logo.png";
               }}
             />
             <span className="font-heading font-semibold text-base sm:text-2xl tracking-tight transition-colors leading-none text-slate-900 group-hover:text-[#C82190]">
