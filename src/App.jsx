@@ -4,6 +4,8 @@ import CareCloudXPage from './pages/CareCloudXPage';
 import OpdManagementPage from './pages/OpdManagementPage';
 import IpdManagementPage from './pages/IpdManagementPage';
 
+import LaboratoryPage from './pages/LaboratoryPage';
+
 function App() {
   const [currentPath, setCurrentPath] = useState(
     decodeURIComponent(window.location.pathname).toLowerCase()
@@ -37,6 +39,20 @@ function App() {
 
   const normalizedPath = decodeURIComponent(currentPath).toLowerCase();
   const normalizedHash = decodeURIComponent(currentHash).toLowerCase();
+
+  const isLaboratoryRoute =
+    normalizedPath.includes('laboratory') ||
+    normalizedPath.includes('lis') ||
+    normalizedHash.includes('laboratory') ||
+    normalizedHash.includes('lis') ||
+    normalizedPath === '/carecloudx/laboratory' ||
+    normalizedPath === '/carecloudx/laboratory-management' ||
+    normalizedPath === '/carecloudx/laboratory management' ||
+    normalizedPath === '/modules/laboratory.html';
+
+  if (isLaboratoryRoute) {
+    return <LaboratoryPage onNavigate={navigate} />;
+  }
 
   const isIpdRoute =
     normalizedPath.includes('ipd') ||

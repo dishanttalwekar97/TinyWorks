@@ -105,6 +105,8 @@ export const Navbar = ({ onOpenContact }) => {
       window.history.pushState({}, '', '/carecloudx/opd management');
     } else if (item.toLowerCase().includes('ipd')) {
       window.history.pushState({}, '', '/carecloudx/ipd management');
+    } else if (item.toLowerCase().includes('laboratory') || item.toLowerCase().includes('lis')) {
+      window.history.pushState({}, '', '/carecloudx/laboratory');
     } else {
       window.history.pushState({}, '', '/carecloudx');
     }

@@ -6,6 +6,7 @@ import {
   Stethoscope,
   HeartPulse,
   Activity,
+  FlaskConical,
   FileText,
   Pill,
   CreditCard,
@@ -103,14 +104,16 @@ export const CareCloudXPage = ({ onNavigate }) => {
       num: '03',
       title: 'Laboratory (LIS)',
       category: 'Lab Information System',
-      desc: 'Automated pathology workflow including sample barcode generation, analyzer machine interfacing, and digital report dispatch.',
+      tagline: 'Faster Diagnostics. Smarter Reporting.',
+      desc: 'CareCloudX LIS automates your laboratory operations from test ordering to reporting with accuracy, traceability, and speed.',
       features: [
         'Sample collection & barcode tracking',
         'Bi-directional lab analyzer integration',
         'Normal value reference validation',
         'Report delivery via SMS & WhatsApp',
       ],
-      icon: Activity,
+      icon: FlaskConical,
+      isLab: true,
     },
     {
       num: '04',
@@ -531,17 +534,24 @@ export const CareCloudXPage = ({ onNavigate }) => {
                             window.history.pushState({}, '', '/carecloudx/ipd management');
                             window.dispatchEvent(new Event('popstate'));
                           }
+                        } else if (m.isLab || m.title.toLowerCase().includes('laboratory') || m.title.toLowerCase().includes('lis')) {
+                          if (onNavigate) {
+                            onNavigate('/carecloudx/laboratory');
+                          } else {
+                            window.history.pushState({}, '', '/carecloudx/laboratory');
+                            window.dispatchEvent(new Event('popstate'));
+                          }
                         } else {
                           setContactModalOpen(true);
                         }
                       }}
                       className={`w-full py-3 sm:py-3.5 rounded-xl sm:rounded-2xl font-bold text-[11px] sm:text-xs flex items-center justify-center gap-2 cursor-pointer transition-all shadow-md ${
-                        m.isOPD || m.isIPD
+                        m.isOPD || m.isIPD || m.isLab
                           ? 'bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white'
                           : 'bg-slate-900 hover:bg-slate-800 text-white'
                       }`}
                     >
-                      <span>{m.isOPD ? 'Explore Dedicated OPD Page' : m.isIPD ? 'Explore Dedicated IPD Page' : 'Request Module Demo'}</span>
+                      <span>{m.isOPD ? 'Explore Dedicated OPD Page' : m.isIPD ? 'Explore Dedicated IPD Page' : m.isLab ? 'Explore Dedicated Lab LIS Page' : 'Request Module Demo'}</span>
                       <ChevronRight className="w-4 h-4 shrink-0" />
                     </button>
                   </div>
