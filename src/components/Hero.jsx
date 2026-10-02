@@ -46,15 +46,15 @@ export const Hero = ({ onOpenContact }) => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10">
-        
+
         {/* TWO-COLUMN ENTERPRISE HERO LAYOUT */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* LEFT SIDE: ~54% Width (Text Content) */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
-            
+
             {/* Interactive Typing Animation Heading */}
-            <TextType 
+            <TextType
               text={["Building Intelligent Software for the Modern Enterprise"]}
               typingSpeed={75}
               pauseDuration={1500}

@@ -178,19 +178,17 @@ export const Navbar = ({ onOpenContact }) => {
                     <button
                       onClick={(e) => handleNavClick(e, '/carecloudx')}
                       onMouseEnter={() => setCareCloudOpen(true)}
-                      className={`inline-flex items-center gap-1 text-sm font-medium tracking-wide transition-colors py-1 cursor-pointer ${
-                        isCareCloudPage
-                          ? 'text-[#C82190]'
-                          : 'text-slate-800 hover:text-[#C82190]'
-                      }`}
+                      className={`inline-flex items-center gap-1 text-sm font-medium tracking-wide transition-colors py-1 cursor-pointer ${isCareCloudPage
+                        ? 'text-[#C82190]'
+                        : 'text-slate-800 hover:text-[#C82190]'
+                        }`}
                     >
                       <span>CareCloudX</span>
                       <ChevronDown
-                        className={`w-4 h-4 transition-transform duration-200 ${
-                          careCloudOpen
-                            ? 'rotate-180 text-[#C82190]'
-                            : 'text-slate-500'
-                        }`}
+                        className={`w-4 h-4 transition-transform duration-200 ${careCloudOpen
+                          ? 'rotate-180 text-[#C82190]'
+                          : 'text-slate-500'
+                          }`}
                       />
                     </button>
 
@@ -222,11 +220,10 @@ export const Navbar = ({ onOpenContact }) => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`text-sm font-medium tracking-wide transition-colors ${
-                    isActive
-                      ? 'text-[#C82190]'
-                      : 'text-slate-800 hover:text-[#C82190]'
-                  }`}
+                  className={`text-sm font-medium tracking-wide transition-colors ${isActive
+                    ? 'text-[#C82190]'
+                    : 'text-slate-800 hover:text-[#C82190]'
+                    }`}
                 >
                   {link.name}
                 </a>
