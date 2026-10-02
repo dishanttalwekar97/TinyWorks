@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Stats from '../components/Stats';
@@ -14,8 +14,12 @@ import ContactModal from '../components/ContactModal';
 export const Home = () => {
   const [contactModalOpen, setContactModalOpen] = useState(false);
 
+  useEffect(() => {
+    document.title = 'TinyWorks Infotech | Software, Healthcare & Enterprise Solutions';
+  }, []);
+
   return (
-    <div className="min-h-screen bg-[#030712] text-slate-100 relative selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="min-h-screen bg-white text-slate-900 relative selection:bg-[#C82190]/20 selection:text-[#C82190]">
 
       {/* Main Sticky Glass Navigation */}
       <Navbar onOpenContact={() => setContactModalOpen(true)} />

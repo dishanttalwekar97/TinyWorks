@@ -297,14 +297,14 @@ export const Solutions = () => {
                           Explore Details
                         </span>
 
-                        {/* Rotatable Brand 4-Point Star SVG Icon */}
+                        {/* Rotatable Brand 4-Point Star SVG Icon - ENLARGED */}
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
+                          width="38"
+                          height="38"
                           viewBox="0 0 32 32"
                           fill="none"
-                          className="transform transition-transform duration-700 ease-out group-hover:rotate-180 hover:rotate-180 hover:scale-125 cursor-pointer shrink-0"
+                          className="transform transition-transform duration-700 ease-out group-hover:rotate-180 hover:rotate-180 hover:scale-125 cursor-pointer shrink-0 drop-shadow-sm"
                         >
                           <path d="M16 0C16 10.9714 5.33333 15.746 0 16.7619C11.52 19.2 15.4667 27.9365 16 32V0Z" fill={item.starFill1} />
                           <path d="M16 0C16 10.9714 26.6667 15.746 32 16.7619C20.48 19.2 16.5333 27.9365 16 32V0Z" fill={item.starFill2} />
