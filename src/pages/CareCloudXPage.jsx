@@ -227,7 +227,7 @@ export const CareCloudXPage = ({ onNavigate }) => {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 relative selection:bg-[#C82190]/20 selection:text-[#C82190] font-sans">
-      
+
       {/* Sticky Top Navbar */}
       <Navbar onOpenContact={() => setContactModalOpen(true)} />
 
@@ -254,10 +254,10 @@ export const CareCloudXPage = ({ onNavigate }) => {
         {/* HERO SECTION - PROFESSIONAL ENTERPRISE HEALTHCARE BRANDING */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-2">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            
+
             {/* Left Column: Headline & CareCloudX Branding */}
             <div className="lg:col-span-7 space-y-6">
-              
+
               {/* Status Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-200 text-[#C82190] text-xs font-semibold uppercase tracking-widest shadow-sm">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#C82190] animate-pulse" />
@@ -334,7 +334,7 @@ export const CareCloudXPage = ({ onNavigate }) => {
             {/* Right Column: Executive Showcase Card */}
             <div className="lg:col-span-5">
               <div className="p-8 sm:p-10 bg-white border border-slate-200/90 rounded-[32px] shadow-[0_12px_40px_rgba(0,0,0,0.05)] space-y-6 relative overflow-hidden flex flex-col justify-between">
-                
+
                 {/* Top Badge */}
                 <div className="flex items-center justify-between pb-4 border-b border-slate-100">
                   <div className="flex items-center gap-2">
@@ -401,7 +401,7 @@ export const CareCloudXPage = ({ onNavigate }) => {
         {/* 4 PILLARS SECTION */}
         <section className="py-16 bg-slate-50 border-y border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
+
             <div className="text-center max-w-2xl mx-auto mb-12">
               <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#C82190] block mb-2">
                 ARCHITECTURAL FOUNDATION
@@ -479,7 +479,7 @@ export const CareCloudXPage = ({ onNavigate }) => {
                       <h3 className="text-2xl font-extrabold text-slate-900 mb-1 group-hover:text-[#C82190] transition-colors">
                         {m.title}
                       </h3>
-                      
+
                       <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#C82190] bg-pink-50 px-3 py-1 rounded-full border border-pink-200 inline-block mb-3">
                         {m.category}
                       </span>
@@ -522,11 +522,10 @@ export const CareCloudXPage = ({ onNavigate }) => {
                           setContactModalOpen(true);
                         }
                       }}
-                      className={`w-full py-3.5 rounded-2xl font-bold text-xs flex items-center justify-center gap-2 cursor-pointer transition-all shadow-md ${
-                        m.isOPD
+                      className={`w-full py-3.5 rounded-2xl font-bold text-xs flex items-center justify-center gap-2 cursor-pointer transition-all shadow-md ${m.isOPD
                           ? 'bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white'
                           : 'bg-slate-900 hover:bg-slate-800 text-white'
-                      }`}
+                        }`}
                     >
                       <span>{m.isOPD ? 'Explore Dedicated OPD Page' : 'Request Module Demo'}</span>
                       <ChevronRight className="w-4 h-4" />

@@ -208,7 +208,7 @@ export const OpdManagementPage = ({ onNavigate }) => {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 relative selection:bg-[#C82190]/20 selection:text-[#C82190] font-sans">
-      
+
       {/* Top Navbar */}
       <Navbar onOpenContact={() => setContactModalOpen(true)} />
 
@@ -241,10 +241,10 @@ export const OpdManagementPage = ({ onNavigate }) => {
         {/* HERO SECTION */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-2">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            
+
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-6">
-              
+
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-200 text-[#C82190] text-xs font-semibold uppercase tracking-widest shadow-sm">
                 <Stethoscope className="w-4 h-4 text-[#C82190]" />
                 <span>CARECLOUDX • MODULE 01</span>
@@ -294,9 +294,9 @@ export const OpdManagementPage = ({ onNavigate }) => {
             {/* Right Hero Video Card */}
             <div className="lg:col-span-5">
               <div className="p-6 sm:p-7 bg-white border border-slate-200/90 rounded-[32px] shadow-[0_12px_40px_rgba(0,0,0,0.05)] space-y-6 relative overflow-hidden">
-                
+
                 {/* Hero Mini Video Preview Card */}
-                <div 
+                <div
                   onClick={() => openBigScreenVideo(videoCards[0])}
                   className="relative group rounded-2xl overflow-hidden cursor-pointer border border-slate-200 bg-slate-900 shadow-md transition-transform duration-300 hover:scale-[1.01]"
                 >
@@ -379,9 +379,9 @@ export const OpdManagementPage = ({ onNavigate }) => {
 
         {/* SEPARATE VIDEO CARDS SECTION */}
         <section ref={videoSectionRef} id="video-showcase" className="py-20 bg-gradient-to-b from-white via-pink-50/30 to-white border-y border-slate-200/90 relative">
-          
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
+
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 text-[#C82190] border border-pink-200 text-xs font-semibold uppercase tracking-widest shadow-sm">
@@ -407,7 +407,7 @@ export const OpdManagementPage = ({ onNavigate }) => {
                     key={card.id}
                     className="bg-white border-2 border-slate-200/90 rounded-[32px] p-6 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group relative"
                   >
-                    
+
                     <div>
 
                       {/* Card Header & Badge */}
@@ -429,7 +429,7 @@ export const OpdManagementPage = ({ onNavigate }) => {
                       </p>
 
                       {/* Video Preview Frame with Big Screen Play Trigger */}
-                      <div 
+                      <div
                         onClick={() => openBigScreenVideo(card)}
                         className="relative aspect-video w-full rounded-2xl bg-black overflow-hidden shadow-md border border-slate-200 mb-5 cursor-pointer group/vid"
                       >
@@ -465,27 +465,25 @@ export const OpdManagementPage = ({ onNavigate }) => {
 
                       {/* Per-Card Mode & Language Switcher Controls */}
                       <div className="space-y-3 mb-6 bg-slate-50 p-3 rounded-2xl border border-slate-100">
-                        
+
                         <div className="flex items-center justify-between">
                           <span className="text-[11px] font-mono font-bold text-slate-500 uppercase">Video Version</span>
                           <div className="flex items-center bg-white p-0.5 rounded-xl border border-slate-200 shadow-sm">
                             <button
                               onClick={() => setModeForCard(card.id, '40s')}
-                              className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all cursor-pointer ${
-                                mode === '40s'
+                              className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all cursor-pointer ${mode === '40s'
                                   ? 'bg-[#C82190] text-white'
                                   : 'text-slate-600 hover:text-slate-900'
-                              }`}
+                                }`}
                             >
                               40s Highlight
                             </button>
                             <button
                               onClick={() => setModeForCard(card.id, 'full')}
-                              className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all cursor-pointer ${
-                                mode === 'full'
+                              className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all cursor-pointer ${mode === 'full'
                                   ? 'bg-[#C82190] text-white'
                                   : 'text-slate-600 hover:text-slate-900'
-                              }`}
+                                }`}
                             >
                               Full Video
                             </button>
@@ -502,21 +500,19 @@ export const OpdManagementPage = ({ onNavigate }) => {
                             <div className="flex items-center bg-white p-0.5 rounded-xl border border-slate-200 shadow-sm">
                               <button
                                 onClick={() => setLanguageForCard(card.id, 'English')}
-                                className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all cursor-pointer ${
-                                  lang === 'English'
+                                className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all cursor-pointer ${lang === 'English'
                                     ? 'bg-[#4F16A9] text-white'
                                     : 'text-slate-600 hover:text-slate-900'
-                                }`}
+                                  }`}
                               >
                                 English
                               </button>
                               <button
                                 onClick={() => setLanguageForCard(card.id, 'Hindi')}
-                                className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all cursor-pointer ${
-                                  lang === 'Hindi'
+                                className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all cursor-pointer ${lang === 'Hindi'
                                     ? 'bg-[#4F16A9] text-white'
                                     : 'text-slate-600 hover:text-slate-900'
-                                }`}
+                                  }`}
                               >
                                 Hindi
                               </button>
@@ -558,7 +554,7 @@ export const OpdManagementPage = ({ onNavigate }) => {
         {/* 8 CORE FEATURES GRID */}
         <section className="py-20 bg-slate-50 border-b border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#C82190] block mb-2">
                 MODULE CAPABILITIES
@@ -597,7 +593,7 @@ export const OpdManagementPage = ({ onNavigate }) => {
         {/* WORKFLOW SEQUENCE SECTION */}
         <section id="workflow-section" className="py-20 bg-white border-b border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-xs font-mono font-bold uppercase tracking-widest text-slate-400 block mb-2">
                 CLINICAL PATIENT JOURNEY
@@ -631,9 +627,9 @@ export const OpdManagementPage = ({ onNavigate }) => {
         {/* BENEFITS & CLIENT TESTIMONIAL */}
         <section className="py-20 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              
+
               {/* Left Column: Benefits */}
               <div className="lg:col-span-7 space-y-6">
                 <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#C82190] block">
@@ -657,9 +653,9 @@ export const OpdManagementPage = ({ onNavigate }) => {
               <div className="lg:col-span-5">
                 <div className="p-8 sm:p-10 bg-gradient-to-br from-[#4F16A9] via-[#8B1C9B] to-[#C82190] text-white rounded-[32px] shadow-2xl relative space-y-6 border border-pink-400/30 overflow-hidden">
                   <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-2xl pointer-events-none" />
-                  
+
                   <Sparkles className="w-12 h-12 text-pink-200 opacity-90" />
-                  
+
                   <blockquote className="text-base sm:text-lg italic font-normal leading-relaxed text-pink-50">
                     "CareCloudX OPD has reduced our patient waiting time by 40% and improved patient satisfaction significantly."
                   </blockquote>
@@ -682,7 +678,7 @@ export const OpdManagementPage = ({ onNavigate }) => {
       {activeModalVideo && (
         <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 md:p-8 animate-in fade-in duration-200">
           <div className="max-w-5xl w-full bg-slate-900 border-2 border-slate-700/80 rounded-[32px] overflow-hidden shadow-2xl text-white relative flex flex-col max-h-[92vh]">
-            
+
             {/* Modal Header Bar */}
             <div className="flex items-center justify-between p-4 sm:p-6 border-b border-slate-800 bg-slate-900/90">
               <div className="space-y-1">
@@ -709,7 +705,7 @@ export const OpdManagementPage = ({ onNavigate }) => {
 
             {/* Modal Video Body */}
             <div className="p-4 sm:p-6 overflow-y-auto space-y-5">
-              
+
               {/* High Def Video Player */}
               <div className="relative aspect-video w-full rounded-2xl bg-black overflow-hidden shadow-2xl border border-slate-800">
                 <video
@@ -728,27 +724,25 @@ export const OpdManagementPage = ({ onNavigate }) => {
 
               {/* Modal Controls Bar */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-950 p-4 rounded-2xl border border-slate-800">
-                
+
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="text-xs font-mono font-bold text-slate-400 uppercase">Version:</span>
                   <div className="flex items-center bg-slate-900 p-1 rounded-xl border border-slate-800">
                     <button
                       onClick={() => setModeForCard(activeModalVideo.id, '40s')}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                        (cardModes[activeModalVideo.id] || '40s') === '40s'
+                      className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${(cardModes[activeModalVideo.id] || '40s') === '40s'
                           ? 'bg-[#C82190] text-white'
                           : 'text-slate-400 hover:text-white'
-                      }`}
+                        }`}
                     >
                       40s Highlight
                     </button>
                     <button
                       onClick={() => setModeForCard(activeModalVideo.id, 'full')}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                        (cardModes[activeModalVideo.id] || '40s') === 'full'
+                      className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${(cardModes[activeModalVideo.id] || '40s') === 'full'
                           ? 'bg-[#C82190] text-white'
                           : 'text-slate-400 hover:text-white'
-                      }`}
+                        }`}
                     >
                       Full Walkthrough
                     </button>
@@ -759,21 +753,19 @@ export const OpdManagementPage = ({ onNavigate }) => {
                       <Globe className="w-3.5 h-3.5 text-[#C82190] ml-1.5" />
                       <button
                         onClick={() => setLanguageForCard(activeModalVideo.id, 'English')}
-                        className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                          (cardLanguages[activeModalVideo.id] || 'English') === 'English'
+                        className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${(cardLanguages[activeModalVideo.id] || 'English') === 'English'
                             ? 'bg-[#4F16A9] text-white'
                             : 'text-slate-400 hover:text-white'
-                        }`}
+                          }`}
                       >
                         English
                       </button>
                       <button
                         onClick={() => setLanguageForCard(activeModalVideo.id, 'Hindi')}
-                        className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                          (cardLanguages[activeModalVideo.id] || 'English') === 'Hindi'
+                        className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${(cardLanguages[activeModalVideo.id] || 'English') === 'Hindi'
                             ? 'bg-[#4F16A9] text-white'
                             : 'text-slate-400 hover:text-white'
-                        }`}
+                          }`}
                       >
                         Hindi
                       </button>

@@ -1,188 +1,294 @@
 import React from 'react';
-import { Layers, ArrowUp, Mail, MapPin } from 'lucide-react';
+import {
+  ArrowUp,
+  Mail,
+  MapPin,
+  Phone
+} from 'lucide-react';
 
-export const Footer = ({ onOpenContact }) => {
+export const Footer = ({ onOpenContact, onNavigate }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleLinkClick = (e, path) => {
+    e.preventDefault();
+
+    if (path.startsWith('#')) {
+      const isCareCloud = window.location.pathname.toLowerCase().includes('carecloudx');
+      const targetId = path.substring(1);
+
+      if (isCareCloud) {
+        if (onNavigate) {
+          onNavigate('/');
+        } else {
+          window.history.pushState({}, '', '/');
+          window.dispatchEvent(new Event('popstate'));
+        }
+        setTimeout(() => {
+          const el = document.getElementById(targetId);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }, 150);
+      } else {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+    } else {
+      if (onNavigate) {
+        onNavigate(path);
+      } else {
+        window.history.pushState({}, '', path);
+        window.dispatchEvent(new Event('popstate'));
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <footer className="bg-[#f1f5f9] border-t border-slate-200 pt-16 pb-12 text-slate-600">
+    <footer className="bg-white text-slate-900 border-t border-slate-200/80 pt-16 md:pt-20 font-sans selection:bg-[#C82190]/20 selection:text-[#C82190]">
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-200">
+        {/* TOP SECTION: BRAND ON LEFT, NAVIGATION COLUMNS ON RIGHT */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 pb-16 border-b border-slate-200/80">
 
-          {/* Company Brand Column */}
-          <div className="lg:col-span-2">
-            <a href="#home" className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-slate-900 p-[1px]">
-                <div className="w-full h-full bg-slate-900 rounded-[11px] flex items-center justify-center">
-                  <Layers className="w-4 h-4 text-sky-400" />
-                </div>
-              </div>
-              <span className="font-heading font-bold text-xl text-slate-900 tracking-tight">
-                TinyWorks <span className="text-sky-600 font-light">Infotech</span>
+          {/* LEFT BRAND COLUMN (Col-span 5) */}
+          <div className="lg:col-span-5 space-y-4">
+            <a
+              href="/"
+              onClick={(e) => handleLinkClick(e, '#home')}
+              className="inline-flex items-center gap-3 group focus:outline-none cursor-pointer"
+            >
+              <img
+                src="/images/tinyworks-logo.webp"
+                alt="TinyWorks Logo"
+                className="h-10 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "http://tinyworksindia.com/logo/tinyworks-logo@2x.webp";
+                }}
+              />
+              <span className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-[-0.04em] leading-none group-hover:text-[#C82190] transition-colors">
+                TinyWorks <span className="text-[#C82190] font-light">Infotech</span>
               </span>
             </a>
 
-            <p className="text-sm text-slate-600 leading-relaxed max-w-sm mb-6">
-              TinyWorks Infotech builds modern software, enterprise applications, healthcare solutions, cloud systems, and intelligent automation for growing businesses worldwide.
+            <p className="text-sm text-slate-600 leading-relaxed max-w-md font-normal">
+              TinyWorks Infotech builds modern software, enterprise applications, CareCloudX healthcare ERP, cloud systems, and intelligent automation for growing businesses worldwide.
             </p>
 
-            <div className="space-y-2 text-xs text-slate-600 font-mono">
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-sky-600 shrink-0" />
-                <span>contact@tinyworks.infotech</span>
+            <div className="space-y-2 text-xs text-slate-600 font-mono pt-1">
+              <div className="flex items-center gap-3">
+                <Mail className="w-4 h-4 text-[#C82190] shrink-0" />
+                <a href="mailto:contact@tinyworks.infotech" className="hover:underline font-medium">
+                  contact@tinyworks.infotech
+                </a>
               </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-sky-600 shrink-0" />
+              <div className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-[#C82190] shrink-0" />
+                <span>+91 (0) 80-4920-1234 / +1 (800) 555-TINY</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-[#C82190] shrink-0 mt-0.5" />
                 <span>Enterprise Tech Hub, Solutions Division</span>
               </div>
             </div>
           </div>
 
-          {/* Solutions Links */}
-          <div>
-            <h4 className="text-xs font-mono font-bold text-slate-900 uppercase tracking-wider mb-4">
-              Solutions
-            </h4>
-            <ul className="space-y-2.5 text-xs">
-              <li>
-                <a href="#hospital-erp" className="hover:text-sky-600 transition-colors">
-                  Hospital ERP Suite
-                </a>
-              </li>
-              <li>
-                <a href="#solutions" className="hover:text-sky-600 transition-colors">
-                  Business Process Automation
-                </a>
-              </li>
-              <li>
-                <a href="#solutions" className="hover:text-sky-600 transition-colors">
-                  Custom Enterprise Software
-                </a>
-              </li>
-              <li>
-                <a href="#solutions" className="hover:text-sky-600 transition-colors">
-                  Cloud Infrastructure Solutions
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Services Links */}
-          <div>
-            <h4 className="text-xs font-mono font-bold text-slate-900 uppercase tracking-wider mb-4">
-              Services
-            </h4>
-            <ul className="space-y-2.5 text-xs">
-              <li>
-                <a href="#services" className="hover:text-sky-600 transition-colors">
-                  Product Engineering
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-sky-600 transition-colors">
-                  Web &amp; Application Dev
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-sky-600 transition-colors">
-                  Mobile Development
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-sky-600 transition-colors">
-                  Cloud DevOps &amp; AI
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Quick Contact & Navigation */}
-          <div>
-            <h4 className="text-xs font-mono font-bold text-slate-900 uppercase tracking-wider mb-4">
-              Company
-            </h4>
-            <ul className="space-y-2.5 text-xs mb-6">
-              <li>
-                <a href="#why-us" className="hover:text-sky-600 transition-colors">
-                  About TinyWorks
-                </a>
-              </li>
-              <li>
-                <a href="#technology" className="hover:text-sky-600 transition-colors">
-                  Technology Stack
-                </a>
-              </li>
-              <li>
-                <a href="#process" className="hover:text-sky-600 transition-colors">
-                  Development Process
-                </a>
-              </li>
-              <li>
-                <button
-                  onClick={onOpenContact}
-                  className="text-sky-600 font-semibold hover:underline"
-                >
-                  Contact Technical Team →
-                </button>
-              </li>
-            </ul>
-
-            {/* Social Links */}
-            <div className="flex items-center gap-3">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                className="p-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-sky-600 hover:border-slate-300 transition-all shadow-sm"
-              >
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                </svg>
-              </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-                className="p-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-sky-600 hover:border-slate-300 transition-all shadow-sm"
-              >
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
-                </svg>
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="YouTube"
-                className="p-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-sky-600 hover:border-slate-300 transition-all shadow-sm"
-              >
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.89-.44 5.1-.28 1.2-.84 2.06-1.68 2.58-.84.52-2.02.78-3.54.78L12 20.46c-2.19 0-3.89-.16-5.1-.44-1.2-.28-2.06-.84-2.58-1.68-.52-.84-.78-2.02-.78-3.54L3.54 12c0-2.19.16-3.89.44-5.1.28-1.2.84-2.06 1.68-2.58.84-.52 2.02-.78 3.54-.78L12 3.54c2.19 0 3.89.16 5.1.44 1.2.28 2.06.84 2.58 1.68.52.84.78 2.02.78 3.54z" />
-                </svg>
-              </a>
+          {/* RIGHT NAVIGATION COLUMNS (Col-span 7) */}
+          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-12 text-sm">
+            
+            {/* Column 1: Product */}
+            <div className="space-y-4">
+              <h4 className="font-heading font-semibold text-slate-400 text-xs tracking-wider uppercase">
+                Product
+              </h4>
+              <ul className="space-y-3 font-medium text-slate-900 text-sm">
+                <li>
+                  <a
+                    href="/carecloudx"
+                    onClick={(e) => handleLinkClick(e, '/carecloudx')}
+                    className="hover:text-[#C82190] transition-colors block"
+                  >
+                    CareCloudX ERP
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/carecloudx/opd management"
+                    onClick={(e) => handleLinkClick(e, '/carecloudx/opd management')}
+                    className="hover:text-[#C82190] transition-colors block"
+                  >
+                    OPD Management
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#solutions"
+                    onClick={(e) => handleLinkClick(e, '#solutions')}
+                    className="hover:text-[#C82190] transition-colors block"
+                  >
+                    Enterprise Work
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#solutions"
+                    onClick={(e) => handleLinkClick(e, '#solutions')}
+                    className="hover:text-[#C82190] transition-colors block"
+                  >
+                    Cloud & AI Systems
+                  </a>
+                </li>
+              </ul>
             </div>
+
+            {/* Column 2: Company */}
+            <div className="space-y-4">
+              <h4 className="font-heading font-semibold text-slate-400 text-xs tracking-wider uppercase">
+                Company
+              </h4>
+              <ul className="space-y-3 font-medium text-slate-900 text-sm">
+                <li>
+                  <a
+                    href="#why-us"
+                    onClick={(e) => handleLinkClick(e, '#why-us')}
+                    className="hover:text-[#C82190] transition-colors block"
+                  >
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#technology"
+                    onClick={(e) => handleLinkClick(e, '#technology')}
+                    className="hover:text-[#C82190] transition-colors block"
+                  >
+                    Tech Stack
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#process"
+                    onClick={(e) => handleLinkClick(e, '#process')}
+                    className="hover:text-[#C82190] transition-colors block"
+                  >
+                    Development Process
+                  </a>
+                </li>
+                <li>
+                  <button
+                    onClick={onOpenContact}
+                    className="hover:text-[#C82190] transition-colors cursor-pointer text-left font-medium block"
+                  >
+                    Contact us
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3: Terms & Policies */}
+            <div className="space-y-4 col-span-2 sm:col-span-1">
+              <h4 className="font-heading font-semibold text-slate-400 text-xs tracking-wider uppercase">
+                Terms & Policies
+              </h4>
+              <ul className="space-y-3 font-medium text-slate-900 text-sm">
+                <li>
+                  <button
+                    onClick={onOpenContact}
+                    className="hover:text-[#C82190] transition-colors cursor-pointer text-left block"
+                  >
+                    Terms of Service
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={onOpenContact}
+                    className="hover:text-[#C82190] transition-colors cursor-pointer text-left block"
+                  >
+                    Privacy Policy
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={onOpenContact}
+                    className="hover:text-[#C82190] transition-colors cursor-pointer text-left block"
+                  >
+                    Cookie Policy
+                  </button>
+                </li>
+              </ul>
+            </div>
+
           </div>
 
         </div>
 
-        {/* Bottom copyright & scroll to top */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
+        {/* MIDDLE ROW: COPYRIGHT ON LEFT, SOCIAL ICONS + BACK TO TOP ON RIGHT */}
+        <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs font-mono text-slate-600 border-b border-slate-200/80">
           <div>
-            © {new Date().getFullYear()} TinyWorks Infotech. All rights reserved.
+            © {new Date().getFullYear()} TinyWorks Infotech Pvt. Ltd. All rights reserved.
           </div>
 
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-2 text-slate-700 hover:text-sky-600 transition-colors p-2 rounded-lg bg-white border border-slate-200 shadow-sm"
-          >
-            <span>Back to top</span>
-            <ArrowUp className="w-3.5 h-3.5" />
-          </button>
+          <div className="flex items-center gap-5">
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="X (Twitter)"
+              className="text-slate-700 hover:text-[#C82190] transition-colors p-1"
+            >
+              <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="text-slate-700 hover:text-[#C82190] transition-colors p-1"
+            >
+              <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+              </svg>
+            </a>
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+              className="text-slate-700 hover:text-[#C82190] transition-colors p-1"
+            >
+              <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
+                <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+              </svg>
+            </a>
+
+            <button
+              onClick={scrollToTop}
+              aria-label="Scroll to top"
+              className="flex items-center gap-1.5 text-xs text-slate-600 hover:text-[#C82190] transition-colors ml-2 cursor-pointer font-sans"
+            >
+              <span>Back to top</span>
+              <ArrowUp className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* GIANT SIGNATURE FOOTER BRANDING - PROPERLY FORMATTED & FULLY VISIBLE */}
+        <div className="pt-8 pb-6 text-center select-none overflow-visible">
+          <h2 className="font-heading font-black text-[9.5vw] sm:text-[10vw] md:text-[10.5vw] leading-[0.9] tracking-[-0.04em] text-slate-900 block w-full whitespace-nowrap">
+            TinyWorks
+          </h2>
         </div>
 
       </div>
