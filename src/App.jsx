@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import CareCloudXPage from './pages/CareCloudXPage';
 import OpdManagementPage from './pages/OpdManagementPage';
+import IpdManagementPage from './pages/IpdManagementPage';
 
 function App() {
   const [currentPath, setCurrentPath] = useState(
@@ -36,6 +37,18 @@ function App() {
 
   const normalizedPath = decodeURIComponent(currentPath).toLowerCase();
   const normalizedHash = decodeURIComponent(currentHash).toLowerCase();
+
+  const isIpdRoute =
+    normalizedPath.includes('ipd') ||
+    normalizedHash.includes('ipd') ||
+    normalizedPath === '/carecloudx/ipd' ||
+    normalizedPath === '/carecloudx/ipd-management' ||
+    normalizedPath === '/carecloudx/ipd management' ||
+    normalizedPath === '/modules/ipd.html';
+
+  if (isIpdRoute) {
+    return <IpdManagementPage onNavigate={navigate} />;
+  }
 
   const isOpdRoute =
     normalizedPath.includes('opd') ||

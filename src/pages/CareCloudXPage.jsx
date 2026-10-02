@@ -15,8 +15,6 @@ import {
   Users,
   DollarSign,
   BarChart3,
-  ShieldCheck,
-  Zap,
   Lock,
   Cloud,
   ArrowRight,
@@ -25,7 +23,6 @@ import {
   Layers,
   ChevronRight,
   ArrowLeft,
-  Sparkles,
 } from 'lucide-react';
 
 export const CareCloudXPage = ({ onNavigate }) => {
@@ -85,14 +82,22 @@ export const CareCloudXPage = ({ onNavigate }) => {
       num: '02',
       title: 'IPD Management',
       category: 'Inpatient Department',
-      desc: 'Complete inpatient lifecycle management from bed allocation to nursing care notes, vitals monitoring, and discharge summaries.',
+      tagline: 'Complete Inpatient Care. Digitized. Integrated. Efficient.',
+      desc: 'CareCloudX IPD Management streamlines the entire inpatient journey from admission to discharge with real-time tracking, integrated billing, and smarter clinical workflows.',
       features: [
-        'Real-time bed occupancy dashboard',
-        'Nursing station & vitals tracking',
-        'Inter-departmental service requests',
-        'Automated IPD discharge summary',
+        'Admissions & Smart Bed Allocation',
+        'Nursing Workflows & Vitals Tracking',
+        'Doctor Rounds & Clinical Notes',
+        'Interim Billing During Hospital Stay',
+        'Automated Discharge Summary & Clearance',
+      ],
+      benefits: [
+        'End-to-end inpatient lifecycle management',
+        'Real-time visibility of bed & patient status',
+        'Accurate billing & zero revenue leakage',
       ],
       icon: HeartPulse,
+      isIPD: true,
     },
     {
       num: '03',
@@ -519,16 +524,24 @@ export const CareCloudXPage = ({ onNavigate }) => {
                             window.history.pushState({}, '', '/carecloudx/opd management');
                             window.dispatchEvent(new Event('popstate'));
                           }
+                        } else if (m.isIPD || m.title.toLowerCase().includes('ipd')) {
+                          if (onNavigate) {
+                            onNavigate('/carecloudx/ipd management');
+                          } else {
+                            window.history.pushState({}, '', '/carecloudx/ipd management');
+                            window.dispatchEvent(new Event('popstate'));
+                          }
                         } else {
                           setContactModalOpen(true);
                         }
                       }}
-                      className={`w-full py-3 sm:py-3.5 rounded-xl sm:rounded-2xl font-bold text-[11px] sm:text-xs flex items-center justify-center gap-2 cursor-pointer transition-all shadow-md ${m.isOPD
-                        ? 'bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white'
-                        : 'bg-slate-900 hover:bg-slate-800 text-white'
-                        }`}
+                      className={`w-full py-3 sm:py-3.5 rounded-xl sm:rounded-2xl font-bold text-[11px] sm:text-xs flex items-center justify-center gap-2 cursor-pointer transition-all shadow-md ${
+                        m.isOPD || m.isIPD
+                          ? 'bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white'
+                          : 'bg-slate-900 hover:bg-slate-800 text-white'
+                      }`}
                     >
-                      <span>{m.isOPD ? 'Explore Dedicated OPD Page' : 'Request Module Demo'}</span>
+                      <span>{m.isOPD ? 'Explore Dedicated OPD Page' : m.isIPD ? 'Explore Dedicated IPD Page' : 'Request Module Demo'}</span>
                       <ChevronRight className="w-4 h-4 shrink-0" />
                     </button>
                   </div>

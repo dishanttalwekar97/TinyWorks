@@ -73,7 +73,7 @@ export const Footer = ({ onOpenContact, onNavigate }) => {
                 className="h-10 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105"
                 onError={(e) => {
                   e.target.onerror = null;
-                  e.target.src = "http://tinyworksindia.com/logo/tinyworks-logo@2x.webp";
+                  e.target.src = "/images/tinyworks-logo.png";
                 }}
               />
               <span className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-[-0.04em] leading-none group-hover:text-[#C82190] transition-colors">
