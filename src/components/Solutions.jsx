@@ -144,23 +144,28 @@ export const Solutions = () => {
     // Configure ScrollTrigger for production stability
     ScrollTrigger.config({ ignoreMobileResize: true });
 
-    // Sticky Card Scale-down Stacking Effect
     const cardElements = [card0Ref.current, card1Ref.current, card2Ref.current, card3Ref.current].filter(Boolean);
 
+    // Clear any previous filter properties
+    gsap.set(cardElements, { clearProps: 'filter,brightness' });
+
+    // Smooth Card Scale Stacking Effect
     cardElements.forEach((card, index) => {
       if (index === cardElements.length - 1) return;
       const nextCard = cardElements[index + 1];
       if (!nextCard) return;
 
+      const targetTop = 96 + (index + 1) * 40;
+
       gsap.to(card, {
-        scale: 0.94 + index * 0.015,
+        scale: 0.92 + index * 0.02,
         transformOrigin: 'top center',
         ease: 'none',
         scrollTrigger: {
           trigger: nextCard,
           start: 'top 85%',
-          end: 'top 140px',
-          scrub: 0.5,
+          end: `top ${targetTop}px`,
+          scrub: true,
           invalidateOnRefresh: true,
         },
       });
@@ -169,13 +174,24 @@ export const Solutions = () => {
     // Multi-stage refresh to handle asset loading & hydration
     const timer1 = setTimeout(() => ScrollTrigger.refresh(), 100);
     const timer2 = setTimeout(() => ScrollTrigger.refresh(), 500);
-    const timer3 = setTimeout(() => ScrollTrigger.refresh(), 1200);
 
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
-      clearTimeout(timer3);
     };
+  }, []);
+
+  // Forcefully remove any legacy inline filter or background properties left by previous browser HMR sessions
+  useEffect(() => {
+    const cardElements = [card0Ref.current, card1Ref.current, card2Ref.current, card3Ref.current].filter(Boolean);
+    cardElements.forEach((card) => {
+      if (card) {
+        card.style.removeProperty('filter');
+        card.style.removeProperty('-webkit-filter');
+        card.style.backgroundColor = '#FFFFFF';
+        card.style.color = '#0F172A';
+      }
+    });
   }, []);
 
   // Window load & orientation change fallback to trigger ScrollTrigger.refresh()
@@ -214,17 +230,17 @@ export const Solutions = () => {
               as="h2"
               className="font-heading text-3xl sm:text-4xl lg:text-5xl font-normal text-slate-900 tracking-[-0.04em] leading-[0.98]"
             />
-            <p className="text-slate-600 text-sm sm:text-base font-normal max-w-lg leading-[1.5]">
+            <p className="text-[#667085] text-base font-normal max-w-lg leading-[1.5]">
               Targeted software engineering and intelligent platform solutions built for high performance and enterprise scale.
             </p>
           </div>
 
           {/* RIGHT SIDE: ONLY SOLUTION CARDS MOVE AND STACK */}
           <div className="lg:col-span-7">
-            <div ref={cardsContainerRef} className="space-y-12 sm:space-y-16 pb-32 relative">
+            <div ref={cardsContainerRef} className="space-y-12 sm:space-y-16 pb-48 relative">
               {solutions.map((item, index) => {
-                const baseTop = 90; // Sticky distance from top of viewport (in px)
-                const stackMargin = 36; // Visible stacked header margin per card (in px)
+                const baseTop = 96; // Sticky distance from top of viewport (in px)
+                const stackMargin = 40; // Visible stacked header margin per card (in px)
                 const topValue = baseTop + index * stackMargin;
 
                 return (
@@ -233,11 +249,12 @@ export const Solutions = () => {
                     ref={item.ref}
                     onClick={() => setActiveModal(item)}
                     style={{
-                      ...item.bgStyle,
+                      backgroundColor: '#FFFFFF',
+                      position: 'sticky',
                       top: `${topValue}px`,
                       zIndex: index + 10,
                     }}
-                    className={`sticky-card group sticky border ${item.border} rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 transform-gpu origin-top flex flex-col justify-between overflow-hidden relative transition-all duration-300 cursor-pointer min-h-[340px] sm:min-h-[380px]`}
+                    className={`sticky-card group bg-white border ${item.border} rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 origin-top flex flex-col justify-between overflow-hidden transition-colors duration-300 cursor-pointer min-h-[340px] sm:min-h-[380px]`}
                   >
                     {/* Top Accent Gradient Line */}
                     <div className={`absolute top-0 left-0 right-0 h-1.5 ${item.accentBar}`} />

@@ -66,7 +66,8 @@
 .sticky-card {
   position: -webkit-sticky !important;
   position: sticky !important;
-  will-change: transform, top;
+  background-color: #ffffff !important;
+  color: #0F172A !important;
 }
 
 img,
