@@ -143,12 +143,12 @@ export const Navbar = ({ onOpenContact }) => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-        ? 'py-3.5 bg-white/75 backdrop-blur-md border-b border-slate-200/70 shadow-sm text-slate-900'
-        : 'py-4.5 bg-white/60 backdrop-blur-md border-b border-slate-200/40 text-slate-900'
+        ? 'py-3 bg-white/95 backdrop-blur-xl border-b border-slate-200/80 shadow-md text-slate-900'
+        : 'py-3.5 bg-white/95 backdrop-blur-xl border-b border-slate-200/60 shadow-sm text-slate-900'
         }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
+        <div className="flex items-center justify-between gap-2 w-full">
 
           {/* Brand Logo & Company Name */}
           <a
@@ -166,7 +166,7 @@ export const Navbar = ({ onOpenContact }) => {
                 e.target.src = "/images/tinyworks-logo.png";
               }}
             />
-            <span className="font-heading font-semibold text-base sm:text-2xl tracking-tight transition-colors leading-none text-slate-900 group-hover:text-[#C82190]">
+            <span className="font-heading font-semibold text-sm sm:text-2xl tracking-tight transition-colors leading-none text-slate-900 group-hover:text-[#C82190]">
               TinyWorks
             </span>
           </a>
@@ -246,7 +246,7 @@ export const Navbar = ({ onOpenContact }) => {
           </div>
 
           {/* Mobile Menu Button + Get in Touch Side-by-Side */}
-          <div className="flex md:hidden items-center gap-1.5 shrink-0">
+          <div className="flex md:hidden items-center gap-1.5 shrink-0 ml-auto">
             <button
               onClick={onOpenContact}
               className="px-2.5 py-1.5 rounded-full bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] text-white text-[11px] font-bold cursor-pointer shadow-md shrink-0 whitespace-nowrap"
@@ -255,7 +255,7 @@ export const Navbar = ({ onOpenContact }) => {
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl border border-slate-200 bg-white text-slate-900 hover:bg-slate-100 shadow-sm cursor-pointer transition-colors shrink-0"
+              className="p-1.5 sm:p-2 rounded-xl border border-slate-200 bg-white text-slate-900 hover:bg-slate-100 shadow-sm cursor-pointer transition-colors shrink-0"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5 text-[#C82190]" /> : <Menu className="w-5 h-5 text-slate-900" />}
