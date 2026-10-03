@@ -149,22 +149,20 @@ export const Solutions = () => {
     // Clear any previous filter properties
     gsap.set(cardElements, { clearProps: 'filter,brightness' });
 
-    // Smooth Card Scale Stacking Effect
+    // Smooth Card Scale Stacking Effect - Triggered cleanly on card sticky dock point
     cardElements.forEach((card, index) => {
       if (index === cardElements.length - 1) return;
-      const nextCard = cardElements[index + 1];
-      if (!nextCard) return;
 
-      const targetTop = 96 + (index + 1) * 40;
+      const currentTop = 96 + index * 40;
 
       gsap.to(card, {
         scale: 0.92 + index * 0.02,
         transformOrigin: 'top center',
         ease: 'none',
         scrollTrigger: {
-          trigger: nextCard,
-          start: 'top 85%',
-          end: `top ${targetTop}px`,
+          trigger: card,
+          start: `top ${currentTop}px`,
+          end: '+=280px',
           scrub: true,
           invalidateOnRefresh: true,
         },
