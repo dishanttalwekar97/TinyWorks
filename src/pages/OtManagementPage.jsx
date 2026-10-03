@@ -413,7 +413,8 @@ export const OtManagementPage = ({ onNavigate }) => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {/* 3 SEPARATE VIDEO CARDS GRID - 2-WIDE ON MOBILE */}
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
               {videoCards.map((card) => {
                 const currentMode = cardModes[card.id] || '40s';
                 const currentLang = cardLanguages[card.id] || 'English';
@@ -421,42 +422,42 @@ export const OtManagementPage = ({ onNavigate }) => {
                 return (
                   <div
                     key={card.id}
-                    className="bg-slate-50/80 border border-slate-200/90 rounded-[28px] p-5 sm:p-6 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                    className="bg-slate-50/80 border border-slate-200/90 rounded-2xl sm:rounded-[28px] p-3 sm:p-6 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                   >
                     <div>
                       {/* Top Controls: 40s / Full toggle & Language */}
-                      <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-200">
+                      <div className="flex items-center justify-between gap-1 sm:gap-2 mb-2 sm:mb-4 pb-2 sm:pb-3 border-b border-slate-200">
                         {/* 40s vs Full Toggle */}
-                        <div className="inline-flex p-0.5 bg-slate-200/80 rounded-lg text-[11px] font-mono font-semibold">
+                        <div className="inline-flex p-0.5 bg-slate-200/80 rounded-lg text-[9px] sm:text-[11px] font-mono font-semibold">
                           <button
                             onClick={() => handleModeChange(card.id, '40s')}
-                            className={`px-2.5 py-1 rounded-md transition-all cursor-pointer ${
+                            className={`px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer ${
                               currentMode === '40s'
                                 ? 'bg-[#C82190] text-white shadow-sm font-bold'
                                 : 'text-slate-600 hover:text-slate-900'
                             }`}
                           >
-                            40s Clip
+                            40s
                           </button>
                           <button
                             onClick={() => handleModeChange(card.id, 'full')}
-                            className={`px-2.5 py-1 rounded-md transition-all cursor-pointer ${
+                            className={`px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-md transition-all cursor-pointer ${
                               currentMode === 'full'
                                 ? 'bg-[#4F16A9] text-white shadow-sm font-bold'
                                 : 'text-slate-600 hover:text-slate-900'
                             }`}
                           >
-                            Full ({card.fullDuration})
+                            Full
                           </button>
                         </div>
 
                         {/* Language Select */}
-                        <div className="flex items-center gap-1 bg-white px-2 py-1 rounded-lg border border-slate-200 text-[11px] font-mono">
-                          <Globe className="w-3 h-3 text-slate-500" />
+                        <div className="flex items-center gap-1 bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-lg border border-slate-200 text-[9px] sm:text-[11px] font-mono">
+                          <Globe className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-slate-500" />
                           <select
                             value={currentLang}
                             onChange={(e) => handleLanguageChange(card.id, e.target.value)}
-                            className="bg-transparent border-none text-slate-700 font-semibold focus:outline-none cursor-pointer"
+                            className="bg-transparent border-none text-slate-700 font-semibold focus:outline-none cursor-pointer text-[9px] sm:text-[11px]"
                           >
                             <option value="English">ENG</option>
                             <option value="Hindi">HIN</option>
@@ -468,7 +469,7 @@ export const OtManagementPage = ({ onNavigate }) => {
                       {/* Video Player Box */}
                       <div
                         onClick={() => openBigScreenVideo(card)}
-                        className="relative group rounded-2xl overflow-hidden cursor-pointer bg-slate-950 aspect-video mb-4 shadow border border-slate-800/80"
+                        className="relative group rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer bg-slate-950 aspect-video mb-2.5 sm:mb-4 shadow border border-slate-800/80"
                       >
                         <YouTubeThumbnail
                           videoUrl={card.youtubeUrl}
@@ -477,34 +478,34 @@ export const OtManagementPage = ({ onNavigate }) => {
                         />
 
                         {/* Overlay with Duration Badge */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-between p-3">
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-between p-2 sm:p-3">
                           <div className="flex justify-between items-start">
-                            <span className="text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-900/90 text-pink-300 px-2 py-0.5 rounded border border-pink-500/30">
+                            <span className="text-[8px] sm:text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-900/90 text-pink-300 px-1.5 sm:px-2 py-0.5 rounded border border-pink-500/30 truncate max-w-[70%]">
                               {card.tag}
                             </span>
-                            <span className="text-[10px] font-mono font-bold bg-slate-900/90 text-slate-200 px-2 py-0.5 rounded flex items-center gap-1 border border-slate-700">
-                              <Clock className="w-3 h-3 text-[#FF6B2B]" />
+                            <span className="text-[8px] sm:text-[10px] font-mono font-bold bg-slate-900/90 text-slate-200 px-1.5 sm:px-2 py-0.5 rounded flex items-center gap-1 border border-slate-700 shrink-0">
+                              <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#FF6B2B]" />
                               {currentMode === '40s' ? card.duration : card.fullDuration}
                             </span>
                           </div>
 
                           <div className="flex items-center justify-between">
-                            <span className="text-white text-xs font-mono font-bold flex items-center gap-1">
-                              <Tv className="w-3.5 h-3.5 text-[#C82190]" />
+                            <span className="text-white text-[9px] sm:text-xs font-mono font-bold flex items-center gap-1 truncate">
+                              <Tv className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C82190]" />
                               Play HD
                             </span>
-                            <div className="w-9 h-9 rounded-full bg-gradient-to-r from-[#4F16A9] to-[#C82190] text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
-                              <Play className="w-4 h-4 fill-current ml-0.5" />
+                            <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-gradient-to-r from-[#4F16A9] to-[#C82190] text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shrink-0">
+                              <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current ml-0.5" />
                             </div>
                           </div>
                         </div>
                       </div>
 
                       {/* Title & Description */}
-                      <h3 className="font-heading font-extrabold text-base sm:text-lg text-slate-900 mb-2 leading-snug">
+                      <h3 className="font-heading font-extrabold text-xs sm:text-lg text-slate-900 mb-1 sm:mb-2 leading-snug">
                         {card.title}
                       </h3>
-                      <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                      <p className="text-[11px] sm:text-xs text-slate-600 leading-tight sm:leading-relaxed font-normal line-clamp-2 sm:line-clamp-none">
                         {card.subtitle}
                       </p>
                     </div>
@@ -512,9 +513,9 @@ export const OtManagementPage = ({ onNavigate }) => {
                     {/* Bottom CTA to trigger Big-Screen Modal */}
                     <button
                       onClick={() => openBigScreenVideo(card)}
-                      className="mt-5 w-full py-2.5 px-4 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-sm"
+                      className="mt-3 sm:mt-5 w-full py-2 sm:py-2.5 px-3 sm:px-4 rounded-lg sm:rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 text-[10px] sm:text-xs font-bold flex items-center justify-center gap-1.5 sm:gap-2 transition-colors cursor-pointer shadow-sm"
                     >
-                      <Maximize2 className="w-3.5 h-3.5 text-[#C82190]" />
+                      <Maximize2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C82190]" />
                       <span>Watch Fullscreen HD</span>
                     </button>
                   </div>
@@ -525,49 +526,49 @@ export const OtManagementPage = ({ onNavigate }) => {
           </div>
         </section>
 
-        {/* 8 CORE FEATURES GRID */}
-        <section className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        {/* 8 CORE FEATURES GRID - 2 COLUMNS ON MOBILE */}
+        <section className="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
             <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#C82190] block mb-2">
               CLINICAL ARCHITECTURE
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2 sm:mb-3">
               8 Core Surgical Capabilities
             </h2>
-            <p className="text-slate-600 text-sm sm:text-base font-normal">
+            <p className="text-slate-600 text-xs sm:text-base font-normal">
               Engineered for seamless surgical workflows, compliance, and patient outcomes.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
             {features.map((feat) => {
               const IconC = feat.icon;
               return (
                 <div
                   key={feat.num}
-                  className="bg-white border border-slate-200/90 rounded-[24px] p-6 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+                  className="bg-white border border-slate-200/90 rounded-xl sm:rounded-[24px] p-3 sm:p-6 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="font-mono text-xl font-black bg-gradient-to-r from-[#4F16A9] to-[#C82190] bg-clip-text text-transparent">
+                    <div className="flex items-center justify-between mb-2 sm:mb-4">
+                      <span className="font-mono text-base sm:text-xl font-black bg-gradient-to-r from-[#4F16A9] to-[#C82190] bg-clip-text text-transparent">
                         {feat.num}
                       </span>
-                      <div className="w-10 h-10 rounded-xl bg-pink-50 text-[#C82190] flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-[#4F16A9] group-hover:to-[#C82190] group-hover:text-white transition-all shadow-sm">
-                        <IconC className="w-5 h-5" />
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-pink-50 text-[#C82190] flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-[#4F16A9] group-hover:to-[#C82190] group-hover:text-white transition-all shadow-sm">
+                        <IconC className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
                     </div>
 
-                    <h3 className="font-heading font-extrabold text-lg text-slate-900 mb-2 group-hover:text-[#C82190] transition-colors">
+                    <h3 className="font-heading font-extrabold text-xs sm:text-lg text-slate-900 mb-1 sm:mb-2 group-hover:text-[#C82190] transition-colors leading-snug">
                       {feat.title}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                    <p className="text-[11px] sm:text-xs text-slate-600 leading-tight sm:leading-relaxed font-normal">
                       {feat.desc}
                     </p>
                   </div>
 
-                  <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono">
+                  <div className="pt-2 sm:pt-4 mt-2 sm:mt-4 border-t border-slate-100 flex items-center justify-between text-[9px] sm:text-[11px] font-mono">
                     <span className="text-slate-400">BENEFIT</span>
-                    <span className="font-bold text-[#C82190] bg-pink-50 px-2 py-0.5 rounded border border-pink-100">
+                    <span className="font-bold text-[#C82190] bg-pink-50 px-1.5 sm:px-2 py-0.5 rounded border border-pink-100 truncate max-w-[65%]">
                       {feat.metric}
                     </span>
                   </div>
@@ -577,42 +578,44 @@ export const OtManagementPage = ({ onNavigate }) => {
           </div>
         </section>
 
-        {/* 6-STEP WORKFLOW SECTION */}
-        <section id="workflow-section" className="py-16 sm:py-20 bg-slate-900 text-white relative overflow-hidden">
+        {/* 6-STEP WORKFLOW SECTION - 2 COLUMNS ON MOBILE */}
+        <section id="workflow-section" className="py-12 sm:py-20 bg-slate-900 text-white relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-pink-600/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-            <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
               <span className="text-xs font-mono font-bold uppercase tracking-widest text-pink-400 block mb-2">
                 END-TO-END PATIENT LIFECYCLE
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-2 sm:mb-3">
                 6-Step Surgical Pathway
               </h2>
-              <p className="text-slate-400 text-sm sm:text-base font-normal">
+              <p className="text-slate-400 text-xs sm:text-base font-normal">
                 How CareCloudX guides surgical cases smoothly from pre-op consent through recovery and billing.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6">
               {workflowSteps.map((step) => (
                 <div
                   key={step.step}
-                  className="bg-slate-800/70 border border-slate-700/80 rounded-[24px] p-6 relative overflow-hidden group hover:border-pink-500/50 transition-all shadow-lg"
+                  className="bg-slate-800/70 border border-slate-700/80 rounded-xl sm:rounded-[24px] p-3.5 sm:p-6 relative overflow-hidden group hover:border-pink-500/50 transition-all shadow-lg flex flex-col justify-between"
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="w-8 h-8 rounded-full bg-gradient-to-r from-[#4F16A9] to-[#C82190] text-white flex items-center justify-center font-mono font-bold text-xs shrink-0 shadow">
-                      {step.step}
-                    </span>
-                    <h3 className="font-heading font-bold text-base text-white group-hover:text-pink-300 transition-colors">
-                      {step.title}
-                    </h3>
+                  <div>
+                    <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-4">
+                      <span className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-[#4F16A9] to-[#C82190] text-white flex items-center justify-center font-mono font-bold text-[10px] sm:text-xs shrink-0 shadow">
+                        {step.step}
+                      </span>
+                      <h3 className="font-heading font-bold text-xs sm:text-base text-white group-hover:text-pink-300 transition-colors leading-snug">
+                        {step.title}
+                      </h3>
+                    </div>
+                    <p className="text-[11px] sm:text-xs text-slate-300 leading-tight sm:leading-relaxed font-normal">
+                      {step.desc}
+                    </p>
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed font-normal pl-11">
-                    {step.desc}
-                  </p>
                 </div>
               ))}
             </div>
