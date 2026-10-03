@@ -136,6 +136,87 @@ export const Footer = ({ onOpenContact, onNavigate }) => {
                 </li>
                 <li>
                   <a
+                    href="/carecloudx/ipd management"
+                    onClick={(e) => handleLinkClick(e, '/carecloudx/ipd management')}
+                    className="hover:text-[#C82190] transition-colors block"
+                  >
+                    IPD Management
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/carecloudx/laboratory"
+                    onClick={(e) => handleLinkClick(e, '/carecloudx/laboratory')}
+                    className="hover:text-[#C82190] transition-colors block"
+                  >
+                    Laboratory (LIS)
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/carecloudx/radiology"
+                    onClick={(e) => handleLinkClick(e, '/carecloudx/radiology')}
+                    className="hover:text-[#C82190] transition-colors block"
+                  >
+                    Radiology (RIS)
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/carecloudx/pharmacy"
+                    onClick={(e) => handleLinkClick(e, '/carecloudx/pharmacy')}
+                    className="hover:text-[#C82190] transition-colors block"
+                  >
+                    Pharmacy Management
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/carecloudx/billing"
+                    onClick={(e) => handleLinkClick(e, '/carecloudx/billing')}
+                    className="hover:text-[#C82190] transition-colors block"
+                  >
+                    Billing & Insurance
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/carecloudx/registration"
+                    onClick={(e) => handleLinkClick(e, '/carecloudx/registration')}
+                    className="hover:text-[#C82190] transition-colors block"
+                  >
+                    Patient Registration
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/carecloudx/operation-theatre"
+                    onClick={(e) => handleLinkClick(e, '/carecloudx/operation-theatre')}
+                    className="hover:text-[#C82190] transition-colors block"
+                  >
+                    Operation Theatre
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/carecloudx/inventory"
+                    onClick={(e) => handleLinkClick(e, '/carecloudx/inventory')}
+                    className="hover:text-[#C82190] transition-colors block"
+                  >
+                    Inventory & Stores
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/carecloudx/hr"
+                    onClick={(e) => handleLinkClick(e, '/carecloudx/hr')}
+                    className="hover:text-[#C82190] transition-colors block"
+                  >
+                    HR & Payroll
+                  </a>
+                </li>
+                <li>
+                  <a
                     href="#solutions"
                     onClick={(e) => handleLinkClick(e, '#solutions')}
                     className="hover:text-[#C82190] transition-colors block"

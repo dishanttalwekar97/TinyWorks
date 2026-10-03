@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
 
-export const Navbar = ({ onOpenContact }) => {
+export const Navbar = ({ onOpenContact, onNavigate }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [careCloudOpen, setCareCloudOpen] = useState(false);
@@ -48,13 +48,21 @@ export const Navbar = ({ onOpenContact }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const navigateTo = (path) => {
+    if (onNavigate) {
+      onNavigate(path);
+    } else {
+      window.history.pushState({}, '', path);
+      window.dispatchEvent(new Event('popstate'));
+    }
+  };
+
   const handleNavClick = (e, href) => {
     e.preventDefault();
     const isCareCloud = window.location.pathname.toLowerCase().includes('carecloudx');
 
     if (href === '#carecloudx' || href === '/carecloudx') {
-      window.history.pushState({}, '', '/carecloudx');
-      window.dispatchEvent(new Event('popstate'));
+      navigateTo('/carecloudx');
       setCareCloudOpen(false);
       setMobileMenuOpen(false);
       window.scrollTo(0, 0);
@@ -64,8 +72,7 @@ export const Navbar = ({ onOpenContact }) => {
     const targetId = href.startsWith('#') ? href.substring(1) : '';
 
     if (isCareCloud) {
-      window.history.pushState({}, '', '/' + href);
-      window.dispatchEvent(new Event('popstate'));
+      navigateTo('/' + href);
       setMobileMenuOpen(false);
       setTimeout(() => {
         if (targetId) {
@@ -80,17 +87,21 @@ export const Navbar = ({ onOpenContact }) => {
         }
       }, 150);
     } else {
-      window.history.pushState({}, '', '/' + href);
-      window.dispatchEvent(new Event('popstate'));
-      setMobileMenuOpen(false);
-      if (targetId) {
-        const el = document.getElementById(targetId);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
+      if (href.startsWith('#')) {
+        setMobileMenuOpen(false);
+        if (targetId) {
+          const el = document.getElementById(targetId);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
         } else {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       } else {
+        navigateTo(href);
+        setMobileMenuOpen(false);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
@@ -101,16 +112,35 @@ export const Navbar = ({ onOpenContact }) => {
     setCareCloudOpen(false);
     setMobileMenuOpen(false);
 
-    if (item.toLowerCase().includes('opd')) {
-      window.history.pushState({}, '', '/carecloudx/opd management');
-    } else if (item.toLowerCase().includes('ipd')) {
-      window.history.pushState({}, '', '/carecloudx/ipd management');
-    } else if (item.toLowerCase().includes('laboratory') || item.toLowerCase().includes('lis')) {
-      window.history.pushState({}, '', '/carecloudx/laboratory');
-    } else {
-      window.history.pushState({}, '', '/carecloudx');
+    let target = '/carecloudx';
+    const lower = item.toLowerCase();
+    if (lower.includes('opd')) {
+      target = '/carecloudx/opd management';
+    } else if (lower.includes('ipd')) {
+      target = '/carecloudx/ipd management';
+    } else if (lower.includes('laboratory') || lower.includes('lis')) {
+      target = '/carecloudx/laboratory';
+    } else if (lower.includes('radiology') || lower.includes('ris')) {
+      target = '/carecloudx/radiology';
+    } else if (lower.includes('pharmacy')) {
+      target = '/carecloudx/pharmacy';
+    } else if (lower.includes('billing')) {
+      target = '/carecloudx/billing';
+    } else if (lower.includes('registration')) {
+      target = '/carecloudx/registration';
+    } else if (lower.includes('inventory') || lower.includes('stores')) {
+      target = '/carecloudx/inventory';
+    } else if (lower.includes('hr') || lower.includes('payroll')) {
+      target = '/carecloudx/hr';
+    } else if (lower.includes('theatre') || lower.includes('operation') || lower.includes('ot')) {
+      target = '/carecloudx/operation-theatre';
+    } else if (lower.includes('finance') || lower.includes('accounts')) {
+      target = '/carecloudx/finance';
+    } else if (lower.includes('analytics') || lower.includes('reports')) {
+      target = '/carecloudx/analytics';
     }
-    window.dispatchEvent(new Event('popstate'));
+
+    navigateTo(target);
     window.scrollTo(0, 0);
   };
 
@@ -131,7 +161,7 @@ export const Navbar = ({ onOpenContact }) => {
 
   const navLinks = [
     { name: 'Home', href: '#home', id: 'home' },
-    { name: 'CareCloudX', href: '#services', id: 'carecloudx', hasDropdown: true },
+    { name: 'CareCloudX', href: '/carecloudx', id: 'carecloudx', hasDropdown: true },
     { name: 'Solutions', href: '#solutions', id: 'solutions' },
     { name: 'Services', href: '#services', id: 'services' },
     { name: 'Industries', href: '#industries', id: 'industries' },

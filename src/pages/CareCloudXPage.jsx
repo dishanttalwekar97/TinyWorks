@@ -132,6 +132,7 @@ export const CareCloudXPage = ({ onNavigate }) => {
         'Prior study comparison archives',
       ],
       icon: FileText,
+      isRadiology: true,
     },
     {
       num: '05',
@@ -145,6 +146,7 @@ export const CareCloudXPage = ({ onNavigate }) => {
         'Supplier purchase order management',
       ],
       icon: Pill,
+      isPharmacy: true,
     },
     {
       num: '06',
@@ -158,6 +160,7 @@ export const CareCloudXPage = ({ onNavigate }) => {
         'Real-time revenue settlement logs',
       ],
       icon: CreditCard,
+      isBilling: true,
     },
     {
       num: '07',
@@ -171,6 +174,7 @@ export const CareCloudXPage = ({ onNavigate }) => {
         'Biometric & ID document attachments',
       ],
       icon: UserPlus,
+      isRegistration: true,
     },
     {
       num: '08',
@@ -184,6 +188,7 @@ export const CareCloudXPage = ({ onNavigate }) => {
         'Implant & sterile stock utilization',
       ],
       icon: Scissors,
+      isOT: true,
     },
     {
       num: '09',
@@ -197,6 +202,7 @@ export const CareCloudXPage = ({ onNavigate }) => {
         'Valuation & stock audit reports',
       ],
       icon: Box,
+      isInventory: true,
     },
     {
       num: '10',
@@ -210,6 +216,7 @@ export const CareCloudXPage = ({ onNavigate }) => {
         'Automated monthly salary slips',
       ],
       icon: Users,
+      isHR: true,
     },
     {
       num: '11',
@@ -223,6 +230,7 @@ export const CareCloudXPage = ({ onNavigate }) => {
         'GST compliant tax reporting',
       ],
       icon: DollarSign,
+      isFinance: true,
     },
     {
       num: '12',
@@ -236,6 +244,7 @@ export const CareCloudXPage = ({ onNavigate }) => {
         'NABH audit compliance reporting',
       ],
       icon: BarChart3,
+      isAnalytics: true,
     },
   ];
 
@@ -243,7 +252,7 @@ export const CareCloudXPage = ({ onNavigate }) => {
     <div className="min-h-screen bg-slate-50 text-slate-900 relative selection:bg-[#C82190]/20 selection:text-[#C82190] font-sans">
 
       {/* Sticky Top Navbar */}
-      <Navbar onOpenContact={() => setContactModalOpen(true)} />
+      <Navbar onOpenContact={() => setContactModalOpen(true)} onNavigate={onNavigate} />
 
       <main className="pt-20 sm:pt-24 pb-12 sm:pb-20">
 
@@ -624,17 +633,106 @@ export const CareCloudXPage = ({ onNavigate }) => {
                             window.history.pushState({}, '', '/carecloudx/laboratory');
                             window.dispatchEvent(new Event('popstate'));
                           }
+                        } else if (m.isRadiology || m.title.toLowerCase().includes('radiology') || m.title.toLowerCase().includes('ris')) {
+                          if (onNavigate) {
+                            onNavigate('/carecloudx/radiology');
+                          } else {
+                            window.history.pushState({}, '', '/carecloudx/radiology');
+                            window.dispatchEvent(new Event('popstate'));
+                          }
+                        } else if (m.isPharmacy || m.title.toLowerCase().includes('pharmacy')) {
+                          if (onNavigate) {
+                            onNavigate('/carecloudx/pharmacy');
+                          } else {
+                            window.history.pushState({}, '', '/carecloudx/pharmacy');
+                            window.dispatchEvent(new Event('popstate'));
+                          }
+                        } else if (m.isBilling || m.title.toLowerCase().includes('billing')) {
+                          if (onNavigate) {
+                            onNavigate('/carecloudx/billing');
+                          } else {
+                            window.history.pushState({}, '', '/carecloudx/billing');
+                            window.dispatchEvent(new Event('popstate'));
+                          }
+                        } else if (m.isRegistration || m.title.toLowerCase().includes('registration')) {
+                          if (onNavigate) {
+                            onNavigate('/carecloudx/registration');
+                          } else {
+                            window.history.pushState({}, '', '/carecloudx/registration');
+                            window.dispatchEvent(new Event('popstate'));
+                          }
+                        } else if (m.isInventory || m.title.toLowerCase().includes('inventory') || m.title.toLowerCase().includes('stores')) {
+                          if (onNavigate) {
+                            onNavigate('/carecloudx/inventory');
+                          } else {
+                            window.history.pushState({}, '', '/carecloudx/inventory');
+                            window.dispatchEvent(new Event('popstate'));
+                          }
+                        } else if (m.isHR || m.title.toLowerCase().includes('hr') || m.title.toLowerCase().includes('payroll')) {
+                          if (onNavigate) {
+                            onNavigate('/carecloudx/hr');
+                          } else {
+                            window.history.pushState({}, '', '/carecloudx/hr');
+                            window.dispatchEvent(new Event('popstate'));
+                          }
+                        } else if (m.isOT || m.title.toLowerCase().includes('theatre') || m.title.toLowerCase().includes('operation')) {
+                          if (onNavigate) {
+                            onNavigate('/carecloudx/operation-theatre');
+                          } else {
+                            window.history.pushState({}, '', '/carecloudx/operation-theatre');
+                            window.dispatchEvent(new Event('popstate'));
+                          }
+                        } else if (m.isFinance || m.title.toLowerCase().includes('finance') || m.title.toLowerCase().includes('accounts')) {
+                          if (onNavigate) {
+                            onNavigate('/carecloudx/finance');
+                          } else {
+                            window.history.pushState({}, '', '/carecloudx/finance');
+                            window.dispatchEvent(new Event('popstate'));
+                          }
+                        } else if (m.isAnalytics || m.title.toLowerCase().includes('analytics') || m.title.toLowerCase().includes('reports')) {
+                          if (onNavigate) {
+                            onNavigate('/carecloudx/analytics');
+                          } else {
+                            window.history.pushState({}, '', '/carecloudx/analytics');
+                            window.dispatchEvent(new Event('popstate'));
+                          }
                         } else {
                           setContactModalOpen(true);
                         }
                       }}
                       className={`w-full py-3 sm:py-3.5 rounded-xl sm:rounded-2xl font-bold text-[11px] sm:text-xs flex items-center justify-center gap-2 cursor-pointer transition-all shadow-md ${
-                        m.isOPD || m.isIPD || m.isLab
+                        m.isOPD || m.isIPD || m.isLab || m.isRadiology || m.isPharmacy || m.isBilling || m.isRegistration || m.isOT || m.isInventory || m.isHR || m.isFinance || m.isAnalytics
                           ? 'bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white'
                           : 'bg-slate-900 hover:bg-slate-800 text-white'
                       }`}
                     >
-                      <span>{m.isOPD ? 'Explore Dedicated OPD Page' : m.isIPD ? 'Explore Dedicated IPD Page' : m.isLab ? 'Explore Dedicated Lab LIS Page' : 'Request Module Demo'}</span>
+                      <span>
+                        {m.isOPD
+                          ? 'Explore Dedicated OPD Page'
+                          : m.isIPD
+                          ? 'Explore Dedicated IPD Page'
+                          : m.isLab
+                          ? 'Explore Dedicated Lab LIS Page'
+                          : m.isRadiology
+                          ? 'Explore Dedicated Radiology Page'
+                          : m.isPharmacy
+                          ? 'Explore Dedicated Pharmacy Page'
+                          : m.isBilling
+                          ? 'Explore Dedicated Billing Page'
+                          : m.isRegistration
+                          ? 'Explore Dedicated Registration Page'
+                          : m.isOT
+                          ? 'Explore Dedicated OT Page'
+                          : m.isInventory
+                          ? 'Explore Dedicated Inventory Page'
+                          : m.isHR
+                          ? 'Explore Dedicated HR & Payroll Page'
+                          : m.isFinance
+                          ? 'Explore Dedicated Finance Page'
+                          : m.isAnalytics
+                          ? 'Explore Dedicated Analytics Page'
+                          : 'Request Module Demo'}
+                      </span>
                       <ChevronRight className="w-4 h-4 shrink-0" />
                     </button>
                   </div>
@@ -675,7 +773,7 @@ export const CareCloudXPage = ({ onNavigate }) => {
       </main>
 
       {/* Footer */}
-      <Footer onOpenContact={() => setContactModalOpen(true)} />
+      <Footer onOpenContact={() => setContactModalOpen(true)} onNavigate={onNavigate} />
 
       {/* Contact Form Modal */}
       <ContactModal

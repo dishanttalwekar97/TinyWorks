@@ -239,7 +239,7 @@ export const LaboratoryPage = ({ onNavigate }) => {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-[#C82190]/20 selection:text-[#C82190]">
       {/* Sticky Header Navbar */}
-      <Navbar onOpenContact={() => setContactModalOpen(true)} />
+      <Navbar onOpenContact={() => setContactModalOpen(true)} onNavigate={onNavigate} />
 
       {/* Main Content Area */}
       <main className="pt-20 sm:pt-24 pb-12 sm:pb-20">
@@ -696,7 +696,7 @@ export const LaboratoryPage = ({ onNavigate }) => {
       </main>
 
       {/* Footer */}
-      <Footer onOpenContact={() => setContactModalOpen(true)} />
+      <Footer onOpenContact={() => setContactModalOpen(true)} onNavigate={onNavigate} />
 
       {/* Contact / Schedule Demo Modal */}
       {contactModalOpen && (

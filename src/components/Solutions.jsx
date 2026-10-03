@@ -4,7 +4,7 @@ import { gsap, ScrollTrigger } from '../utils/animations';
 import { ArrowRight, CheckCircle2, X, Sparkles } from 'lucide-react';
 import TextReveal from './animations/TextReveal';
 
-export const Solutions = () => {
+export const Solutions = ({ onNavigate }) => {
   const containerRef = useRef(null);
   const cardsContainerRef = useRef(null);
   const [activeModal, setActiveModal] = useState(null);
@@ -367,12 +367,36 @@ export const Solutions = () => {
               ))}
             </div>
 
-            <button
-              onClick={() => setActiveModal(null)}
-              className="w-full py-4 rounded-full bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white text-sm font-bold transition-all shadow-lg shadow-purple-900/20 cursor-pointer"
-            >
-              Close Details
-            </button>
+            <div className="flex flex-col sm:flex-row gap-3">
+              {activeModal.id === 'hospital-erp' && (
+                <button
+                  onClick={() => {
+                    setActiveModal(null);
+                    if (onNavigate) {
+                      onNavigate('/carecloudx');
+                    } else {
+                      window.history.pushState({}, '', '/carecloudx');
+                      window.dispatchEvent(new Event('popstate'));
+                    }
+                    window.scrollTo(0, 0);
+                  }}
+                  className="flex-1 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white text-sm font-bold transition-all shadow-lg shadow-purple-900/20 cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <span>Explore CareCloudX Suite</span>
+                  <ArrowRight className="w-4 h-4 text-white" />
+                </button>
+              )}
+              <button
+                onClick={() => setActiveModal(null)}
+                className={`py-3.5 sm:py-4 rounded-full text-sm font-bold transition-all cursor-pointer ${
+                  activeModal.id === 'hospital-erp'
+                    ? 'px-6 bg-slate-100 hover:bg-slate-200 text-slate-800'
+                    : 'w-full bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white shadow-lg shadow-purple-900/20'
+                }`}
+              >
+                Close Details
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -1,61 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ContactModal from '../components/ContactModal';
 import { YouTubeThumbnail, YouTubeVideoModal } from '../components/YouTubePlayer';
 import {
-  Bed,
-  BedDouble,
-  Activity,
-  Receipt,
-  FileText,
+  Scan,
+  Radio,
+  Cpu,
+  Database,
+  FileCheck,
   CreditCard,
-  Sparkles,
+  Share2,
+  BarChart3,
+  ShieldCheck,
   Calendar,
   ArrowLeft,
   ArrowRight,
   CheckCircle2,
-  HeartPulse,
-  Maximize2,
-  X,
+  Sparkles,
+  Zap,
+  ChevronRight,
   Play,
   Video,
-  Tv,
   Globe,
-  Building2,
+  Tv,
+  Maximize2,
+  X,
+  FileText,
+  Clock,
   Layers,
-  ChevronRight,
-  Stethoscope,
+  Activity,
+  Film,
 } from 'lucide-react';
 
-export const IpdManagementPage = ({ onNavigate }) => {
+export const RadiologyManagementPage = ({ onNavigate }) => {
   const [contactModalOpen, setContactModalOpen] = useState(false);
+  const [bannerLightboxOpen, setBannerLightboxOpen] = useState(false);
 
   // Per-card video controls state
   const [cardModes, setCardModes] = useState({
-    'ipd-admissions': '40s',
-    'nursing-care': '40s',
-    'ipd-discharge': '40s',
+    'radiology-pacs': '40s',
+    'radiology-reporting': '40s',
+    'radiology-portal': '40s',
   });
 
   const [cardLanguages, setCardLanguages] = useState({
-    'ipd-admissions': 'English',
-    'nursing-care': 'English',
-    'ipd-discharge': 'English',
+    'radiology-pacs': 'English',
+    'radiology-reporting': 'English',
+    'radiology-portal': 'English',
   });
 
-  // Big Screen Lightbox Modal state
-  const [activeModalVideo, setActiveModalVideo] = useState(null); // card object or null
+  // Big Screen Video Lightbox Modal state
+  const [activeModalVideo, setActiveModalVideo] = useState(null);
+
+  const videoSectionRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Keyboard shortcut ESC to close modal
+  // Keyboard shortcut ESC to close modals
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
         setActiveModalVideo(null);
+        setBannerLightboxOpen(false);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -64,61 +73,51 @@ export const IpdManagementPage = ({ onNavigate }) => {
 
   const videoCards = [
     {
-      id: 'ipd-admissions',
-      title: 'Inpatient Admission & Smart Bed Allocation',
-      subtitle: 'Fast-track patient admission, ward categorization (General, Deluxe, ICU), real-time bed occupancy matrix, and seamless inter-ward bed transfers.',
+      id: 'radiology-pacs',
+      title: 'DICOM Modality Worklist & PACS Integration',
+      subtitle: 'Seamless bi-directional integration with MRI, CT, X-Ray, and Ultrasound via DICOM 3.0 and HL7 protocols for automated worklist synchronization.',
       youtubeUrl: 'https://youtu.be/R-bVcwDzems?si=w3Z-Slc4LqJnmnDF',
       youtubeId: 'R-bVcwDzems',
-      duration: '3:45',
-      badge: 'Admission & Bed Matrix',
-      metrics: '100% Real-time Beds',
+      duration: '3:40',
+      badge: 'Modality Worklist & PACS',
+      metrics: '100% DICOM Compliant',
       points: [
-        'Instant UHID-linked admission and patient tagging',
-        'Visual color-coded bed occupancy and availability matrix',
-        'Quick bed transfers with automated tariff and room rate recalibration',
+        'Automated Modality Worklist (MWL) pushing patient metadata',
+        'High-speed PACS image archiving with multi-modality viewers',
+        'Zero manual typing errors on imaging consoles',
       ],
     },
     {
-      id: 'nursing-care',
-      title: 'Nursing Station, Vitals & Medication Tracking',
-      subtitle: 'Comprehensive paperless nursing workflow with 24/7 vitals logging, Medication Administration Records (MAR), and seamless shift handovers.',
+      id: 'radiology-reporting',
+      title: 'Radiologist Reporting, Templates & Voice Dictation',
+      subtitle: 'Structured radiology report templates, speech-to-text voice dictation, prior study comparison, and digital sign-off.',
       youtubeUrl: 'https://youtu.be/R-bVcwDzems?si=w3Z-Slc4LqJnmnDF',
       youtubeId: 'R-bVcwDzems',
       duration: '3:20',
-      badge: 'Nursing Station & MAR',
-      metrics: 'Zero Charting Errors',
+      badge: 'Structured Reporting & TAT',
+      metrics: '40% Faster TAT',
       points: [
-        'Digital nursing care notes and shift handover reports',
-        'Periodic vitals logging with automated critical threshold alerts',
-        'Bedside medication administration schedules and pharmacy indenting',
+        'Specialty-specific reporting templates (Neuro, MSK, Chest)',
+        'Side-by-side prior study comparison and key image pinning',
+        'Radiologist digital verification with instant dispatch',
       ],
     },
     {
-      id: 'ipd-discharge',
-      title: 'Doctor Daily Rounds, Interim Billing & Discharge',
-      subtitle: 'Daily clinical rounds, CPOE orders for Lab and Radiology, running interim bill tracking, and single-click automated discharge summary.',
+      id: 'radiology-portal',
+      title: 'End-to-End Radiology Billing & Secure Image Portal',
+      subtitle: 'Seamless order entry from OPD/IPD, instant fee capture with TPA insurance, and QR/web portal access for referring doctors and patients.',
       youtubeUrl: 'https://youtu.be/R-bVcwDzems?si=w3Z-Slc4LqJnmnDF',
       youtubeId: 'R-bVcwDzems',
-      duration: '4:10',
-      badge: 'Rounds, Billing & Discharge',
-      metrics: 'Zero Revenue Leakage',
+      duration: '4:15',
+      badge: 'Order, Billing & Portal',
+      metrics: 'Instant Web Access',
       points: [
-        'Doctor daily clinical progress notes and diagnostic order entry',
-        'Real-time interim billing capturing room, doctor, and procedure fees',
-        'Standardized digital discharge summary with pharmacy returns clearance',
+        'Direct order sync with OPD, IPD, and Emergency EMR',
+        'Automated procedure tariff billing and cashless pre-auth',
+        'Cloud DICOM viewer link sent via SMS and WhatsApp',
       ],
     },
   ];
-
-  const getCardVideoSrc = (card) => {
-    const mode = cardModes[card.id] || '40s';
-    const lang = cardLanguages[card.id] || 'English';
-
-    if (mode === '40s') {
-      return card.shortSrc;
-    }
-    return lang === 'Hindi' ? card.fullHindiSrc : card.fullEnglishSrc;
-  };
 
   const setModeForCard = (cardId, mode) => {
     setCardModes((prev) => ({ ...prev, [cardId]: mode }));
@@ -132,70 +131,103 @@ export const IpdManagementPage = ({ onNavigate }) => {
     setActiveModalVideo(card);
   };
 
+  const scrollToVideo = () => {
+    if (videoSectionRef.current) {
+      videoSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // 8 Core Features from http://tinyworksindia.com/modules/radiology.html
   const features = [
     {
-      title: 'Admissions & Bed Allocation',
-      desc: 'Quick patient admission, category selection (General, Deluxe, ICU), and smart bed assignment.',
-      icon: BedDouble,
-    },
-    {
-      title: 'Nursing Workflows',
-      desc: 'Nursing notes, vitals monitoring, medication charting, and shift handover care tracking.',
-      icon: Activity,
-    },
-    {
-      title: 'Doctor Rounds & Notes',
-      desc: 'Daily rounds, clinical progress sheets, treatment plans, and computerized physician order entry.',
-      icon: Stethoscope,
-    },
-    {
-      title: 'Interim Billing',
-      desc: 'Raise interim bills seamlessly during hospital stay with automated tariff and room rent tracking.',
-      icon: Receipt,
-    },
-    {
-      title: 'Discharge Management',
-      desc: 'Smooth discharge with automated discharge summary, medication reconciliation, and final billing.',
+      title: 'Imaging Order Management',
+      desc: 'Create, schedule & track imaging orders easily across outpatient, inpatient, and emergency departments.',
       icon: FileText,
     },
     {
-      title: 'Bed Occupancy Dashboard',
-      desc: 'Real-time bed status and occupancy analytics with color-coded ward and bed status matrix.',
-      icon: Building2,
+      title: 'Modalities Integration',
+      desc: 'Full DICOM connectivity for MRI, CT, USG, X-Ray, PET-CT, Mammography, and fluoroscopy systems.',
+      icon: Radio,
     },
     {
-      title: 'Integrated Services',
-      desc: 'Direct bi-directional linkage with Pathology Lab (LIS), Radiology (RIS), Pharmacy, and OT.',
-      icon: Layers,
+      title: 'PACS Management',
+      desc: 'Store, view & manage diagnostic images securely with vendor neutral archiving and high availability.',
+      icon: Database,
     },
     {
-      title: 'TPA & Cashless Insurance',
-      desc: 'Comprehensive cashless claims, insurance pre-authorization, package tariffs, and co-pay tracking.',
+      title: 'Reporting Workflows',
+      desc: 'Structured templates, speech-to-text voice dictation & rapid reporting with standard clinical lexicons.',
+      icon: FileCheck,
+    },
+    {
+      title: 'Billing Integration',
+      desc: 'Integrated billing with OPD, IPD & Insurance including split payments, contrast charges, and consumables.',
       icon: CreditCard,
     },
+    {
+      title: 'Image Sharing & Access',
+      desc: 'Secure DICOM web viewer sharing with referring physicians, clinical specialists, and patients.',
+      icon: Share2,
+    },
+    {
+      title: 'Analytics & Dashboards',
+      desc: 'Real-time operational insights on exam volume, turnaround times (TAT), and modality utilization.',
+      icon: BarChart3,
+    },
+    {
+      title: 'Security & Compliance',
+      desc: 'Role-based access control, HIPAA compliance, audit logs & high-grade enterprise data encryption.',
+      icon: ShieldCheck,
+    },
   ];
 
+  // Key Benefits from http://tinyworksindia.com/modules/radiology.html
   const benefits = [
-    'End-to-end inpatient lifecycle management from arrival to discharge',
-    'Real-time visibility of bed & patient status across wards & ICUs',
-    'Improved nursing & clinical efficiency with paperless charting',
-    'Accurate billing & reduced revenue leakage with automated charge capture',
-    'Better patient safety & quality of care with vitals alert tracking',
-    'Data-driven decisions with smart occupancy reports and ALOS analytics',
+    'Reduced turnaround time (TAT) from imaging acquisition to verified report',
+    'Improved reporting accuracy with standardized structured templates',
+    'Better equipment utilization with smart modality scheduling',
+    'Centralized image repository accessible anytime, anywhere',
+    'Seamless integration with HIS/ERP, OPD, and IPD clinical workflows',
+    'Enhanced collaboration with referring doctors & improved patient experience',
   ];
 
+  // 6-Step Workflow from http://tinyworksindia.com/modules/radiology.html
   const workflowSteps = [
-    { num: '01', title: 'Admission & Bed Allocation', desc: 'Patient admission, UHID verification, category selection (ICU, Deluxe, General), and instant bed assignment.' },
-    { num: '02', title: 'Treatment & Clinical Care', desc: 'Daily doctor rounds, clinical progress notes, diagnosis logging, and computerized order entry.' },
-    { num: '03', title: 'Nursing Station & Vitals', desc: 'Continuous round-the-clock vitals monitoring, medication administration (MAR), and nurse shift handovers.' },
-    { num: '04', title: 'Lab, Radiology & Pharmacy', desc: 'Direct computerized order entry for diagnostic investigations and pharmacy medication indents.' },
-    { num: '05', title: 'Interim Billing & TPA', desc: 'Continuous room charge capture, running bill transparency, and cashless insurance pre-authorization.' },
-    { num: '06', title: 'Discharge Summary & Settlement', desc: 'Automated digital discharge summary, pharmacy return clearance, final billing settlement, and bed turnover.' },
+    {
+      num: '01',
+      title: 'Order Creation & Scheduling',
+      desc: 'Physician generates clinical imaging requisition from OPD/IPD with urgency flags and slot scheduling.',
+    },
+    {
+      num: '02',
+      title: 'Patient Check-in & Preparation',
+      desc: 'Front-desk check-in, allergy/contrast screening, and automated Modality Worklist (MWL) update.',
+    },
+    {
+      num: '03',
+      title: 'Image Acquisition (Modalities)',
+      desc: 'Technologist acquires images on MRI, CT, USG, or X-Ray with verified patient demographics from MWL.',
+    },
+    {
+      num: '04',
+      title: 'Image Transfer (PACS)',
+      desc: 'Images transmitted automatically to centralized PACS archives and diagnostic high-res viewing stations.',
+    },
+    {
+      num: '05',
+      title: 'Reporting & Verification',
+      desc: 'Radiologist reviews scans, compares priors, dictates report, and signs off with digital signature.',
+    },
+    {
+      num: '06',
+      title: 'Billing & Results Delivery',
+      desc: 'Automated charge reconciliation and instant report & image link dispatch to patient and consulting doctor.',
+    },
   ];
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 relative selection:bg-[#C82190]/20 selection:text-[#C82190] font-sans">
-      
+
       {/* Top Navbar */}
       <Navbar onOpenContact={() => setContactModalOpen(true)} onNavigate={onNavigate} />
 
@@ -233,8 +265,22 @@ export const IpdManagementPage = ({ onNavigate }) => {
               OPD Management
             </button>
             <span className="text-slate-300">/</span>
+            <button
+              onClick={() => {
+                if (onNavigate) {
+                  onNavigate('/carecloudx/pharmacy');
+                } else {
+                  window.history.pushState({}, '', '/carecloudx/pharmacy');
+                  window.dispatchEvent(new Event('popstate'));
+                }
+              }}
+              className="text-slate-500 hover:text-[#C82190] transition-colors font-medium text-[11px] px-2.5 py-1 rounded-full hover:bg-white"
+            >
+              Pharmacy
+            </button>
+            <span className="text-slate-300">/</span>
             <span className="text-[#C82190] font-semibold uppercase tracking-wider text-[11px] bg-pink-50 px-3.5 py-1 rounded-full border border-pink-200/70">
-              IPD Management
+              Radiology & Imaging (RIS)
             </span>
           </div>
         </div>
@@ -242,25 +288,25 @@ export const IpdManagementPage = ({ onNavigate }) => {
         {/* HERO SECTION */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-2">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            
+
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-6">
-              
+
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-200 text-[#C82190] text-xs font-semibold uppercase tracking-widest shadow-sm">
-                <HeartPulse className="w-4 h-4 text-[#C82190]" />
-                <span>CARECLOUDX • MODULE 02</span>
+                <Scan className="w-4 h-4 text-[#C82190]" />
+                <span>CARECLOUDX • MODULE 04</span>
               </div>
 
               <h1 className="text-4xl sm:text-6xl font-normal tracking-[-0.04em] text-slate-900 leading-[0.98]">
-                Intelligent <span className="bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] bg-clip-text text-transparent">IPD Management</span>
+                Intelligent <span className="bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] bg-clip-text text-transparent">Radiology (RIS)</span>
               </h1>
 
               <p className="text-xl sm:text-2xl font-normal text-[#C82190] tracking-[-0.03em] leading-[1.05]">
-                Complete Inpatient Care. Digitized. Integrated. Efficient.
+                Connected Imaging. Smarter Diagnosis. Better Outcomes.
               </p>
 
               <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-2xl">
-                CareCloudX IPD Management streamlines the entire inpatient journey from admission to discharge with real-time tracking, integrated billing, and smarter clinical workflows.
+                CareCloudX Radiology (RIS) streamlines imaging workflows with seamless scheduling, reporting, PACS integration and billing — delivering speed, accuracy and exceptional care.
               </p>
 
               {/* Action Buttons */}
@@ -269,7 +315,7 @@ export const IpdManagementPage = ({ onNavigate }) => {
                   onClick={() => setContactModalOpen(true)}
                   className="px-8 py-4 bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white font-bold text-sm sm:text-base rounded-full shadow-lg shadow-purple-900/20 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-3 cursor-pointer"
                 >
-                  <span>Book IPD Demo</span>
+                  <span>Book Radiology Demo</span>
                   <Calendar className="w-5 h-5 text-white" />
                 </button>
 
@@ -292,39 +338,45 @@ export const IpdManagementPage = ({ onNavigate }) => {
 
             </div>
 
-            {/* Right Hero Video / Visual Card */}
+            {/* Right Hero Video / Banner Card */}
             <div className="lg:col-span-5">
               <div className="p-6 sm:p-7 bg-white border border-slate-200/90 rounded-[32px] shadow-[0_12px_40px_rgba(0,0,0,0.05)] space-y-6 relative overflow-hidden">
-                
-                {/* Hero Mini Video / Preview Card */}
-                <div 
-                  onClick={() => openBigScreenVideo(videoCards[0])}
+
+                {/* Hero Mini Banner Preview Card */}
+                <div
+                  onClick={() => setBannerLightboxOpen(true)}
                   className="relative group rounded-2xl overflow-hidden cursor-pointer border border-slate-200 bg-slate-900 shadow-md transition-transform duration-300 hover:scale-[1.01]"
+                  title="Click to view full Radiology Brochure Banner"
                 >
-                  <YouTubeThumbnail
-                    videoUrl="https://youtu.be/R-bVcwDzems?si=w3Z-Slc4LqJnmnDF"
-                    alt="IPD Walkthrough YouTube Video"
-                    className="w-full h-48 sm:h-56 opacity-90 group-hover:opacity-100 transition-opacity"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex flex-col justify-between p-4">
+                  <picture className="block w-full h-52 sm:h-60 overflow-hidden bg-slate-900">
+                    <source type="image/webp" srcSet="/images/radiology-banner@2x.webp" />
+                    <img
+                      src="/images/radiology-banner@2x.png"
+                      alt="Radiology & Imaging (RIS) Platform Overview"
+                      className="w-full h-full object-cover object-top opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                      loading="lazy"
+                    />
+                  </picture>
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex flex-col justify-between p-4 pointer-events-none">
                     <div className="flex items-center justify-between">
                       <span className="bg-[#C82190] text-white text-[10px] font-mono font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5 shadow">
-                        <Video className="w-3.5 h-3.5" />
-                        <span>BIG SCREEN WALKTHROUGH</span>
+                        <Scan className="w-3.5 h-3.5" />
+                        <span>CARECLOUDX RIS</span>
                       </span>
                       <span className="bg-slate-900/90 backdrop-blur-sm text-pink-200 text-[10px] font-mono px-2.5 py-0.5 rounded-full border border-pink-500/30 font-bold flex items-center gap-1">
                         <Maximize2 className="w-3 h-3" />
-                        <span>CLICK TO WATCH</span>
+                        <span>ZOOM BROCHURE</span>
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between">
                       <div>
-                        <h4 className="text-white font-bold text-sm leading-snug">IPD Inpatient Journey Walkthrough</h4>
-                        <p className="text-slate-300 text-xs font-mono">Watch HD Video on Website</p>
+                        <h4 className="text-white font-bold text-sm leading-snug">Radiology (RIS) Showcase</h4>
+                        <p className="text-slate-300 text-xs font-mono">High-Definition Spec Brochure</p>
                       </div>
                       <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#4F16A9] to-[#C82190] text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shrink-0 ml-2">
-                        <Play className="w-5 h-5 fill-current ml-0.5" />
+                        <Maximize2 className="w-5 h-5 ml-0.5" />
                       </div>
                     </div>
                   </div>
@@ -335,28 +387,28 @@ export const IpdManagementPage = ({ onNavigate }) => {
                     MODULE METRICS
                   </span>
                   <span className="text-xs font-mono font-bold bg-pink-50 text-[#C82190] px-3 py-1 rounded-full border border-pink-200">
-                    ⚡ 360° Bed Matrix
+                    ⚡ 40% Faster TAT
                   </span>
                 </div>
 
                 <div className="space-y-3">
                   <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between transition-all hover:bg-pink-50/40">
                     <div>
-                      <span className="text-[11px] font-mono text-slate-500 block uppercase font-semibold">BED UTILIZATION RATE</span>
-                      <span className="text-base font-bold text-slate-900">Optimized to 95%+ Occupancy</span>
+                      <span className="text-[11px] font-mono text-slate-500 block uppercase font-semibold">TURNAROUND TIME</span>
+                      <span className="text-base font-bold text-slate-900">40% Reduced Reporting TAT</span>
                     </div>
                     <div className="w-9 h-9 rounded-xl bg-pink-100 text-[#C82190] flex items-center justify-center font-bold">
-                      <Bed className="w-5 h-5" />
+                      <Clock className="w-5 h-5" />
                     </div>
                   </div>
 
                   <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between transition-all hover:bg-pink-50/40">
                     <div>
-                      <span className="text-[11px] font-mono text-slate-500 block uppercase font-semibold">INPATIENT BILLING ACCURACY</span>
-                      <span className="text-base font-bold text-slate-900">Zero Revenue Leakage</span>
+                      <span className="text-[11px] font-mono text-slate-500 block uppercase font-semibold">MODALITIES & PACS</span>
+                      <span className="text-base font-bold text-slate-900">100% DICOM & HL7 Integrated</span>
                     </div>
                     <div className="w-9 h-9 rounded-xl bg-purple-100 text-[#4F16A9] flex items-center justify-center font-bold">
-                      <Receipt className="w-5 h-5" />
+                      <Database className="w-5 h-5" />
                     </div>
                   </div>
                 </div>
@@ -365,7 +417,7 @@ export const IpdManagementPage = ({ onNavigate }) => {
                   onClick={() => setContactModalOpen(true)}
                   className="w-full py-3.5 bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white rounded-2xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all shadow-md"
                 >
-                  <span>Request Full IPD Spec Sheet</span>
+                  <span>Request Full RIS Spec Sheet</span>
                   <ChevronRight className="w-4 h-4 text-white" />
                 </button>
 
@@ -375,22 +427,22 @@ export const IpdManagementPage = ({ onNavigate }) => {
           </div>
         </section>
 
-        {/* SEPARATE VIDEO / DEMO CARDS SECTION */}
-        <section id="video-showcase" className="py-20 bg-gradient-to-b from-white via-pink-50/30 to-white border-y border-slate-200/90 relative">
-          
+        {/* SEPARATE VIDEO CARDS SECTION */}
+        <section ref={videoSectionRef} id="video-showcase" className="py-20 bg-gradient-to-b from-white via-pink-50/30 to-white border-y border-slate-200/90 relative">
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
+
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 text-[#C82190] border border-pink-200 text-xs font-semibold uppercase tracking-widest shadow-sm">
                 <Tv className="w-4 h-4 text-[#C82190]" />
-                <span>IPD FEATURE DEMO CARDS</span>
+                <span>RADIOLOGY FEATURE DEMO CARDS</span>
               </div>
               <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900">
-                IPD Module Video Demonstrations
+                Radiology Module Video Demonstrations
               </h2>
               <p className="text-slate-600 text-base sm:text-lg font-normal leading-relaxed">
-                Click any video card below to open and watch the inpatient module walkthrough in HD on the <strong>Big Screen</strong>.
+                Click any video card below to open and watch the video in HD on the <strong>Big Screen</strong>.
               </p>
             </div>
 
@@ -405,7 +457,7 @@ export const IpdManagementPage = ({ onNavigate }) => {
                     key={card.id}
                     className="bg-white border-2 border-slate-200/90 rounded-[32px] p-6 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group relative"
                   >
-                    
+
                     <div>
 
                       {/* Card Header & Badge */}
@@ -427,7 +479,7 @@ export const IpdManagementPage = ({ onNavigate }) => {
                       </p>
 
                       {/* Video Preview Frame with Big Screen Play Trigger */}
-                      <div 
+                      <div
                         onClick={() => openBigScreenVideo(card)}
                         className="relative aspect-video w-full rounded-2xl bg-black overflow-hidden shadow-md border border-slate-200 mb-5 cursor-pointer group/vid"
                       >
@@ -459,27 +511,25 @@ export const IpdManagementPage = ({ onNavigate }) => {
 
                       {/* Per-Card Mode & Language Switcher Controls */}
                       <div className="space-y-3 mb-6 bg-slate-50 p-3 rounded-2xl border border-slate-100">
-                        
+
                         <div className="flex items-center justify-between">
                           <span className="text-[11px] font-mono font-bold text-slate-500 uppercase">Video Version</span>
                           <div className="flex items-center bg-white p-0.5 rounded-xl border border-slate-200 shadow-sm">
                             <button
                               onClick={() => setModeForCard(card.id, '40s')}
-                              className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all cursor-pointer ${
-                                mode === '40s'
+                              className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all cursor-pointer ${mode === '40s'
                                   ? 'bg-[#C82190] text-white'
                                   : 'text-slate-600 hover:text-slate-900'
-                              }`}
+                                }`}
                             >
                               40s Highlight
                             </button>
                             <button
                               onClick={() => setModeForCard(card.id, 'full')}
-                              className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all cursor-pointer ${
-                                mode === 'full'
+                              className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all cursor-pointer ${mode === 'full'
                                   ? 'bg-[#C82190] text-white'
                                   : 'text-slate-600 hover:text-slate-900'
-                              }`}
+                                }`}
                             >
                               Full Video
                             </button>
@@ -496,8 +546,7 @@ export const IpdManagementPage = ({ onNavigate }) => {
                             <div className="flex items-center bg-white p-0.5 rounded-xl border border-slate-200 shadow-sm">
                               <button
                                 onClick={() => setLanguageForCard(card.id, 'English')}
-                                className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all cursor-pointer ${
-                                  lang === 'English'
+                                className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all cursor-pointer ${lang === 'English'
                                     ? 'bg-[#4F16A9] text-white'
                                     : 'text-slate-600 hover:text-slate-900'
                                   }`}
@@ -506,8 +555,7 @@ export const IpdManagementPage = ({ onNavigate }) => {
                               </button>
                               <button
                                 onClick={() => setLanguageForCard(card.id, 'Hindi')}
-                                className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all cursor-pointer ${
-                                  lang === 'Hindi'
+                                className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all cursor-pointer ${lang === 'Hindi'
                                     ? 'bg-[#4F16A9] text-white'
                                     : 'text-slate-600 hover:text-slate-900'
                                   }`}
@@ -552,16 +600,16 @@ export const IpdManagementPage = ({ onNavigate }) => {
         {/* 8 CORE FEATURES GRID */}
         <section className="py-20 bg-slate-50 border-b border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#C82190] block mb-2">
                 MODULE CAPABILITIES
               </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-                Core IPD Features
+                Core Radiology Features
               </h2>
               <p className="text-slate-600 text-base font-normal">
-                Everything required for modern inpatient hospital operations in one digitized, unified platform.
+                Complete diagnostic imaging workflow management connecting modalities, PACS, radiologist reporting, and hospital billing.
               </p>
             </div>
 
@@ -591,16 +639,16 @@ export const IpdManagementPage = ({ onNavigate }) => {
         {/* WORKFLOW SEQUENCE SECTION */}
         <section id="workflow-section" className="py-20 bg-white border-b border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-xs font-mono font-bold uppercase tracking-widest text-slate-400 block mb-2">
-                CLINICAL INPATIENT JOURNEY
+                DIAGNOSTIC IMAGING PIPELINE
               </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-                6-Step IPD Workflow
+                6-Step Radiology Workflow
               </h2>
               <p className="text-slate-600 text-base font-normal">
-                End-to-end inpatient care cycle from patient admission to final discharge and bed turnover.
+                End-to-end clinical imaging journey from doctor order entry to high-resolution DICOM archive and delivery.
               </p>
             </div>
 
@@ -625,16 +673,16 @@ export const IpdManagementPage = ({ onNavigate }) => {
         {/* BENEFITS & CLIENT TESTIMONIAL */}
         <section className="py-20 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              
+
               {/* Left Column: Benefits */}
               <div className="lg:col-span-7 space-y-6">
                 <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#C82190] block">
                   KEY BENEFITS
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-                  Why Hospitals Upgrade to CareCloudX IPD
+                  Why Hospitals Upgrade to CareCloudX Radiology
                 </h2>
 
                 <div className="space-y-3 pt-4">
@@ -651,16 +699,16 @@ export const IpdManagementPage = ({ onNavigate }) => {
               <div className="lg:col-span-5">
                 <div className="p-8 sm:p-10 bg-gradient-to-br from-[#4F16A9] via-[#8B1C9B] to-[#C82190] text-white rounded-[32px] shadow-2xl relative space-y-6 border border-pink-400/30 overflow-hidden">
                   <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-2xl pointer-events-none" />
-                  
+
                   <Sparkles className="w-12 h-12 text-pink-200 opacity-90" />
-                  
+
                   <blockquote className="text-base sm:text-lg italic font-normal leading-relaxed text-pink-50">
-                    "CareCloudX IPD management has significantly improved our bed utilization and billing accuracy."
+                    "CareCloudX Radiology has reduced our reporting turnaround time by 40% and improved image accessibility across our hospital."
                   </blockquote>
 
                   <div className="pt-4 border-t border-pink-400/30">
-                    <span className="font-extrabold text-white block text-base">Dr. Sandeep Rao</span>
-                    <span className="text-xs font-mono text-pink-200">Hospital Administrator</span>
+                    <span className="font-extrabold text-white block text-base">Dr. Vivek Sharma</span>
+                    <span className="text-xs font-mono text-pink-200">Radiology Head</span>
                   </div>
                 </div>
               </div>
@@ -671,6 +719,41 @@ export const IpdManagementPage = ({ onNavigate }) => {
         </section>
 
       </main>
+
+      {/* BANNER LIGHTBOX MODAL */}
+      {bannerLightboxOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-xl flex items-center justify-center p-3 sm:p-6 md:p-8 animate-in fade-in duration-200"
+          onClick={() => setBannerLightboxOpen(false)}
+        >
+          <div
+            className="max-w-4xl w-full max-h-[92vh] bg-slate-900 border-2 border-slate-700/80 rounded-2xl sm:rounded-[32px] overflow-hidden shadow-2xl flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-slate-800 bg-slate-900/90">
+              <div className="flex items-center gap-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#C82190] animate-pulse" />
+                <h3 className="text-base sm:text-lg font-bold text-white">
+                  CareCloudX Radiology (RIS) Module Brochure
+                </h3>
+              </div>
+              <button
+                onClick={() => setBannerLightboxOpen(false)}
+                className="w-9 h-9 rounded-full bg-slate-800 hover:bg-[#C82190] text-slate-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer border border-slate-700"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="p-4 sm:p-6 overflow-auto flex items-center justify-center bg-slate-950">
+              <img
+                src="/images/radiology-banner@2x.png"
+                alt="CareCloudX Radiology High Resolution Banner"
+                className="max-h-[75vh] w-auto object-contain rounded-xl shadow-2xl"
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* BIG SCREEN LIGHTBOX VIDEO MODAL */}
       <YouTubeVideoModal
@@ -691,4 +774,4 @@ export const IpdManagementPage = ({ onNavigate }) => {
   );
 };
 
-export default IpdManagementPage;
+export default RadiologyManagementPage;
