@@ -424,34 +424,34 @@ export const LaboratoryPage = ({ onNavigate }) => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-8">
               {workflowSteps.map((step, idx) => {
                 const StepIcon = step.icon;
                 return (
                   <div
                     key={idx}
-                    className="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-pink-300 hover:shadow-lg transition-all duration-200 group relative flex flex-col justify-between"
+                    className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-pink-300 hover:shadow-lg transition-all duration-200 group relative flex flex-col justify-between"
                   >
                     <div>
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200/90 text-[#C82190] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#C82190] group-hover:text-white transition-all shadow-sm">
-                          <StepIcon className="w-6 h-6" />
+                      <div className="flex items-center justify-between mb-2 sm:mb-4">
+                        <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-2xl bg-white border border-slate-200/90 text-[#C82190] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#C82190] group-hover:text-white transition-all shadow-sm">
+                          <StepIcon className="w-4 h-4 sm:w-6 sm:h-6" />
                         </div>
-                        <span className="text-2xl font-black font-mono text-slate-300 group-hover:text-[#C82190] transition-colors">
+                        <span className="text-lg sm:text-2xl font-black font-mono text-slate-300 group-hover:text-[#C82190] transition-colors">
                           {step.num}
                         </span>
                       </div>
-                      <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-[#C82190] transition-colors">
+                      <h3 className="text-xs sm:text-lg font-bold text-slate-900 mb-1 sm:mb-2 group-hover:text-[#C82190] transition-colors leading-snug">
                         {step.title}
                       </h3>
-                      <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                      <p className="text-[10px] sm:text-xs text-slate-600 leading-tight sm:leading-relaxed font-normal">
                         {step.desc}
                       </p>
                     </div>
 
-                    <div className="mt-6 pt-4 border-t border-slate-200/60 flex items-center text-[11px] font-bold text-[#C82190] gap-1 group-hover:translate-x-1 transition-transform">
+                    <div className="mt-3 sm:mt-6 pt-2 sm:pt-4 border-t border-slate-200/60 flex items-center text-[9px] sm:text-[11px] font-bold text-[#C82190] gap-1 group-hover:translate-x-1 transition-transform">
                       <span>Step {step.num} Verified</span>
-                      <Check className="w-3.5 h-3.5" />
+                      <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     </div>
                   </div>
                 );
@@ -474,31 +474,31 @@ export const LaboratoryPage = ({ onNavigate }) => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
             {lisFeatures.map((feat, idx) => {
               const FIcon = feat.icon;
               return (
                 <div
                   key={idx}
-                  className="p-6 bg-white border border-slate-200/90 rounded-3xl hover:shadow-xl hover:border-pink-300 transition-all duration-200 flex flex-col justify-between group"
+                  className="p-3.5 sm:p-6 bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl hover:shadow-xl hover:border-pink-300 transition-all duration-200 flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-2xl bg-pink-50 text-[#C82190] flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-[#C82190] group-hover:text-white transition-all">
-                      <FIcon className="w-6 h-6" />
+                    <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-2xl bg-pink-50 text-[#C82190] flex items-center justify-center mb-3 sm:mb-5 group-hover:scale-110 group-hover:bg-[#C82190] group-hover:text-white transition-all">
+                      <FIcon className="w-4 h-4 sm:w-6 sm:h-6" />
                     </div>
-                    <h3 className="text-lg font-extrabold text-slate-900 mb-2 group-hover:text-[#C82190] transition-colors">
+                    <h3 className="text-xs sm:text-lg font-extrabold text-slate-900 mb-1 sm:mb-2 group-hover:text-[#C82190] transition-colors leading-snug">
                       {feat.title}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                    <p className="text-[10px] sm:text-xs text-slate-600 leading-tight sm:leading-relaxed mb-2 sm:mb-4">
                       {feat.desc}
                     </p>
                   </div>
 
-                  <div className="space-y-2 pt-4 border-t border-slate-100">
+                  <div className="space-y-1 sm:space-y-2 pt-2 sm:pt-4 border-t border-slate-100">
                     {feat.points.map((pt, pIdx) => (
-                      <div key={pIdx} className="flex items-start gap-1.5 text-[11px] font-medium text-slate-700">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#C82190] shrink-0 mt-0.5" />
-                        <span>{pt}</span>
+                      <div key={pIdx} className="flex items-start gap-1 sm:gap-1.5 text-[9.5px] sm:text-[11px] font-medium text-slate-700">
+                        <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C82190] shrink-0 mt-0.5" />
+                        <span className="line-clamp-2">{pt}</span>
                       </div>
                     ))}
                   </div>
@@ -632,13 +632,13 @@ export const LaboratoryPage = ({ onNavigate }) => {
                 </div>
               </div>
 
-              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="lg:col-span-7 grid grid-cols-2 gap-2.5 sm:gap-4">
                 {benefits.map((b, idx) => (
-                  <div key={idx} className="p-4 bg-slate-800/70 border border-slate-700/80 rounded-2xl flex items-start gap-3">
-                    <div className="p-2 rounded-xl bg-pink-500/20 text-pink-400 shrink-0">
-                      <Award className="w-5 h-5" />
+                  <div key={idx} className="p-2.5 sm:p-4 bg-slate-800/70 border border-slate-700/80 rounded-xl sm:rounded-2xl flex items-start gap-2 sm:gap-3">
+                    <div className="p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-pink-500/20 text-pink-400 shrink-0">
+                      <Award className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
-                    <span className="text-xs sm:text-sm font-semibold text-slate-200 leading-snug">
+                    <span className="text-[10px] sm:text-sm font-semibold text-slate-200 leading-tight sm:leading-snug">
                       {b}
                     </span>
                   </div>

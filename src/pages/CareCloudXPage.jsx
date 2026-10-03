@@ -412,8 +412,8 @@ export const CareCloudXPage = ({ onNavigate }) => {
           </div>
         </section>
 
-        {/* 4 PILLARS SECTION */}
-        <section className="py-12 sm:py-16 bg-slate-50 border-y border-slate-200/80">
+        {/* 4 PILLARS SECTION - 2x2 GRID ON MOBILE */}
+        <section className="py-10 sm:py-16 bg-slate-50 border-y border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
@@ -428,20 +428,21 @@ export const CareCloudXPage = ({ onNavigate }) => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
               {pillars.map((pillar, idx) => {
                 const IconC = pillar.icon;
                 return (
                   <div
                     key={idx}
-                    className="p-5 sm:p-6 bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+                    className="p-3 sm:p-6 bg-white border border-slate-200/90 rounded-xl sm:rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
                   >
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] opacity-0 group-hover:opacity-100 transition-opacity" />
                     <div>
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-pink-50 text-[#C82190] border border-pink-100 flex items-center justify-center mb-4 sm:mb-5 shadow-sm group-hover:bg-gradient-to-r group-hover:from-[#4F16A9] group-hover:to-[#C82190] group-hover:text-white transition-all duration-300">
-                        <IconC className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:scale-110" />
+                      <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-2xl bg-pink-50 text-[#C82190] border border-pink-100 flex items-center justify-center mb-2 sm:mb-5 shadow-2xs group-hover:bg-gradient-to-r group-hover:from-[#4F16A9] group-hover:to-[#C82190] group-hover:text-white transition-all duration-300">
+                        <IconC className="w-4 h-4 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:scale-110" />
                       </div>
-                      <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5 group-hover:text-[#C82190] transition-colors">{pillar.title}</h3>
-                      <p className="text-xs text-slate-600 leading-relaxed font-normal">{pillar.desc}</p>
+                      <h3 className="text-xs sm:text-lg font-bold text-slate-900 mb-1 group-hover:text-[#C82190] transition-colors">{pillar.title}</h3>
+                      <p className="text-[11px] sm:text-xs text-slate-600 leading-tight sm:leading-relaxed font-normal">{pillar.desc}</p>
                     </div>
                   </div>
                 );
@@ -451,22 +452,22 @@ export const CareCloudXPage = ({ onNavigate }) => {
         </section>
 
         {/* OFFICIAL VIDEO SHOWCASE SECTION */}
-        <section className="py-12 sm:py-16 bg-gradient-to-b from-white via-pink-50/20 to-white border-b border-slate-200/80">
+        <section className="py-10 sm:py-16 bg-gradient-to-b from-white via-pink-50/20 to-white border-b border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-slate-900 rounded-3xl p-6 sm:p-10 text-white shadow-2xl relative overflow-hidden border border-slate-800">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <div className="lg:col-span-6 space-y-4">
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-pink-950/80 border border-pink-500/30 text-pink-300 text-xs font-mono font-bold uppercase tracking-wider">
-                    <Video className="w-3.5 h-3.5 text-[#C82190]" />
+            <div className="bg-slate-900 rounded-2xl sm:rounded-3xl p-4 sm:p-10 text-white shadow-2xl relative overflow-hidden border border-slate-800">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+                <div className="lg:col-span-6 space-y-3 sm:space-y-4">
+                  <div className="inline-flex items-center gap-2 px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full bg-pink-950/80 border border-pink-500/30 text-pink-300 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider">
+                    <Video className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C82190]" />
                     <span>Official Product Video</span>
                   </div>
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white leading-tight">
+                  <h2 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-white leading-tight">
                     Watch CareCloudX ERP in Action
                   </h2>
-                  <p className="text-slate-300 text-sm sm:text-base font-normal leading-relaxed">
+                  <p className="text-slate-300 text-xs sm:text-base font-normal leading-relaxed">
                     Explore our comprehensive hospital information system video walkthrough directly on your website.
                   </p>
-                  <div className="flex flex-wrap gap-3 pt-2">
+                  <div className="flex flex-wrap gap-3 pt-1 sm:pt-2">
                     <button
                       onClick={() =>
                         setActiveVideoModal({
@@ -477,7 +478,7 @@ export const CareCloudXPage = ({ onNavigate }) => {
                           badge: 'Official Walkthrough',
                         })
                       }
-                      className="px-6 py-3.5 bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white font-bold text-xs sm:text-sm rounded-full shadow-lg flex items-center gap-2 cursor-pointer transition-all hover:scale-[1.02]"
+                      className="px-4 sm:px-6 py-2.5 sm:py-3.5 bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white font-bold text-xs sm:text-sm rounded-full shadow-lg flex items-center gap-2 cursor-pointer transition-all hover:scale-[1.02]"
                     >
                       <Play className="w-4 h-4 fill-current" />
                       <span>Play Video on Website</span>
@@ -496,28 +497,28 @@ export const CareCloudXPage = ({ onNavigate }) => {
                         badge: 'Official Walkthrough',
                       })
                     }
-                    className="relative aspect-video w-full rounded-2xl overflow-hidden bg-slate-950 border border-slate-700/80 cursor-pointer group shadow-2xl hover:scale-[1.01] transition-transform"
+                    className="relative aspect-video w-full rounded-xl sm:rounded-2xl overflow-hidden bg-slate-950 border border-slate-700/80 cursor-pointer group shadow-2xl hover:scale-[1.01] transition-transform"
                   >
                     <YouTubeThumbnail
                       videoUrl="https://youtu.be/R-bVcwDzems?si=w3Z-Slc4LqJnmnDF"
                       alt="CareCloudX ERP Video Walkthrough"
                       className="opacity-90 group-hover:opacity-100 transition-opacity"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent flex flex-col justify-between p-4 sm:p-6">
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent flex flex-col justify-between p-3.5 sm:p-6">
                       <div className="flex justify-end">
-                        <span className="bg-slate-900/90 backdrop-blur-md text-pink-300 text-xs font-mono font-bold px-3 py-1 rounded-full border border-pink-500/30 flex items-center gap-1.5 shadow">
-                          <Maximize2 className="w-3.5 h-3.5 text-[#C82190]" />
+                        <span className="bg-slate-900/90 backdrop-blur-md text-pink-300 text-[10px] sm:text-xs font-mono font-bold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-pink-500/30 flex items-center gap-1.5 shadow">
+                          <Maximize2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C82190]" />
                           <span>Click to Play HD</span>
                         </span>
                       </div>
 
                       <div className="flex items-center justify-between">
                         <div>
-                          <h4 className="text-white font-bold text-sm sm:text-base">CareCloudX System Tour</h4>
-                          <p className="text-slate-300 text-xs font-mono">YouTube HD Video</p>
+                          <h4 className="text-white font-bold text-xs sm:text-base">CareCloudX System Tour</h4>
+                          <p className="text-slate-300 text-[10px] sm:text-xs font-mono">YouTube HD Video</p>
                         </div>
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#4F16A9] to-[#C82190] text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-xl shrink-0">
-                          <Play className="w-6 h-6 fill-current ml-0.5" />
+                        <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-[#4F16A9] to-[#C82190] text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-xl shrink-0">
+                          <Play className="w-4 h-4 sm:w-6 sm:h-6 fill-current ml-0.5" />
                         </div>
                       </div>
                     </div>
@@ -528,8 +529,8 @@ export const CareCloudXPage = ({ onNavigate }) => {
           </div>
         </section>
 
-        {/* 12 INTEGRATED MODULES GRID SECTION */}
-        <section id="modules-list" className="py-12 sm:py-20 bg-white">
+        {/* 12 INTEGRATED MODULES GRID SECTION - 2-COLUMN GRID ON MOBILE */}
+        <section id="modules-list" className="py-10 sm:py-20 bg-slate-50/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {/* Section Header */}
@@ -547,53 +548,49 @@ export const CareCloudXPage = ({ onNavigate }) => {
               </p>
             </div>
 
-            {/* Grid of 12 Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
+            {/* Grid of 12 Cards - 2 Cards Wide on Mobile */}
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6 lg:gap-8">
               {modules.map((m) => {
                 const IconC = m.icon;
                 return (
                   <div
                     key={m.num}
-                    className="p-5 sm:p-6 lg:p-8 bg-slate-50/70 border border-slate-200/90 rounded-2xl sm:rounded-[32px] flex flex-col justify-between shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 group relative overflow-hidden"
+                    className="p-3 sm:p-6 lg:p-8 bg-white border border-slate-200/90 rounded-xl sm:rounded-[32px] flex flex-col justify-between shadow-xs hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 group relative overflow-hidden"
                   >
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] opacity-0 group-hover:opacity-100 transition-opacity" />
+
                     <div>
                       {/* Top Bar */}
-                      <div className="flex items-center justify-between mb-4 sm:mb-6">
-                        <span className="font-mono text-2xl sm:text-3xl font-black bg-gradient-to-r from-[#4F16A9] to-[#C82190] bg-clip-text text-transparent">
+                      <div className="flex items-center justify-between mb-2 sm:mb-6">
+                        <span className="font-mono text-base sm:text-3xl font-black bg-gradient-to-r from-[#4F16A9] to-[#C82190] bg-clip-text text-transparent">
                           {m.num}
                         </span>
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white border border-slate-200 text-[#C82190] flex items-center justify-center shadow-sm group-hover:bg-gradient-to-r group-hover:from-[#4F16A9] group-hover:to-[#C82190] group-hover:text-white transition-all duration-300">
-                          <IconC className="w-5 h-5 sm:w-6 sm:h-6" />
+                        <div className="w-7 h-7 sm:w-12 sm:h-12 rounded-lg sm:rounded-2xl bg-pink-50/80 border border-pink-100 text-[#C82190] flex items-center justify-center shadow-2xs group-hover:bg-gradient-to-r group-hover:from-[#4F16A9] group-hover:to-[#C82190] group-hover:text-white transition-all duration-300 shrink-0">
+                          <IconC className="w-3.5 h-3.5 sm:w-6 sm:h-6" />
                         </div>
                       </div>
 
                       {/* Title & Category */}
-                      <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 mb-1 group-hover:text-[#C82190] transition-colors">
+                      <h3 className="text-xs sm:text-2xl font-extrabold text-slate-900 mb-1 group-hover:text-[#C82190] transition-colors leading-tight">
                         {m.title}
                       </h3>
 
-                      <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#C82190] bg-pink-50 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-pink-200 inline-block mb-3">
+                      <span className="text-[9px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#C82190] bg-pink-50 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full border border-pink-200 inline-block mb-1.5 truncate max-w-full">
                         {m.category}
                       </span>
 
-                      {m.tagline && (
-                        <span className="text-xs font-semibold text-slate-700 block mb-2.5 italic">
-                          "{m.tagline}"
-                        </span>
-                      )}
-
                       {/* Description */}
-                      <p className="text-xs text-slate-600 leading-relaxed font-normal mb-5 sm:mb-6">
+                      <p className="text-[11px] sm:text-xs text-slate-600 leading-tight sm:leading-relaxed font-normal mb-3 sm:mb-6 line-clamp-3 sm:line-clamp-none">
                         {m.desc}
                       </p>
 
                       {/* Capabilities checklist */}
-                      <div className="space-y-2 sm:space-y-2.5 pt-3 sm:pt-4 border-t border-slate-200 mb-5 sm:mb-6">
-                        <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 block mb-1.5 sm:mb-2">CORE CAPABILITIES</span>
+                      <div className="space-y-1 sm:space-y-2.5 pt-2 sm:pt-4 border-t border-slate-100 mb-3 sm:mb-6">
+                        <span className="text-[8px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 block mb-1 sm:mb-2">CORE CAPABILITIES</span>
                         {m.features.map((feat, fIdx) => (
-                          <div key={fIdx} className="flex items-start gap-2 text-[11px] sm:text-xs font-medium text-slate-800">
-                            <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C82190] shrink-0 mt-0.5" />
-                            <span>{feat}</span>
+                          <div key={fIdx} className="flex items-start gap-1.5 text-[10px] sm:text-xs font-medium text-slate-700">
+                            <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-[#C82190] shrink-0 mt-0.5" />
+                            <span className="line-clamp-2 sm:line-clamp-none">{feat}</span>
                           </div>
                         ))}
                       </div>
@@ -628,14 +625,14 @@ export const CareCloudXPage = ({ onNavigate }) => {
                           setContactModalOpen(true);
                         }
                       }}
-                      className={`w-full py-3 sm:py-3.5 rounded-xl sm:rounded-2xl font-bold text-[11px] sm:text-xs flex items-center justify-center gap-2 cursor-pointer transition-all shadow-md ${
+                      className={`w-full py-2 sm:py-3.5 rounded-lg sm:rounded-2xl font-bold text-[10px] sm:text-xs flex items-center justify-center gap-1 sm:gap-2 cursor-pointer transition-all shadow-md active:scale-[0.98] ${
                         m.isOPD || m.isIPD || m.isLab
                           ? 'bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white'
                           : 'bg-slate-900 hover:bg-slate-800 text-white'
                       }`}
                     >
-                      <span>{m.isOPD ? 'Explore Dedicated OPD Page' : m.isIPD ? 'Explore Dedicated IPD Page' : m.isLab ? 'Explore Dedicated Lab LIS Page' : 'Request Module Demo'}</span>
-                      <ChevronRight className="w-4 h-4 shrink-0" />
+                      <span className="truncate">{m.isOPD ? 'Explore OPD' : m.isIPD ? 'Explore IPD' : m.isLab ? 'Explore Lab LIS' : 'Demo'}</span>
+                      <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 shrink-0" />
                     </button>
                   </div>
                 );
