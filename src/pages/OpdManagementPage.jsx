@@ -205,7 +205,7 @@ export const OpdManagementPage = ({ onNavigate }) => {
     <div className="min-h-screen bg-slate-50 text-slate-900 relative selection:bg-[#C82190]/20 selection:text-[#C82190] font-sans">
 
       {/* Top Navbar */}
-      <Navbar onOpenContact={() => setContactModalOpen(true)} />
+      <Navbar onOpenContact={() => setContactModalOpen(true)} onNavigate={onNavigate} />
 
       <main className="pt-24 pb-20">
 
@@ -639,7 +639,7 @@ export const OpdManagementPage = ({ onNavigate }) => {
       />
 
       {/* Footer */}
-      <Footer onOpenContact={() => setContactModalOpen(true)} />
+      <Footer onOpenContact={() => setContactModalOpen(true)} onNavigate={onNavigate} />
 
       {/* Contact Form Modal */}
       <ContactModal

@@ -11,7 +11,7 @@ import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 import ContactModal from '../components/ContactModal';
 
-export const Home = () => {
+export const Home = ({ onNavigate }) => {
   const [contactModalOpen, setContactModalOpen] = useState(false);
 
   useEffect(() => {
@@ -22,13 +22,13 @@ export const Home = () => {
     <div className="min-h-screen bg-white text-slate-900 relative selection:bg-[#C82190]/20 selection:text-[#C82190]">
 
       {/* Main Sticky Glass Navigation */}
-      <Navbar onOpenContact={() => setContactModalOpen(true)} />
+      <Navbar onOpenContact={() => setContactModalOpen(true)} onNavigate={onNavigate} />
 
       {/* Page Sections */}
       <main className="max-w-full overflow-x-clip">
         <Hero onOpenContact={() => setContactModalOpen(true)} />
         <Stats />
-        <Solutions />
+        <Solutions onNavigate={onNavigate} />
         <Services onOpenContact={() => setContactModalOpen(true)} />
         <Industries />
         <WhyTinyWorks onOpenContact={() => setContactModalOpen(true)} />
@@ -37,7 +37,7 @@ export const Home = () => {
       </main>
 
       {/* Footer */}
-      <Footer onOpenContact={() => setContactModalOpen(true)} />
+      <Footer onOpenContact={() => setContactModalOpen(true)} onNavigate={onNavigate} />
 
       {/* Contact Form Modal */}
       <ContactModal
