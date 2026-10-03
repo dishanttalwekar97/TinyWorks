@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ContactModal from '../components/ContactModal';
+import { YouTubeThumbnail, YouTubeVideoModal } from '../components/YouTubePlayer';
 import {
   Stethoscope,
   Calendar,
@@ -68,11 +69,9 @@ export const OpdManagementPage = ({ onNavigate }) => {
       id: 'opd-appointment',
       title: 'OPD Appointment & Queue Management',
       subtitle: 'Smart front-desk booking, doctor schedule allocation, patient token flow, and waiting queue reduction.',
-      shortSrc: '/videos/Converted%20Video/OPD-Appointment-English-40s.mp4',
-      fullEnglishSrc: '/videos/Converted%20Video/OPD-Appointment-English.mp4',
-      fullHindiSrc: '/videos/Converted%20Video/OPD-Appointment-Hindi.mp4',
-      duration: '0:40',
-      fullDuration: '3:30',
+      youtubeUrl: 'https://youtu.be/R-bVcwDzems?si=w3Z-Slc4LqJnmnDF',
+      youtubeId: 'R-bVcwDzems',
+      duration: '3:30',
       badge: 'Appointment & Queue',
       metrics: '40% Faster Queue',
       points: [
@@ -85,11 +84,9 @@ export const OpdManagementPage = ({ onNavigate }) => {
       id: 'tab-opd',
       title: 'Tab & Mobile OPD Prescription Workflow',
       subtitle: 'Fast doctor consultation interface on tablets with instant e-prescriptions, vitals logging & diagnosis templates.',
-      shortSrc: '/videos/Converted%20Video/Tab-OPD-English-40s.mp4',
-      fullEnglishSrc: '/videos/Converted%20Video/Tab-OPD-English.mp4',
-      fullHindiSrc: '/videos/Converted%20Video/Tab-OPD-Hindi.mp4',
-      duration: '0:40',
-      fullDuration: '3:15',
+      youtubeUrl: 'https://youtu.be/R-bVcwDzems?si=w3Z-Slc4LqJnmnDF',
+      youtubeId: 'R-bVcwDzems',
+      duration: '3:15',
       badge: 'Tablet & Mobile EMR',
       metrics: '100% Paperless',
       points: [
@@ -102,11 +99,9 @@ export const OpdManagementPage = ({ onNavigate }) => {
       id: 'simple-opd',
       title: 'Complete Outpatient Management Overview',
       subtitle: 'Comprehensive overview covering patient registration, consultation, e-prescribing, lab orders, and instant billing.',
-      shortSrc: '/videos/Converted%20Video/Simple-OPD-English-40s.mp4',
-      fullEnglishSrc: '/videos/Converted%20Video/Simple-OPD-English.mp4',
-      fullHindiSrc: '/videos/Converted%20Video/Simple-OPD-Hindi.mp4',
-      duration: '0:40',
-      fullDuration: '4:20',
+      youtubeUrl: 'https://youtu.be/R-bVcwDzems?si=w3Z-Slc4LqJnmnDF',
+      youtubeId: 'R-bVcwDzems',
+      duration: '4:20',
       badge: 'Full Module Walkthrough',
       metrics: 'Unified OPD Flow',
       points: [
@@ -300,13 +295,10 @@ export const OpdManagementPage = ({ onNavigate }) => {
                   onClick={() => openBigScreenVideo(videoCards[0])}
                   className="relative group rounded-2xl overflow-hidden cursor-pointer border border-slate-200 bg-slate-900 shadow-md transition-transform duration-300 hover:scale-[1.01]"
                 >
-                  <video
-                    src="/videos/Converted%20Video/OPD-Appointment-English-40s.mp4"
-                    muted
-                    loop
-                    autoPlay
-                    playsInline
-                    className="w-full h-48 sm:h-56 object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                  <YouTubeThumbnail
+                    videoUrl="https://youtu.be/R-bVcwDzems?si=w3Z-Slc4LqJnmnDF"
+                    alt="OPD Walkthrough YouTube Video"
+                    className="w-full h-48 sm:h-56 opacity-90 group-hover:opacity-100 transition-opacity"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex flex-col justify-between p-4">
                     <div className="flex items-center justify-between">
@@ -316,14 +308,14 @@ export const OpdManagementPage = ({ onNavigate }) => {
                       </span>
                       <span className="bg-slate-900/90 backdrop-blur-sm text-pink-200 text-[10px] font-mono px-2.5 py-0.5 rounded-full border border-pink-500/30 font-bold flex items-center gap-1">
                         <Maximize2 className="w-3 h-3" />
-                        <span>CLICK TO ENLARGE</span>
+                        <span>CLICK TO WATCH</span>
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between">
                       <div>
                         <h4 className="text-white font-bold text-sm leading-snug">OPD Appointment Walkthrough</h4>
-                        <p className="text-slate-300 text-xs font-mono">Click to open on Big Screen</p>
+                        <p className="text-slate-300 text-xs font-mono">Watch HD Video on Website</p>
                       </div>
                       <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#4F16A9] to-[#C82190] text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shrink-0 ml-2">
                         <Play className="w-5 h-5 fill-current ml-0.5" />
@@ -433,14 +425,10 @@ export const OpdManagementPage = ({ onNavigate }) => {
                         onClick={() => openBigScreenVideo(card)}
                         className="relative aspect-video w-full rounded-2xl bg-black overflow-hidden shadow-md border border-slate-200 mb-5 cursor-pointer group/vid"
                       >
-                        <video
-                          key={`${card.id}-${mode}-${lang}`}
-                          src={getCardVideoSrc(card)}
-                          muted
-                          loop
-                          autoPlay
-                          playsInline
-                          className="w-full h-full object-cover opacity-90 group-hover/vid:opacity-100 transition-opacity"
+                        <YouTubeThumbnail
+                          videoUrl={card.youtubeUrl || 'https://youtu.be/R-bVcwDzems?si=w3Z-Slc4LqJnmnDF'}
+                          alt={card.title}
+                          className="opacity-90 group-hover/vid:opacity-100 transition-opacity"
                         />
 
                         {/* Overlay with Big Screen Play Button */}
@@ -448,13 +436,13 @@ export const OpdManagementPage = ({ onNavigate }) => {
                           <div className="flex justify-end">
                             <span className="bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-mono font-bold px-2.5 py-1 rounded-full border border-white/20 flex items-center gap-1 shadow">
                               <Maximize2 className="w-3 h-3 text-[#C82190]" />
-                              <span>Big Screen</span>
+                              <span>Big Screen HD</span>
                             </span>
                           </div>
 
                           <div className="flex items-center justify-between">
                             <span className="text-white text-xs font-bold font-mono">
-                              Click to Play on Big Screen
+                              Watch Video on Website
                             </span>
                             <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#4F16A9] to-[#C82190] text-white flex items-center justify-center group-hover/vid:scale-110 transition-transform shadow-xl shrink-0">
                               <Play className="w-6 h-6 fill-current ml-0.5" />
@@ -675,121 +663,10 @@ export const OpdManagementPage = ({ onNavigate }) => {
       </main>
 
       {/* BIG SCREEN LIGHTBOX VIDEO MODAL */}
-      {activeModalVideo && (
-        <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 md:p-8 animate-in fade-in duration-200">
-          <div className="max-w-5xl w-full bg-slate-900 border-2 border-slate-700/80 rounded-[32px] overflow-hidden shadow-2xl text-white relative flex flex-col max-h-[92vh]">
-
-            {/* Modal Header Bar */}
-            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-slate-800 bg-slate-900/90">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#C82190] animate-pulse" />
-                  <span className="text-xs font-mono font-bold uppercase text-[#C82190] tracking-wider">
-                    BIG SCREEN VIDEO WALKTHROUGH
-                  </span>
-                </div>
-                <h3 className="text-lg sm:text-xl font-extrabold text-white leading-tight">
-                  {activeModalVideo.title}
-                </h3>
-              </div>
-
-              {/* Close Button */}
-              <button
-                onClick={() => setActiveModalVideo(null)}
-                className="w-11 h-11 rounded-full bg-slate-800 hover:bg-[#C82190] text-slate-300 hover:text-white flex items-center justify-center cursor-pointer transition-all shrink-0 ml-4 border border-slate-700"
-                aria-label="Close big screen video"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-
-            {/* Modal Video Body */}
-            <div className="p-4 sm:p-6 overflow-y-auto space-y-5">
-
-              {/* High Def Video Player */}
-              <div className="relative aspect-video w-full rounded-2xl bg-black overflow-hidden shadow-2xl border border-slate-800">
-                <video
-                  key={`modal-${activeModalVideo.id}-${cardModes[activeModalVideo.id] || '40s'}-${cardLanguages[activeModalVideo.id] || 'English'}`}
-                  src={getCardVideoSrc(activeModalVideo)}
-                  controls
-                  controlsList="nodownload"
-                  playsInline
-                  autoPlay
-                  preload="auto"
-                  className="w-full h-full object-contain bg-black rounded-2xl"
-                >
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-
-              {/* Modal Controls Bar */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-950 p-4 rounded-2xl border border-slate-800">
-
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="text-xs font-mono font-bold text-slate-400 uppercase">Version:</span>
-                  <div className="flex items-center bg-slate-900 p-1 rounded-xl border border-slate-800">
-                    <button
-                      onClick={() => setModeForCard(activeModalVideo.id, '40s')}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${(cardModes[activeModalVideo.id] || '40s') === '40s'
-                          ? 'bg-[#C82190] text-white'
-                          : 'text-slate-400 hover:text-white'
-                        }`}
-                    >
-                      40s Highlight
-                    </button>
-                    <button
-                      onClick={() => setModeForCard(activeModalVideo.id, 'full')}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${(cardModes[activeModalVideo.id] || '40s') === 'full'
-                          ? 'bg-[#C82190] text-white'
-                          : 'text-slate-400 hover:text-white'
-                        }`}
-                    >
-                      Full Walkthrough
-                    </button>
-                  </div>
-
-                  {(cardModes[activeModalVideo.id] || '40s') === 'full' && (
-                    <div className="flex items-center gap-1 bg-slate-900 p-1 rounded-xl border border-slate-800 ml-2">
-                      <Globe className="w-3.5 h-3.5 text-[#C82190] ml-1.5" />
-                      <button
-                        onClick={() => setLanguageForCard(activeModalVideo.id, 'English')}
-                        className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${(cardLanguages[activeModalVideo.id] || 'English') === 'English'
-                            ? 'bg-[#4F16A9] text-white'
-                            : 'text-slate-400 hover:text-white'
-                          }`}
-                      >
-                        English
-                      </button>
-                      <button
-                        onClick={() => setLanguageForCard(activeModalVideo.id, 'Hindi')}
-                        className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${(cardLanguages[activeModalVideo.id] || 'English') === 'Hindi'
-                            ? 'bg-[#4F16A9] text-white'
-                            : 'text-slate-400 hover:text-white'
-                          }`}
-                      >
-                        Hindi
-                      </button>
-                    </div>
-                  )}
-                </div>
-
-                <button
-                  onClick={() => {
-                    setActiveModalVideo(null);
-                    setContactModalOpen(true);
-                  }}
-                  className="px-6 py-3 bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white font-bold text-xs rounded-xl shadow-lg transition-all shrink-0 cursor-pointer"
-                >
-                  Book OPD Demo
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-      )}
+      <YouTubeVideoModal
+        video={activeModalVideo}
+        onClose={() => setActiveModalVideo(null)}
+      />
 
       {/* Footer */}
       <Footer onOpenContact={() => setContactModalOpen(true)} />

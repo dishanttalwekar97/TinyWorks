@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ContactModal from '../components/ContactModal';
+import { YouTubeThumbnail, YouTubeVideoModal } from '../components/YouTubePlayer';
 import {
   Stethoscope,
   HeartPulse,
@@ -24,10 +25,14 @@ import {
   Layers,
   ChevronRight,
   ArrowLeft,
+  Play,
+  Video,
+  Maximize2,
 } from 'lucide-react';
 
 export const CareCloudXPage = ({ onNavigate }) => {
   const [contactModalOpen, setContactModalOpen] = useState(false);
+  const [activeVideoModal, setActiveVideoModal] = useState(null);
 
   useEffect(() => {
     document.title = 'CareCloudX | Enterprise Hospital ERP - TinyWorks Infotech';
@@ -445,6 +450,84 @@ export const CareCloudXPage = ({ onNavigate }) => {
           </div>
         </section>
 
+        {/* OFFICIAL VIDEO SHOWCASE SECTION */}
+        <section className="py-12 sm:py-16 bg-gradient-to-b from-white via-pink-50/20 to-white border-b border-slate-200/80">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-slate-900 rounded-3xl p-6 sm:p-10 text-white shadow-2xl relative overflow-hidden border border-slate-800">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-6 space-y-4">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-pink-950/80 border border-pink-500/30 text-pink-300 text-xs font-mono font-bold uppercase tracking-wider">
+                    <Video className="w-3.5 h-3.5 text-[#C82190]" />
+                    <span>Official Product Video</span>
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white leading-tight">
+                    Watch CareCloudX ERP in Action
+                  </h2>
+                  <p className="text-slate-300 text-sm sm:text-base font-normal leading-relaxed">
+                    Explore our comprehensive hospital information system video walkthrough directly on your website.
+                  </p>
+                  <div className="flex flex-wrap gap-3 pt-2">
+                    <button
+                      onClick={() =>
+                        setActiveVideoModal({
+                          title: 'CareCloudX Hospital ERP Official Walkthrough',
+                          subtitle: 'Complete hospital information system demonstration',
+                          youtubeUrl: 'https://youtu.be/R-bVcwDzems?si=w3Z-Slc4LqJnmnDF',
+                          youtubeId: 'R-bVcwDzems',
+                          badge: 'Official Walkthrough',
+                        })
+                      }
+                      className="px-6 py-3.5 bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white font-bold text-xs sm:text-sm rounded-full shadow-lg flex items-center gap-2 cursor-pointer transition-all hover:scale-[1.02]"
+                    >
+                      <Play className="w-4 h-4 fill-current" />
+                      <span>Play Video on Website</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-6">
+                  <div
+                    onClick={() =>
+                      setActiveVideoModal({
+                        title: 'CareCloudX Hospital ERP Official Walkthrough',
+                        subtitle: 'Complete hospital information system demonstration',
+                        youtubeUrl: 'https://youtu.be/R-bVcwDzems?si=w3Z-Slc4LqJnmnDF',
+                        youtubeId: 'R-bVcwDzems',
+                        badge: 'Official Walkthrough',
+                      })
+                    }
+                    className="relative aspect-video w-full rounded-2xl overflow-hidden bg-slate-950 border border-slate-700/80 cursor-pointer group shadow-2xl hover:scale-[1.01] transition-transform"
+                  >
+                    <YouTubeThumbnail
+                      videoUrl="https://youtu.be/R-bVcwDzems?si=w3Z-Slc4LqJnmnDF"
+                      alt="CareCloudX ERP Video Walkthrough"
+                      className="opacity-90 group-hover:opacity-100 transition-opacity"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent flex flex-col justify-between p-4 sm:p-6">
+                      <div className="flex justify-end">
+                        <span className="bg-slate-900/90 backdrop-blur-md text-pink-300 text-xs font-mono font-bold px-3 py-1 rounded-full border border-pink-500/30 flex items-center gap-1.5 shadow">
+                          <Maximize2 className="w-3.5 h-3.5 text-[#C82190]" />
+                          <span>Click to Play HD</span>
+                        </span>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h4 className="text-white font-bold text-sm sm:text-base">CareCloudX System Tour</h4>
+                          <p className="text-slate-300 text-xs font-mono">YouTube HD Video</p>
+                        </div>
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#4F16A9] to-[#C82190] text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-xl shrink-0">
+                          <Play className="w-6 h-6 fill-current ml-0.5" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* 12 INTEGRATED MODULES GRID SECTION */}
         <section id="modules-list" className="py-12 sm:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -598,6 +681,12 @@ export const CareCloudXPage = ({ onNavigate }) => {
       <ContactModal
         isOpen={contactModalOpen}
         onClose={() => setContactModalOpen(false)}
+      />
+
+      {/* YouTube Video Lightbox Modal */}
+      <YouTubeVideoModal
+        video={activeVideoModal}
+        onClose={() => setActiveVideoModal(null)}
       />
     </div>
   );
