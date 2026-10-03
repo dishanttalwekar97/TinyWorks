@@ -142,13 +142,13 @@ export const Navbar = ({ onOpenContact }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-        ? 'py-3 bg-white/95 backdrop-blur-xl border-b border-slate-200/80 shadow-md text-slate-900'
-        : 'py-3.5 bg-white/95 backdrop-blur-xl border-b border-slate-200/60 shadow-sm text-slate-900'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || isCareCloudPage
+        ? 'py-2.5 sm:py-3 bg-white/90 backdrop-blur-2xl border-b border-slate-200/80 shadow-md shadow-slate-900/5 text-slate-900'
+        : 'py-2.5 sm:py-3.5 bg-white/90 lg:bg-transparent backdrop-blur-xl border-b border-slate-200/80 lg:border-transparent shadow-sm lg:shadow-none text-slate-900'
         }`}
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
-        <div className="flex items-center justify-between gap-2 w-full">
+        <div className="flex items-center w-full">
 
           {/* Brand Logo & Company Name */}
           <a
@@ -160,19 +160,19 @@ export const Navbar = ({ onOpenContact }) => {
             <img
               src="/images/tinyworks-logo.webp"
               alt="TinyWorks Logo"
-              className="h-7 sm:h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105"
+              className="h-6 sm:h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105"
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src = "/images/tinyworks-logo.png";
               }}
             />
-            <span className="font-heading font-semibold text-sm sm:text-2xl tracking-tight transition-colors leading-none text-slate-900 group-hover:text-[#C82190]">
+            <span className="font-heading font-semibold text-sm sm:text-xl md:text-2xl tracking-tight transition-colors leading-none text-slate-900 group-hover:text-[#C82190]">
               TinyWorks
             </span>
           </a>
 
-          {/* Center Navigation Links */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+          {/* Center Navigation Links (Desktop 1024px+) */}
+          <nav className="hidden lg:flex items-center gap-6 lg:gap-8 mx-auto">
             {navLinks.map((link) => {
               if (link.hasDropdown) {
                 return (
@@ -194,17 +194,17 @@ export const Navbar = ({ onOpenContact }) => {
                       />
                     </button>
 
-                    {/* Clean Light Vertical Dropdown List */}
+                    {/* Clean Glassmorphic Dropdown List */}
                     {careCloudOpen && (
                       <div
                         onMouseLeave={() => setCareCloudOpen(false)}
-                        className="absolute top-full left-0 mt-2 w-64 bg-white/85 backdrop-blur-xl border border-slate-200/80 rounded-2xl py-2.5 shadow-2xl shadow-slate-900/10 z-50 animate-in fade-in duration-150 text-slate-800"
+                        className="absolute top-full left-0 mt-2 w-64 bg-white/80 backdrop-blur-2xl border border-white/60 rounded-2xl py-2.5 shadow-2xl shadow-slate-900/10 z-50 animate-in fade-in duration-150 text-slate-800"
                       >
                         {moduleItems.map((item, idx) => (
                           <button
                             key={idx}
                             onClick={(e) => handleModuleClick(e, item)}
-                            className="w-full text-left px-5 py-2 text-xs sm:text-sm font-medium text-slate-700 hover:text-[#C82190] hover:bg-slate-50 transition-colors cursor-pointer block"
+                            className="w-full text-left px-5 py-2 text-xs sm:text-sm font-medium text-slate-700 hover:text-[#C82190] hover:bg-white/60 transition-colors cursor-pointer block"
                           >
                             {item}
                           </button>
@@ -233,29 +233,18 @@ export const Navbar = ({ onOpenContact }) => {
             })}
           </nav>
 
-          {/* Right Action Button */}
-          <div className="hidden sm:flex items-center gap-4">
+          {/* Right Action Elements Layout (ml-auto for compact alignment) */}
+          <div className="ml-auto flex items-center gap-1.5 sm:gap-3 shrink-0">
             <button
               onClick={onOpenContact}
-              className="group relative inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white text-xs sm:text-sm font-semibold transition-all shadow-lg shadow-purple-900/20 hover:scale-[1.02] cursor-pointer"
+              className="px-2.5 sm:px-5 py-1.5 sm:py-2.5 rounded-full bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] hover:opacity-95 text-white text-[10px] sm:text-sm font-semibold transition-all shadow-md shadow-purple-900/15 hover:scale-[1.02] cursor-pointer shrink-0 whitespace-nowrap"
               data-cursor="Contact"
-            >
-              <span>Get in Touch</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
-
-          {/* Mobile Menu Button + Get in Touch Side-by-Side */}
-          <div className="flex md:hidden items-center gap-1.5 shrink-0 ml-auto">
-            <button
-              onClick={onOpenContact}
-              className="px-2.5 py-1.5 rounded-full bg-gradient-to-r from-[#4F16A9] via-[#C82190] to-[#FF6B2B] text-white text-[11px] font-bold cursor-pointer shadow-md shrink-0 whitespace-nowrap"
             >
               Get in Touch
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 sm:p-2 rounded-xl border border-slate-200 bg-white text-slate-900 hover:bg-slate-100 shadow-sm cursor-pointer transition-colors shrink-0"
+              className="p-1.5 sm:p-2 min-w-[38px] sm:min-w-[44px] min-h-[38px] sm:min-h-[44px] flex items-center justify-center rounded-xl border border-slate-200/80 bg-white/70 backdrop-blur-md text-slate-900 hover:bg-white/90 shadow-sm cursor-pointer transition-colors shrink-0 lg:hidden"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5 text-[#C82190]" /> : <Menu className="w-5 h-5 text-slate-900" />}
@@ -265,14 +254,14 @@ export const Navbar = ({ onOpenContact }) => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay with Glassmorphism */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white/90 backdrop-blur-xl border-b border-slate-200/80 px-6 py-6 transition-all animate-fade-in shadow-2xl max-h-[85vh] overflow-y-auto text-slate-900">
+        <div className="lg:hidden bg-white/85 backdrop-blur-2xl border-b border-slate-200/80 px-6 py-6 transition-all animate-fade-in shadow-2xl rounded-b-3xl max-h-[85vh] overflow-y-auto text-slate-900">
           <div className="flex flex-col gap-3">
             {navLinks.map((link) => {
               if (link.hasDropdown) {
                 return (
-                  <div key={link.name} className="border-b border-slate-100 pb-2">
+                  <div key={link.name} className="border-b border-slate-100/80 pb-2">
                     <div className="w-full py-2.5 text-base font-bold text-[#C82190] flex items-center justify-between cursor-pointer">
                       <button
                         onClick={(e) => handleNavClick(e, '/carecloudx')}
@@ -287,7 +276,7 @@ export const Navbar = ({ onOpenContact }) => {
                     </div>
 
                     {mobileModulesOpen && (
-                      <div className="flex flex-col gap-1 pl-3 py-2 bg-slate-50 rounded-xl my-1 border border-slate-100 text-slate-800">
+                      <div className="flex flex-col gap-1 pl-3 py-2 bg-white/60 backdrop-blur-md rounded-xl my-1 border border-slate-100 text-slate-800">
                         {moduleItems.map((item, idx) => (
                           <div
                             key={idx}
@@ -308,7 +297,7 @@ export const Navbar = ({ onOpenContact }) => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="py-2.5 text-base font-semibold text-slate-800 hover:text-[#C82190] border-b border-slate-100 flex items-center justify-between"
+                  className="py-2.5 text-base font-semibold text-slate-800 hover:text-[#C82190] border-b border-slate-100/80 flex items-center justify-between"
                 >
                   <span>{link.name}</span>
                   <span className="text-slate-400 text-xs">→</span>

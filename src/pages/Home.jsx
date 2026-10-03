@@ -25,7 +25,7 @@ export const Home = () => {
       <Navbar onOpenContact={() => setContactModalOpen(true)} />
 
       {/* Page Sections */}
-      <main>
+      <main className="max-w-full overflow-x-clip">
         <Hero onOpenContact={() => setContactModalOpen(true)} />
         <Stats />
         <Solutions />
