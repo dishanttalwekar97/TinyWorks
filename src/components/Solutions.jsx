@@ -14,6 +14,11 @@ export const Solutions = () => {
   const card2Ref = useRef(null);
   const card3Ref = useRef(null);
 
+  const wrap0Ref = useRef(null);
+  const wrap1Ref = useRef(null);
+  const wrap2Ref = useRef(null);
+  const wrap3Ref = useRef(null);
+
   const solutions = [
     {
       id: 'hospital-erp',
@@ -45,6 +50,7 @@ export const Solutions = () => {
       starFill2: '#4F16A9',
       image: '/images/hospital_erp.jpg',
       ref: card0Ref,
+      wrapperRef: wrap0Ref,
     },
     {
       id: 'business-automation',
@@ -75,6 +81,7 @@ export const Solutions = () => {
       starFill2: '#C82190',
       image: '/images/business_automation.jpg',
       ref: card1Ref,
+      wrapperRef: wrap1Ref,
     },
     {
       id: 'custom-software',
@@ -105,6 +112,7 @@ export const Solutions = () => {
       starFill2: '#C82190',
       image: '/images/custom_software.jpg',
       ref: card2Ref,
+      wrapperRef: wrap2Ref,
     },
     {
       id: 'cloud-solutions',
@@ -135,43 +143,40 @@ export const Solutions = () => {
       starFill2: '#4F16A9',
       image: '/images/cloud_solutions.jpg',
       ref: card3Ref,
+      wrapperRef: wrap3Ref,
     },
   ];
 
   useGsap(() => {
     if (!cardsContainerRef.current) return;
 
-    // Configure ScrollTrigger for production stability
     ScrollTrigger.config({ ignoreMobileResize: true });
 
     const cardElements = [card0Ref.current, card1Ref.current, card2Ref.current, card3Ref.current].filter(Boolean);
 
-    // Clear any previous filter properties
-    gsap.set(cardElements, { clearProps: 'filter,brightness' });
-
-    // Smooth Card Scale Stacking Effect - Triggered cleanly on card sticky dock point
     cardElements.forEach((card, index) => {
       if (index === cardElements.length - 1) return;
+      const nextCard = cardElements[index + 1];
+      if (!nextCard) return;
 
-      const currentTop = 96 + index * 40;
+      const targetTop = 96 + (index + 1) * 40;
 
       gsap.to(card, {
         scale: 0.92 + index * 0.02,
         transformOrigin: 'top center',
         ease: 'none',
         scrollTrigger: {
-          trigger: card,
-          start: `top ${currentTop}px`,
-          end: '+=280px',
+          trigger: nextCard,
+          start: 'top bottom',
+          end: `top ${targetTop}px`,
           scrub: true,
           invalidateOnRefresh: true,
         },
       });
     });
 
-    // Multi-stage refresh to handle asset loading & hydration
-    const timer1 = setTimeout(() => ScrollTrigger.refresh(), 100);
-    const timer2 = setTimeout(() => ScrollTrigger.refresh(), 500);
+    const timer1 = setTimeout(() => ScrollTrigger.refresh(), 200);
+    const timer2 = setTimeout(() => ScrollTrigger.refresh(), 600);
 
     return () => {
       clearTimeout(timer1);
@@ -192,11 +197,18 @@ export const Solutions = () => {
     });
   }, []);
 
-  // Window load & orientation change fallback to trigger ScrollTrigger.refresh()
+  // Handle async font and image loading recalculations on hard refresh (Ctrl + Shift + R)
   useEffect(() => {
     const handleRefresh = () => {
       ScrollTrigger.refresh();
     };
+
+    if (document.fonts) {
+      document.fonts.ready.then(() => {
+        ScrollTrigger.refresh();
+      });
+    }
+
     window.addEventListener('load', handleRefresh);
     window.addEventListener('resize', handleRefresh);
     return () => {
