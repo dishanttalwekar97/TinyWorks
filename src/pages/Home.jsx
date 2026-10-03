@@ -25,7 +25,7 @@ export const Home = ({ onNavigate }) => {
       <Navbar onOpenContact={() => setContactModalOpen(true)} onNavigate={onNavigate} />
 
       {/* Page Sections */}
-      <main>
+      <main className="max-w-full overflow-x-clip">
         <Hero onOpenContact={() => setContactModalOpen(true)} />
         <Stats />
         <Solutions onNavigate={onNavigate} />
